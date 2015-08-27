@@ -4,7 +4,7 @@ A collection of models implemented in various environments with a canonical outp
 Each directory should contain:
 - one model concept, with a single canonical output named `output.csv` containing (at least) the stock values over the standard timeseries in the model files
 - Model files that produce said output (.mdl, .xmile, stella, pysd, etc)
-- A text file containing:
+- A text file entitled `README.md` containing:
  - The purpose of the test model (what functionality it executes)
  - The version of software that the canonical output was originally prepared by
  - The author of the test model and contact info
