@@ -25,7 +25,7 @@ the stock values over the standard timeseries in the model files
 - Screenshots of model construction programs (optional)
 
 For a demonstration, see the 
-[teacup example](https://github.com/SDXorg/test-models/tree/master/example/teacup)
+[teacup example](https://github.com/SDXorg/test-models/tree/master/benchmarks/teacup)
 
 
 ## Contributing:
