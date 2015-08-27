@@ -1,9 +1,9 @@
 Models for testing system dynamics translation, simulation, and display software
 ================================================================================
 
-This repository hopes to be a resource for testing system dynamics software and translation tools
-by providing a standard set of simple test cases in various formats, with an agreed upon canonical 
-output. 
+This repository is a resource for testing system dynamics software and translation tools.
+It provides a standard set of simple test cases in various formats, with a proposed canonical 
+output for that test. 
 
 Folders within the [Test](https://github.com/SDXorg/test-models/tree/master/tests/) directory 
 contain models that exercise a specific component of the system dynamics modeling paradigm, 
@@ -28,8 +28,22 @@ For a demonstration, see the
 [teacup example](https://github.com/SDXorg/test-models/tree/master/example/teacup)
 
 
-## Tests to Add:
-- Delays and Smoothing Functions
-- Trig Functions
-- Logical Functions
+## Contributing:
+All members of the SD community are invited to contribute to this repository. To do so, create a 
+local clone, add your contribution using one of the following methods, then submit a pull request. 
+To request that a specific test be added, create an issue on the 
+[issues](https://github.com/SDXorg/test-models/issues) page of this repository.
+
+#### Expanding existing cases
+Many of these cases have model files for some modeling formats but not others. To add a model file
+in another format, check that your model output replicates the 'canonical example' to reasonable 
+fidelity, preferably using identical varaibale names, and add an entry to the contributions table
+in the directory's `README.md` file.
+
+#### Adding new cases
+To add a new case, in your local clone add a folder in either the `tests` or `benchmarks` directory
+as appropriate, copy an example `README.md` file from another folder, and edit to suit your needs 
+
+
+
 
