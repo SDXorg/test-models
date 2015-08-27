@@ -11,11 +11,7 @@ in a number of different vendor or software formats.
 
 Folders within the [Benchmarks](https://github.com/SDXorg/test-models/tree/master/benchmarks/) 
 directory contain models that can be used for evaluating and comparing the execution speed of 
-each software platform version.
-
-Folders within the [Benchmarks](https://github.com/SDXorg/test-models/tree/master/examples/) 
-directory contain models that are standard formulations in the SD field that may exhibit more 
-complexity than test models.
+each software platform version, have more complexity than the simple unit test style examples above.
 
 Each model folder contains:
 - a single model concept, with its canonical output (named `output.csv`) containing (at least) 
