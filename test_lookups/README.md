@@ -3,6 +3,8 @@ test_lookups
 This model tests lookup table functionality. It calls upon the time variable of the model
 to serve as the input to the lookup table.
 
+![test_lookups vensim screenshot](vensim_screenshot.png)
+
 
 Contributions
 -------------
