@@ -13,7 +13,7 @@
     </style>
     <sim_specs method="Euler" time_units="Time">
         <start>0</start>
-        <stop>12</stop>
+        <stop>45</stop>
         <dt>0.25</dt>
     </sim_specs>
     <model_units />
