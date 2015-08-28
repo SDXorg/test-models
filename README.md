@@ -44,6 +44,43 @@ in the directory's `README.md` file.
 To add a new case, in your local clone add a folder in either the `tests` or `benchmarks` directory
 as appropriate, copy an example `README.md` file from another folder, and edit to suit your needs 
 
+## Result formatting
 
+To simplify tools and scripts around model validation, canonical
+output files should be UTF8 tab-separated or comma-separated files.
+Each row represents model results at a single timestep (rather than
+each row representing a single variable's results for every timestep).
 
+#### Getting model results from STELLA/iThink
 
+The following process ensures that output files end up in the format
+expected by tools that interact with this repository.
+
+1. Open the model in STELLA or iThink
+2. Run the model (choose Run from the Run menu)
+3. From the Edit menu, choose Export Data
+4. In the `Export Data` modal dialog, choose `One Time` as the Export Type
+5. In the `Export Data Source`, make sure both the `Export all model
+   variables` and `Every DT - Export every intermediate value during the
+   run` are selected
+6. For `Export Destination`, choose Browse and name the file
+   `output.csv`, and make sure the left-most checkbox below Browse is
+   selected.  You may have to create an empty file named `output.csv`
+   manually beforehand in your operating system's file browser.  Ensure
+   that of the two `Data` styles (columnar on the left, horizontal on the
+   right) the left-most (columnar results) is selected.  This is the default.
+7. Click `OK` at the bottom right to perform the export
+
+#### Getting model results from Vensim
+
+1. Open the model in Vensim
+2. Run the model
+3. From the `Model` menu, choose `Export Dataset...`
+4. Choose the run you just performed (by default it is the file named
+   `Current.vdf`
+5. At the top of the dialog, in the text-box next to the `Export To` button,
+   change the name of the export file from `Current` (or whatever your run
+   name was) to `output`
+6. Under `Export As` choose `CSV`
+7. Under `Time Running` choose `down`
+8. Click `OK at the bottom left to perform the export
