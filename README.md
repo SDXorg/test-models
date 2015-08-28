@@ -6,12 +6,11 @@ It provides a standard set of simple test cases in various formats, with a propo
 output for that test. 
 
 Folders within the [Test](https://github.com/SDXorg/test-models/tree/master/tests/) directory 
-contain models that exercise a specific component of the system dynamics modeling paradigm, 
-in a number of different vendor or software formats.
+contain models that exercise a minimal amount of functionality (such as lookup tables) for doing 
+unit-style testing on translation and simulation pathways.
 
-Folders within the [Benchmarks](https://github.com/SDXorg/test-models/tree/master/benchmarks/) 
-directory contain models that can be used for evaluating and comparing the execution speed of 
-each software platform version, have more complexity than the simple unit test style examples above.
+Folders within the [Samples](https://github.com/SDXorg/test-models/tree/master/samples/) 
+directory contain complete models that can be used for integration tests, benchmarking, and demos.
 
 Each model folder contains:
 - a single model concept, with its canonical output (named `output.csv`) containing (at least) 
