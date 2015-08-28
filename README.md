@@ -30,7 +30,9 @@ For a demonstration, see the
 
 ## Contributing:
 All members of the SD community are invited to contribute to this repository. To do so, create a 
-local clone, add your contribution using one of the following methods, then submit a pull request. 
+local clone, add your contribution using one of the following methods, add yourself to the
+[AUTHORS](AUTHORS) file, then submit a pull request. 
+
 To request that a specific test be added, create an issue on the 
 [issues](https://github.com/SDXorg/test-models/issues) page of this repository.
 
@@ -42,7 +44,7 @@ in the directory's `README.md` file.
 
 #### Adding new cases
 To add a new case, in your local clone add a folder in either the `tests` or `benchmarks` directory
-as appropriate, copy an example `README.md` file from another folder, and edit to suit your needs 
+as appropriate, copy an example `README.md` file from another folder, and edit to suit your needs.
 
 
 
