@@ -86,3 +86,45 @@ expected by tools that interact with this repository.
 6. Under `Export As` choose `CSV`
 7. Under `Time Running` choose `down`
 8. Click `OK at the bottom left to perform the export
+
+## Tool testing
+
+There are 2 scripts in the top level of this repo to aid in debugging,
+[compare.py](compare.py) and [regression-test.py](regression-test.py).
+`compare.py` expects paths to two CSV or TSV files, and will compare the
+results of the two files, with some amount of smartness/fuzziness
+around floating point comparisions.
+
+`regression-test.py` can be used to compare a specific modeling tool's
+output against the accepted, canonical output for a given model (which
+is stored in `output.csv` in all the subdirectories of this
+repository).  It can be run with external tools with the current
+working directory as the root of this project:
+
+    $ ./regression-test.py ~/src/libsd/mdl .
+    $ ./regression-test.py ~/src/sd.js/mdl.js .
+
+And it can also be run from outside of this project, for example when
+this `test-models` repo is included as a [git
+submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) in
+another project:
+
+    $ test/test-models/regression-test.py ./mdl test/test-models
+
+The main requirement is that the given command
+([`mdl`](https://github.com/sdlabs/libsd/blob/master/mdl.c) and
+[`mdl.js`](https://github.com/sdlabs/sd.js/blob/master/mdl.js) above)
+accept the path to a model as an argument, and output model results to
+`stdout` in either TSV or CSV format.  If your tool requires
+additional commandline args, you can specify them with quoting:
+
+    $ ./regression-test.py "~/path/to/tool --arg1 --arg2" .
+
+And if you have a tool that simulates Vensim models or Stella v10
+models rather than xmile, you can change the model-file suffix:
+
+    # test Vensim model files
+    $ ./regression-test.py --ext mdl ~/path/to/tool .
+
+    # test Stella v10 XMILE-variant model files
+    $ ./regression-test.py --ext stmx ~/path/to/tool .
