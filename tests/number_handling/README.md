@@ -1,10 +1,12 @@
 test_number_handling
 ====================
-This model tests integer division. 
-It would also be an appropriate place to add similar tests of how tools handle numbers,
-such as modulus, rounding, etc. in the future.
+
+This model tests integer division.  It would also be an appropriate
+place to add similar tests of how tools handle numbers, such as
+modulus, rounding, etc. in the future.
 
 ![Vensim screenshot](vensim_screenshot.png)
+![Stella screenshot](stella_screenshot.png)
 
 
 Contributions
