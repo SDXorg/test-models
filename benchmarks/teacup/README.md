@@ -13,8 +13,7 @@ Contributions
 |:------------------------- |:--------------- |:-------------------------- |:------- |:----------------------- |
 | teacup.mdl                | James Houghton  | james.p.houghton@gmail.com | 8/27/15 | Vensim DSS 6.3 for Mac  |
 | output.csv                | James Houghton  | james.p.houghton@gmail.com | 8/27/15 | Vensim DSS 6.3 for Mac  |
-
-
-TODO
-----
-- verify xmile hand-coding
+| teacup.xmile              | James Houghton  | james.p.houghton@gmail.com | 8/27/15 |                         |
+| teacup.stmx               | Bobby Powers    | bobbypowers@gmail.com      | 8/28/15 | Stella 10.0.6 for Win   |
+| output_stella1006.csv     | Bobby Powers    | bobbypowers@gmail.com      | 8/28/15 | Stella 10.0.6 for Win   |
+| teacup_w_diagram.xmile    | Bobby Powers    | bobbypowers@gmail.com      | 8/28/15 | xmileconv v0.1.0        |
