@@ -147,7 +147,9 @@ def compare(reference, simulated, display_limit=-1):
             if n not in simulated:
                 if n in IGNORABLE_COLS:
                     continue
-                log(ERROR, 'missing column %s in second file', n)
+                if display_limit >= 0 and displayed < display_limit:
+                    log(ERROR, 'missing column %s in second file', n)
+                    displayed += 1
                 break
             if len(reference[n]) != len(simulated[n]):
                 if display_limit >= 0 and displayed < display_limit:
@@ -192,7 +194,7 @@ def main():
     # test-models has directories that are 2-levels deep
     for outer in os.listdir(args.DIR):
         outer_path = os.path.join(args.DIR, outer)
-        if outer_path.startswith('.') or not os.path.isdir(outer_path):
+        if outer.startswith('.') or not os.path.isdir(outer_path):
             continue
 
         for inner in os.listdir(outer_path):
