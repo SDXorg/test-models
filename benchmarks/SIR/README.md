@@ -1,7 +1,10 @@
 SIR Benchmark
 =============
+
 This model is a standard SIR model with a small timestep.
+
 ![Vensim screenshot](vensim_screenshot.png)
+![Stella screenshot](stella_screenshot.png)
 
 
 Contributions

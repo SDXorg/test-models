@@ -1,9 +1,10 @@
 Teacup
 ======
+
 This model is a ‘hello world’ style demonstration of the test suite format. 
 
-This model is a standard SIR model with a small timestep.
 ![Vensim screenshot](vensim_screenshot.png)
+![Stella screenshot](stella_screenshot.png)
 
 
 Contributions
