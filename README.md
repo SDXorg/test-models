@@ -29,7 +29,7 @@ For a demonstration, see the
 
 ## Contributing:
 All members of the SD community are invited to contribute to this repository. To do so, create a 
-local clone, add your contribution using one of the following methods, add yourself to the
+fork, add your contribution using one of the following methods, add yourself to the
 [AUTHORS](AUTHORS) file, then submit a pull request. 
 
 To request that a specific test be added, create an issue on the 
