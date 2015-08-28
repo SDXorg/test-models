@@ -9,7 +9,7 @@
     </header>
     <sim_specs time_units="Time">
         <start>0</start>
-        <stop>12</stop>
+        <stop>45</stop>
         <dt>0.25</dt>
     </sim_specs>
     <dimensions></dimensions>
