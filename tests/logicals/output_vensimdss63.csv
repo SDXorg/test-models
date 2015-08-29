@@ -1,0 +1,3 @@
+Time,AND output,false input,FINAL TIME,INITIAL TIME,NOT output,OR output,SAVEPER,TIME STEP,true input
+0,0,0,1,0,1,1,1,1,1
+1,0,,,,1,1,1,,

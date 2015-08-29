@@ -10,7 +10,7 @@ import subprocess
 import sys
 
 # these columns are either Vendor specific or otherwise not important.
-IGNORABLE_COLS = ('saveper',)
+IGNORABLE_COLS = ('saveper', 'initial_time', 'final_time', 'time_step')
 
 # from rainbow
 def make_reporter(verbosity, quiet, filelike):
@@ -147,6 +147,9 @@ def compare(reference, simulated):
                     n, len(reference[n]), len(simulated[n]))
                 err = True
                 break
+            if series[i] == '' or simulated[n][i] == '':
+                log(ERROR, '%s empty? "%s", "%s"', n, series[i], simulated[n][i])
+                continue
             ref = float(series[i])
             sim = float(simulated[n][i])
             around_zero = isclose(ref, 0, abs_tol=1e-06) and isclose(sim, 0, abs_tol=1e-06)
