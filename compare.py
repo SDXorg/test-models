@@ -2,11 +2,7 @@
 
 import cmath
 import csv
-import os
-import os.path
-import math
 import re
-import subprocess
 import sys
 
 # these columns are either Vendor specific or otherwise not important.
@@ -14,15 +10,19 @@ IGNORABLE_COLS = ('saveper', 'initial_time', 'final_time', 'time_step')
 
 # from rainbow
 def make_reporter(verbosity, quiet, filelike):
+    "Returns a function suitible for logging use."
     if not quiet:
         def report(level, msg, *args):
+            "Log if the specified severity is <= the initial verbosity."
             if level <= verbosity:
                 if len(args):
                     filelike.write(msg % args + '\n')
                 else:
                     filelike.write('%s\n' % (msg,))
     else:
-        def report(level, msg, *args): pass
+        def report(level, msg, *args):
+            "/dev/null logger."
+            pass
     return report
 
 ERROR = 0
@@ -94,7 +94,7 @@ def isclose(a,
                 (diff <= abs_tol))
     elif method == "average":
         return ((diff <= abs(rel_tol * (a + b) / 2) or
-                (diff <= abs_tol)))
+                 (diff <= abs_tol)))
     else:
         raise ValueError('method must be one of:'
                          ' "asymmetric", "strong", "weak", "average"')
@@ -131,31 +131,39 @@ def read_data(data):
         delimiter = '\t'
     return load_csv(ins, delimiter)
 
-def compare(reference, simulated):
+def compare(reference, simulated, display_limit=-1):
+    '''
+    Compare two data files for equivalence.
+    '''
     time = reference['time']
     steps = len(time)
     err = False
+    displayed = 0
     for i in range(steps):
         for n, series in list(reference.items()):
             if n not in simulated:
                 if n in IGNORABLE_COLS:
                     continue
-                log(ERROR, 'missing column %s in second file', n)
+                if display_limit >= 0 and displayed < display_limit:
+                    log(ERROR, 'missing column %s in second file', n)
+                    displayed += 1
                 break
             if len(reference[n]) != len(simulated[n]):
-                log(ERROR, 'len mismatch for %s (%d vs %d)',
-                    n, len(reference[n]), len(simulated[n]))
+                if display_limit >= 0 and displayed < display_limit:
+                    log(ERROR, 'len mismatch for %s (%d vs %d)',
+                        n, len(reference[n]), len(simulated[n]))
+                    displayed += 1
                 err = True
                 break
-            if series[i] == '' or simulated[n][i] == '':
-                log(ERROR, '%s empty? "%s", "%s"', n, series[i], simulated[n][i])
-                continue
             ref = float(series[i])
             sim = float(simulated[n][i])
             around_zero = isclose(ref, 0, abs_tol=1e-06) and isclose(sim, 0, abs_tol=1e-06)
             if not around_zero and not isclose(ref, sim, rel_tol=1e-4):
-                log(ERROR, 'time %s mismatch in %s (%s != %s)', time[i], n, ref, sim)
+                if display_limit >= 0 and displayed < display_limit:
+                    log(ERROR, 'time %s mismatch in %s (%s != %s)', time[i], n, ref, sim)
+                    displayed += 1
                 err = True
+    return err
 
 def main():
     ref = read_data(slurp(sys.argv[1]))

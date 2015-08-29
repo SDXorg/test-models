@@ -5,7 +5,6 @@ import cmath
 import csv
 import os
 import os.path
-import math
 import re
 import subprocess
 import sys
@@ -13,19 +12,23 @@ import sys
 OUTPUT_FILE = 'output.csv'
 
 # these columns are either Vendor specific or otherwise not important.
-IGNORABLE_COLS = ('saveper',)
+IGNORABLE_COLS = ('saveper', 'initial_time', 'final_time', 'time_step')
 
 # from rainbow
 def make_reporter(verbosity, quiet, filelike):
+    "Returns a function suitible for logging use."
     if not quiet:
         def report(level, msg, *args):
+            "Log if the specified severity is <= the initial verbosity."
             if level <= verbosity:
                 if len(args):
                     filelike.write(msg % args + '\n')
                 else:
                     filelike.write('%s\n' % (msg,))
     else:
-        def report(level, msg, *args): pass
+        def report(level, msg, *args):
+            "/dev/null logger."
+            pass
     return report
 
 ERROR = 0
@@ -97,7 +100,7 @@ def isclose(a,
                 (diff <= abs_tol))
     elif method == "average":
         return ((diff <= abs(rel_tol * (a + b) / 2) or
-                (diff <= abs_tol)))
+                 (diff <= abs_tol)))
     else:
         raise ValueError('method must be one of:'
                          ' "asymmetric", "strong", "weak", "average"')
@@ -136,7 +139,7 @@ def read_data(data):
 
 def compare(reference, simulated, display_limit=-1):
     '''
-    Compare 2 
+    Compare two data files for equivalence.
     '''
     time = reference['time']
     steps = len(time)
@@ -177,12 +180,37 @@ def run_cmd(cmd):
     out, err = call.communicate()
     return (call.returncode, out, err)
 
+
+def run_test(cmd, limit, model_suffix, model_dir):
+    err = False
+
+    models = [f for f in os.listdir(model_dir) if f.endswith(model_suffix)]
+    if not models:
+        return err
+
+    for m in models:
+        model_path = os.path.join(model_dir, m)
+
+        log(DEBUG, '  RTEST %s', model_path)
+        err, mdata, err_out = run_cmd('%s %s' % (cmd, model_path))
+        if err:
+            log(ERROR, '%s failed: %s', cmd, err_out)
+            continue
+        sim = read_data(mdata.decode('utf-8'))
+        output_path = os.path.join(model_dir, OUTPUT_FILE)
+        ref = read_data(slurp(output_path))
+        err |= compare(ref, sim, display_limit=limit)
+
+    return err
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('-e', '--ext', default='xmile',
                         help='file extension of model to test, such as xmile or mdl')
     parser.add_argument('-l', '--limit', default=10, type=int,
-                        help='number of lines of comparison errors to display per model, negative to disable')
+                        help='number of lines of comparison errors to display per ' +
+                        'model, negative to disable')
     parser.add_argument('CMD', help='command to run that will output model results to stdout')
     parser.add_argument('DIR', help='path to test-models directory')
     args = parser.parse_args()
@@ -191,31 +219,14 @@ def main():
 
     err = False
 
-    # test-models has directories that are 2-levels deep
-    for outer in os.listdir(args.DIR):
-        outer_path = os.path.join(args.DIR, outer)
-        if outer.startswith('.') or not os.path.isdir(outer_path):
-            continue
-
-        for inner in os.listdir(outer_path):
-            model_dir = os.path.join(outer_path, inner)
-            if not os.path.isdir(model_dir):
-                continue
-
-            for f in os.listdir(model_dir):
-                model_path = os.path.join(model_dir, f)
-                if not model_path.endswith(model_suffix):
-                    continue
-
-                log(DEBUG, '  RTEST %s/%s/%s', outer, inner, f)
-                err, mdata, err_out = run_cmd('%s %s' % (args.CMD, model_path))
-                if err:
-                    log(ERROR, '%s failed: %s', args.CMD, err_out)
-                    continue
-                sim = read_data(mdata.decode('utf-8'))
-                output_path = os.path.join(model_dir, OUTPUT_FILE)
-                ref = read_data(slurp(output_path))
-                err |= compare(ref, sim, display_limit=args.limit)
+    dirs = [args.DIR]
+    while dirs:
+        d = dirs.pop()
+        for dent in os.listdir(d):
+            full_path = os.path.join(d, dent)
+            if not dent.startswith('.') and os.path.isdir(full_path):
+                dirs.append(full_path)
+        err |= run_test(args.CMD, args.limit, model_suffix, d)
 
     return err
 
