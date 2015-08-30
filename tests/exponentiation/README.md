@@ -4,6 +4,7 @@ exponentiation
 This model tests exponentiation, the right-associativity of it, and
 precedence.
 
+![test_lookups Vensim screenshot](vensim_screenshot.png)
 
 Contributions
 -------------
