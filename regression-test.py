@@ -192,10 +192,13 @@ def run_test(cmd, limit, model_suffix, model_dir):
         model_path = os.path.join(model_dir, m)
 
         log(DEBUG, '  RTEST %s', model_path)
-        err, mdata, err_out = run_cmd('%s %s' % (cmd, model_path))
+        err, mdata, cmd_stderr = run_cmd('%s %s' % (cmd, model_path))
         if err:
-            log(ERROR, '%s failed: %s', cmd, err_out)
+            log(ERROR, '%s failed: %s', cmd, cmd_stderr)
             continue
+        elif cmd_stderr:
+            # if there was any, always pass stderr through
+            log(ERROR, '%s', cmd_stderr)
         sim = read_data(mdata.decode('utf-8'))
         output_path = os.path.join(model_dir, OUTPUT_FILE)
         ref = read_data(slurp(output_path))
