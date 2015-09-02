@@ -1,16 +1,22 @@
 {UTF-8}
-associativity=
-	-2^2
+FlowA=
+	0.1
 	~	
 	~		|
 
-output=
-	Time^2
+StockA= INTEG (
+	FlowA,
+		-5)
 	~	
 	~		|
 
-test=
-	if then else(associativity = 4, 1, 0)
+test integer=
+	INTEGER(StockA)
+	~	
+	~		|
+
+test modulo=
+	MODULO(StockA, 3 )
 	~	
 	~		|
 
@@ -20,7 +26,7 @@ test=
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 4
+FINAL TIME  = 100
 	~	Month
 	~	The final time for the simulation.
 	|
@@ -31,7 +37,7 @@ INITIAL TIME  = 0
 	|
 
 SAVEPER  = 
-        TIME STEP
+        TIME STEP 
 	~	Month [0,?]
 	~	The frequency with which output is stored.
 	|
@@ -45,20 +51,34 @@ TIME STEP  = 1
 V300  Do not put anything below this section - it will be ignored
 *View 1
 $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
-10,1,output,206,64,28,9,8,131,0,0,0,0,0,0
-10,2,associativity,93,121,37,14,8,131,0,0,0,0,0,0
-10,3,test,208,122,15,7,8,3,0,0,0,0,0,0
-1,4,2,3,0,0,0,0,0,64,0,-1--1--1,,1|(154,121)|
-10,5,Time,88,63,20,7,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128
-1,6,5,1,0,0,0,0,0,64,0,-1--1--1,,1|(136,63)|
+10,1,StockA,397,105,40,20,3,3,0,0,0,0,0,0
+12,2,48,213,104,10,8,0,3,0,0,-1,0,0,0
+1,4,6,1,4,0,0,22,0,0,0,-1--1--1,,1|(326,104)|
+1,5,6,2,100,0,0,22,0,0,0,-1--1--1,,1|(253,104)|
+11,6,0,290,104,6,8,34,3,0,0,1,0,0,0
+10,7,FlowA,290,120,19,8,40,3,0,0,-1,0,0,0
+10,8,test integer,400,189,29,8,8,3,0,0,0,0,0,0
+1,9,1,8,0,0,0,0,0,64,0,-1--1--1,,1|(397,146)|
+10,10,test modulo,307,189,30,8,8,3,0,0,0,0,0,0
+1,11,1,10,0,0,0,0,0,64,0,-1--1--1,,1|(350,148)|
 ///---\\\
 :L<%^E!@
+1:Current.vdf
 9:Current
+22:$,Dollar,Dollars,$s
+22:Hour,Hours
+22:Month,Months
+22:Person,People,Persons
+22:Unit,Units
+22:Week,Weeks
+22:Year,Years
+22:Day,Days
 15:0,0,0,0,0,0
 19:100,0
 27:2,
 34:0,
-5:output
+4:Time
+5:test modulo
 35:Date
 36:YYYY-MM-DD
 37:2000
@@ -68,5 +88,5 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 41:0
 42:1
 24:0
-25:0
-26:0
+25:100
+26:100

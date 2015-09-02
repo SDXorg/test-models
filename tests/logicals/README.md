@@ -21,4 +21,3 @@ Contributions
 
 TODO
 ----
-- Vensim output seems to have empty values for the true + false inputs?
