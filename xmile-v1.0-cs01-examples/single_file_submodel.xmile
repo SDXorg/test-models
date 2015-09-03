@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0">
+    <header>
+        <product version="1.0">Product</product>
+        <vendor>sample</vendor>
+        <options>
+            <uses_submodels/>
+        </options>
+    </header>
+    <sim_specs method="Euler" time_units="Months">
+        <start>1</start>
+        <stop>13</stop>
+        <dt>0.25</dt>
+    </sim_specs>
+    <model>
+        <variables>
+            <module name="Sub_Model">
+                <connect to="Input" from=".Root_Model_Output" />
+                <connect to=".Root_Model_Input" from="Sub_Model.Output" />
+            </module>
+            <aux name="Root_Model_Output" access="output"/>
+            <aux name="Root_Model_Input" access="input"/>
+        </variables>
+    </model>
+    <model name="Sub_Model">
+        <variables>
+            <aux name="Input" access="input"/>
+            <aux name="Output" access="output"/>
+        </variables>
+    </model>
+</xmile>

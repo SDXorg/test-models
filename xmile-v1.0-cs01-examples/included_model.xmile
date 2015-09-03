@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0">
+
+  <header>
+    <options/>
+    <product version="1.0" lang="en">Acme Constructor</product>
+    <vendor>Acme Software</vendor>
+    <name>included model</name>
+    <caption>
+        This model is intended to be included in master.xmile
+        as an example of an included model.
+    </caption>
+  </header>
+
+  <model name="model2">
+    <variables>
+      <aux name="variable1">
+        <eqn>DOUBLE(100)</eqn>
+      </aux>
+    </variables>
+  </model>
+</xmile>
