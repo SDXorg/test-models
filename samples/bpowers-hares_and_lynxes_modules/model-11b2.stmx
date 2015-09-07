@@ -95,7 +95,7 @@
                 <non_negative></non_negative>
             </flow>
             <flow name="deaths">
-                <eqn>lynxes.lynxes * hares_killed_per_lynx </eqn>
+                <eqn>lynxes * hares_killed_per_lynx </eqn>
                 <non_negative></non_negative>
             </flow>
             <aux name="birth_fraction">
@@ -105,7 +105,7 @@
                 <eqn>{Enter equation for use when not hooked up to other models}</eqn>
             </aux>
             <aux name="hare_density" access="output">
-                <eqn>hares / .area </eqn>
+                <eqn>hares / area </eqn>
             </aux>
             <stock name="lynxes" access="input">
                 <eqn>{Enter equation for use when not hooked up to other models}</eqn>
@@ -220,7 +220,7 @@
                 <eqn>.25 </eqn>
             </aux>
             <aux name="death_fraction">
-                <eqn>hares.hare_density </eqn>
+                <eqn>hare_density </eqn>
                 <gf>
                     <yscale min="0" max="1"/>
                     <xpts>0,10,20,30.000000000000004,40,50,60.000000000000007,70,80,90,100</xpts>
@@ -228,7 +228,7 @@
                 </gf>
             </aux>
             <flow name="harvest">
-                <eqn>PULSE( .size_of_one_time_lynx_harvest , 4 , 0 ) </eqn>
+                <eqn>PULSE( size_of_one_time_lynx_harvest , 4 , 0 ) </eqn>
                 <non_negative></non_negative>
             </flow>
             <aux name="size_of_one\ntime_lynx_harvest" access="input">
