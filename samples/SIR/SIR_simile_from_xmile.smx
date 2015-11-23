@@ -1,6 +1,0 @@
-[top_level_is(node00101),add(graphical_info(node00104,centre,[203,44])),remove(graphical_info(node00104,centre,[192,55]))].
-[top_level_is(node00101),translated([node00101-node00101,arc15-arc00115,arc14-arc00114,arc13-arc00113,arc12-arc00112,arc11-arc00111,arc10-arc00110,arc9-arc00109,node14-node00115,arc8-arc00108,node13-node00114,arc7-arc00107,arc6-arc00106,arc5-arc00105,arc4-arc00104,arc3-arc00103,arc2-arc00102,arc1-arc00101,node9-node00113,node8-node00112,node7-node00111,node6-node00110,node5-node00109,node4-node00108,node3-node00107,node2-node00106,node12-node00105,node11-node00104,node10-node00103,node1-node00102]),add(graphical_info(node00109,centre,[67,129])),remove(graphical_info(node00109,centre,[102,135]))].
-[add(graphical_info(node00107,centre,[363,135])),remove(graphical_info(node00107,centre,[321,135]))].
-[add(graphical_info(node00109,centre,[66,131])),remove(graphical_info(node00109,centre,[67,129]))].
-[add(graphical_info(node00111,centre,[80,43])),remove(graphical_info(node00111,centre,[98,55]))].
-[add(graphical_info(node00113,centre,[303,45])),remove(graphical_info(node00113,centre,[299,57]))].
