@@ -15,3 +15,6 @@ Contributions
 |:--------------------------------- |:--------------- |:-------------------------- |:-------- |:----------------------- |
 | test_subscript_aggregation.mdl    | James Houghton  | james.p.houghton@gmail.com | 10/20/15 | Vensim DSS 6.3 for Mac  |
 | output.csv                        | James Houghton  | james.p.houghton@gmail.com | 10/20/15 | Vensim DSS 6.3 for Mac  |
+
+Todo:
+Make a case where we sum over (say) dimensions 1 and 3, but not 2
