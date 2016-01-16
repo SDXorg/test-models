@@ -133,3 +133,4 @@ models rather than xmile, you can change the model-file suffix:
 1. Models with no stocks
 2. Models with subscripted flow definitions
 3. Models with different sets of subscripts on different pieces
+4. Subscripted lookups
