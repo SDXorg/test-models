@@ -134,3 +134,4 @@ models rather than xmile, you can change the model-file suffix:
 2. Models with subscripted flow definitions
 3. Models with different sets of subscripts on different pieces
 4. Subscripted lookups
+5. Test 'pi' and other keywords
