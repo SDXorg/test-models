@@ -1,52 +1,88 @@
-from __future__ import division                                 
-import numpy as np                                              
-from pysd import functions                                      
-from pysd import builder                                        
-                                                                
-class Components(builder.ComponentClass):                       
-                                                                
-    def equality(self):
-        """Type: Flow or Auxiliary
-        """
-        return self.functions.if_then_else(self.quotient()==self.quotient_target(), 1 , 0 ) 
 
-    def denominator(self):
-        """Type: Flow or Auxiliary
-        """
-        return 4 
+from __future__ import division
+import numpy as np
+from pysd import functions
 
-    def numerator(self):
-        """Type: Flow or Auxiliary
-        """
-        return 3 
+def time():
+    return _t
 
-    def quotient(self):
-        """Type: Flow or Auxiliary
-        """
-        return self.numerator()/self.denominator() 
+def equality():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = functions.if_then_else(quotient()==quotient_target(), 1,0)
 
-    def quotient_target(self):
-        """Type: Flow or Auxiliary
-        """
-        return 0.75 
+    return output
 
-    def final_time(self):
-        """Type: Flow or Auxiliary
-        """
-        return 1 
+def denominator():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = 4
 
-    def initial_time(self):
-        """Type: Flow or Auxiliary
-        """
-        return 0 
+    return output
 
-    def saveper(self):
-        """Type: Flow or Auxiliary
-        """
-        return self.time_step() 
+def numerator():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = 3
 
-    def time_step(self):
-        """Type: Flow or Auxiliary
-        """
-        return 1 
+    return output
 
+def quotient():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = numerator()/denominator()
+
+    return output
+
+def quotient_target():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = 0.75
+
+    return output
+
+def final_time():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = 1
+
+    return output
+
+def initial_time():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = 0
+
+    return output
+
+def saveper():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = time_step()
+
+    return output
+
+def time_step():
+    """
+    
+    """
+    loc_dimension_dir = 0 
+    output = 1
+
+    return output
