@@ -131,8 +131,6 @@ models rather than xmile, you can change the model-file suffix:
 
 # List of Tests to add
 1. Models with no stocks
-2. Models with subscripted flow definitions
-3. Models with different sets of subscripts on different pieces
 4. Subscripted lookups
 5. Test 'pi' and other keywords
 6. Initial conditions that call functions don't interfere with the cache
