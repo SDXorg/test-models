@@ -135,3 +135,4 @@ models rather than xmile, you can change the model-file suffix:
 3. Models with different sets of subscripts on different pieces
 4. Subscripted lookups
 5. Test 'pi' and other keywords
+6. Initial conditions that call functions don't interfere with the cache
