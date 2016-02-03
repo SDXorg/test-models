@@ -134,3 +134,7 @@ models rather than xmile, you can change the model-file suffix:
 4. Subscripted lookups
 5. Test 'pi' and other keywords
 6. Initial conditions that call functions don't interfere with the cache
+7. Check that vensim's SAVEPER and TIMESTEP are handled properly
+8. Subscripted delays
+9. Function calls with variously capitalized names (`Max(..)`, `MAX(..)`, and `max(..)` should all work. Its ok if `mAx(..)` does not...)
+10. Line breaks in equations, other places
