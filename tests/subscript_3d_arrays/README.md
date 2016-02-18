@@ -24,5 +24,5 @@ Contributions
 
 | Component                         | Author          | Contact                    | Date    | Software Version        |
 |:--------------------------------- |:--------------- |:-------------------------- |:------- |:----------------------- |
-| test_subscript_3d_arrays.mdl      | James Houghton  | james.p.houghton@gmail.com | 11/4/15 | Vensim DSS 6.3 for Mac  |
+| `test_subscript_3d_arrays.mdl`      | James Houghton  | james.p.houghton@gmail.com | 11/4/15 | Vensim DSS 6.3 for Mac  |
 
