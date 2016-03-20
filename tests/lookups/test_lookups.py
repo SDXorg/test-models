@@ -6,6 +6,10 @@ from pysd import functions
 def time():
     return _t
 
+# Share the `time` function with the module for `step`, `pulse`, etc.
+functions.__builtins__.update({'time':time})
+
+
 def lookup_function_call():
     """
     
@@ -40,14 +44,6 @@ def _daccumulation_dt():
     except:
         loc_dimension_dir = 0
     return rate()
-
-def lookup_function_table(x):
-    return functions.lookup(x,
-                            lookup_function_table.xs,
-                            lookup_function_table.ys)
-
-lookup_function_table.xs = [0.0, 5.0, 10.0, 15.0, 20.0, 25.0, 30.0, 35.0, 40.0, 45.0]
-lookup_function_table.ys = [0.0, 0.0, 1.0, 1.0, 0.0, 0.0, -1.0, -1.0, 0.0, 0.0]
 
 def final_time():
     """
