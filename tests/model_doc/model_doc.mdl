@@ -2,7 +2,8 @@
 ********************************************************
 	.model doc
 ********************************************************~
-		Test model documentation string
+		This test model documentation string was added to the 'Model Notes' text \
+		box on the Info/Pswd tab of the model setting popup window in vensim.
 	|
 
 Variable=
