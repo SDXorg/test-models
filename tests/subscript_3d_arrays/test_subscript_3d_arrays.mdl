@@ -87,8 +87,8 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 1,10,9,1,0,0,0,0,0,64,1,-1--1--1,,1|(415,188)|
 ///---\\\
 :L<%^E!@
-1:/Users/houghton/Google_Drive/Academic Projects/PYSD/test-models/tests/subscript_1d_arrays/Current.vdf
 1:Current.vdf
+1:/Users/houghton/Google_Drive/Academic Projects/PYSD/test-models/tests/subscript_1d_arrays/Current.vdf
 9:Current
 22:$,Dollar,Dollars,$s
 22:Hour,Hours
@@ -103,7 +103,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:Initial Values[One Dimensional Subscript,Second Dimension Subscript,Third Dimension Subscript]
+5:Stock A[One Dimensional Subscript,Second Dimension Subscript,Third Dimension Subscript]
 35:Date
 36:YYYY-MM-DD
 37:2000

@@ -1,6 +1,6 @@
 {UTF-8}
 Cosine of t=
-	COS(Time*2*3.14159)
+	COS(Time*2*3.14159265358)
 	~	
 	~		|
 

@@ -49,7 +49,7 @@ Stock D= INTEG (
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 100
+FINAL TIME  = 10
 	~	Month
 	~	The final time for the simulation.
 	|
