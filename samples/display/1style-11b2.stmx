@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
+    <header>
+        <smile version="1.0" namespace="std, isee"/>
+        <name>1style-11b2</name>
+        <uuid>cff077f7-59ca-456f-9d8a-10b4fae336d0</uuid>
+        <vendor>isee systems, inc.</vendor>
+        <product version="1.1b2" isee:saved_by_v1="true" isee:compatibility="1.1" lang="en">Stella Professional</product>
+    </header>
+    <sim_specs method="Euler" time_units="months" isee:pause_after_rates="false" isee:instantaneous_flows="true">
+        <start>1</start>
+        <stop>13</stop>
+        <dt reciprocal="true">4</dt>
+    </sim_specs>
+    <isee:prefs show_module_prefix="true"/>
+    <model_units/>
+    <model>
+        <variables>
+            <stock name="Stock_1">
+                <non_negative></non_negative>
+            </stock>
+            <aux name="Converter_1"/>
+            <aux name="Converter_2"/>
+        </variables>
+        <views>
+            <style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+                <text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
+                <numeric_display color="blue" background="white" font_size="9pt"/>
+                <graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" legend_position="right" axis_label_font_size="9pt"/>
+                <table color="black" background="#E0E0E0" text_align="right" font_size="12pt" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" blank_column_width="80" column_width="160" interval="1" isee:report_month_names="false" header_text_align="center"/>
+                <button color="black" background="#E0E0E0" font_size="9pt" transparent="false" corner_radius="0"/>
+                <switch color="black" background="#E0E0E0" font_size="9pt" label_side="top"/>
+                <graphical_input color="black" background="#E0E0E0" font_size="9pt"/>
+                <group_input color="black" background="#E0E0E0" font_size="9pt"/>
+                <lamp color="black" background="white" font_size="9pt"/>
+            </style>
+            <view show_pages="false" background="#FFF420" page_width="764" page_height="576" isee:popup_graphs_are_comparative="true" type="stock_flow">
+                <style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+                    <stock color="#FF0404" background="#FF3440" font_size="9pt" label_side="top" label_angle="0">
+                        <shape type="rectangle" width="55" height="45"/>
+                    </stock>
+                    <flow color="#FF0404" background="#FF3440" font_size="9pt" label_side="bottom" label_angle="0"/>
+                    <module color="#FF0404" background="#FF3440" font_size="9pt" label_side="top" label_angle="0">
+                        <shape type="rectangle" width="55" height="45"/>
+                    </module>
+                    <aux color="#FF0404" background="#FF3440" font_size="9pt" label_side="bottom" label_angle="0">
+                        <shape type="circle" radius="18"/>
+                    </aux>
+                    <group color="red" background="white" font_color="red" font_size="9pt"/>
+                    <connector color="#004FFF" font_color="#004FFF" font_size="9pt"/>
+                </style>
+                <stock font_size="9pt" x="168" y="128" name="Stock_1"/>
+                <aux font_size="9pt" label_side="right" label_angle="360" x="297" y="128" name="Converter_1"/>
+                <connector uid="1" font_color="#004FFF" font_size="9pt" angle="267.51044707800088">
+                    <from>Stock_1</from>
+                    <to>Converter_1</to>
+                </connector>
+                <aux font_color="#05FF3D" font_size="9pt" x="272.375" y="283" width="49.25" height="10" name="Converter_2">
+                    <shape type="name_only"/>
+                </aux>
+                <connector uid="2" font_color="#004FFF" font_size="9pt" angle="267.51044707800088">
+                    <from>Stock_1</from>
+                    <to>Converter_2</to>
+                </connector>
+            </view>
+            <view show_pages="false" page_width="800" page_height="600" isee:simulation_delay="0.10000000000000001" type="interface"/>
+        </views>
+    </model>
+</xmile>
