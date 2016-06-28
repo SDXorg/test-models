@@ -33,7 +33,7 @@ Relatively long name for a single variable but not entirely unheard of=
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 100
+FINAL TIME  = 1
 	~	Month
 	~	The final time for the simulation.
 	|
@@ -49,7 +49,7 @@ SAVEPER  =
 	~	The frequency with which output is stored.
 	|
 
-TIME STEP  = 0.125
+TIME STEP  = 1
 	~	Month [0,?]
 	~	The time step for the simulation.
 	|
@@ -58,17 +58,17 @@ TIME STEP  = 0.125
 V300  Do not put anything below this section - it will be ignored
 *View 1
 $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
-10,1,Absurdly long stock name with more words in it than is generally considered good modeling practice because of the lack of ready identifiability with a single concept yet surprisingly useful for testing line length issues,465,243,101,52,3,131,0,0,0,0,0,0
-12,5,48,196,238,10,8,0,3,0,0,-1,0,0,0
-1,6,8,1,4,0,0,22,0,0,0,-1--1--1,,1|(320,239)|
-1,7,8,5,100,0,0,22,0,0,0,-1--1--1,,1|(235,239)|
-11,8,48,271,239,6,8,34,3,0,0,1,0,0,0
-10,9,Flow descriptor that is somewhat awkward in implementation and definitely unhelpful in description,271,268,86,21,40,3,0,0,-1,0,0,0
-10,27,Relatively long name for a single variable but not entirely unheard of,271,173,68,21,8,3,0,0,0,0,0,0
-1,28,27,8,0,0,0,0,0,64,0,-1--1--1,,1|(271,206)|
-1,29,1,9,1,0,0,0,0,64,0,-1--1--1,,1|(353,346)|
-10,36,Target for goal seeking loop and convenient object for testing user broken lines,224,390,71,21,8,3,0,0,0,0,0,0
-1,37,36,9,0,0,0,0,0,64,0,-1--1--1,,1|(244,335)|
+10,1,Absurdly long stock name with more words in it than is generally considered good modeling practice because of the lack of ready identifiability with a single concept yet surprisingly useful for testing line length issues,465,227,101,52,3,131,0,0,0,0,0,0
+12,2,48,196,222,10,8,0,3,0,0,-1,0,0,0
+1,3,5,1,4,0,0,22,0,0,0,-1--1--1,,1|(320,223)|
+1,4,5,2,100,0,0,22,0,0,0,-1--1--1,,1|(235,223)|
+11,5,48,271,223,6,8,34,3,0,0,1,0,0,0
+10,6,Flow descriptor that is somewhat awkward in implementation and definitely unhelpful in description,271,252,86,21,40,3,0,0,-1,0,0,0
+10,7,Relatively long name for a single variable but not entirely unheard of,271,157,68,21,8,3,0,0,0,0,0,0
+1,8,7,5,0,0,0,0,0,64,0,-1--1--1,,1|(271,190)|
+1,9,1,6,1,0,0,0,0,64,0,-1--1--1,,1|(353,330)|
+10,10,Target for goal seeking loop and convenient object for testing user broken lines,224,374,71,21,8,3,0,0,0,0,0,0
+1,11,10,6,0,0,0,0,0,64,0,-1--1--1,,1|(244,319)|
 ///---\\\
 :L<%^E!@
 1:Current.vdf
@@ -87,7 +87,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:Absurdly long stock name with more words in it than is generally considered good modeling practice because of the lack of ready identifiability with a single concept yet surprisingly useful for testing line length issues
+5:Target for goal seeking loop and convenient object for testing user broken lines
 35:Date
 36:YYYY-MM-DD
 37:2000
@@ -97,5 +97,5 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 41:0
 42:0
 24:0
-25:100
-26:100
+25:1
+26:1
