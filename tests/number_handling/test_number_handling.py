@@ -32,7 +32,6 @@ def equality():
     (equality)
 
 
-
     """
     return functions.if_then_else(quotient() == quotient_target(), 1, 0)
 
@@ -44,7 +43,6 @@ def final_time():
     ----------
     (final_time)
     Month
-
     The final time for the simulation.
     """
     return 1
@@ -56,7 +54,6 @@ def denominator():
     denominator
     -----------
     (denominator)
-
 
 
     """
@@ -71,7 +68,6 @@ def numerator():
     (numerator)
 
 
-
     """
     return 3
 
@@ -83,7 +79,6 @@ def saveper():
     -------
     (saveper)
     Month [0,?]
-
     The frequency with which output is stored.
     """
     return time_step()
@@ -96,7 +91,6 @@ def initial_time():
     ------------
     (initial_time)
     Month
-
     The initial time for the simulation.
     """
     return 0
@@ -109,7 +103,6 @@ def time_step():
     ---------
     (time_step)
     Month [0,?]
-
     The time step for the simulation.
     """
     return 1
@@ -123,7 +116,6 @@ def quotient_target():
     (quotient_target)
 
 
-
     """
     return 0.75
 
@@ -134,7 +126,6 @@ def quotient():
     quotient
     --------
     (quotient)
-
 
 
     """
