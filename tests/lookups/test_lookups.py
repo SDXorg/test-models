@@ -6,6 +6,7 @@ Translated using PySD version 0.5.1
 from __future__ import division
 import numpy as np
 from pysd import utils
+import xarray as xr
 
 from pysd.functions import cache
 from pysd import functions
