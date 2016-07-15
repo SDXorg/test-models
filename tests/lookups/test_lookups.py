@@ -1,7 +1,7 @@
 
 """
 Python model test-models/tests/lookups/test_lookups.py
-Translated using PySD version 0.5.1
+Translated using PySD version 0.6.3
 """
 from __future__ import division
 import numpy as np
