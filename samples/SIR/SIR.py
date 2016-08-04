@@ -1,7 +1,7 @@
 
 """
 Python model test-models/samples/SIR/SIR.py
-Translated using PySD version 0.6.3
+Translated using PySD version 0.6.4
 """
 from __future__ import division
 import numpy as np
@@ -18,11 +18,13 @@ _namespace = {
     'Recovering': 'recovering',
     'Susceptible': 'susceptible',
     'TIME STEP': 'time_step',
+    'TIME': 'time',
     'SAVEPER': 'saveper',
-    'Contact Infectivity': 'contact_infectivity',
     'Infectious': 'infectious',
+    'Contact Infectivity': 'contact_infectivity',
     'FINAL TIME': 'final_time',
     'INITIAL TIME': 'initial_time',
+    'Time': 'time',
     'Duration': 'duration',
     'Succumbing': 'succumbing',
     'Recovered': 'recovered'}
@@ -182,6 +184,18 @@ def _init_susceptible():
     Provides initial conditions for susceptible function
     """
     return total_population()
+
+
+@cache('step')
+def time():
+    """
+    TIME
+    ----
+    (time)
+    None
+    The time of the model
+    """
+    return _t
 
 
 @cache('run')

@@ -1,7 +1,7 @@
 
 """
 Python model test-models/samples/teacup/teacup.py
-Translated using PySD version 0.6.3
+Translated using PySD version 0.6.4
 """
 from __future__ import division
 import numpy as np
@@ -17,10 +17,12 @@ _namespace = {
     'INITIAL TIME': 'initial_time',
     'Characteristic Time': 'characteristic_time',
     'Heat Loss to Room': 'heat_loss_to_room',
+    'TIME': 'time',
     'SAVEPER': 'saveper',
     'FINAL TIME': 'final_time',
     'Room Temperature': 'room_temperature',
     'Teacup Temperature': 'teacup_temperature',
+    'Time': 'time',
     'TIME STEP': 'time_step'}
 
 
@@ -118,6 +120,18 @@ def initial_time():
     The initial time for the simulation.
     """
     return 0
+
+
+@cache('step')
+def time():
+    """
+    TIME
+    ----
+    (time)
+    None
+    The time of the model
+    """
+    return _t
 
 
 @cache('run')
