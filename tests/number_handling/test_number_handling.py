@@ -1,7 +1,7 @@
 
 """
 Python model test-models/tests/number_handling/test_number_handling.py
-Translated using PySD version 0.6.3
+Translated using PySD version 0.6.4
 """
 from __future__ import division
 import numpy as np
@@ -20,8 +20,10 @@ _namespace = {
     'TIME STEP': 'time_step',
     'denominator': 'denominator',
     'numerator': 'numerator',
+    'TIME': 'time',
     'FINAL TIME': 'final_time',
     'SAVEPER': 'saveper',
+    'Time': 'time',
     'quotient': 'quotient'}
 
 
@@ -95,6 +97,18 @@ def initial_time():
     The initial time for the simulation.
     """
     return 0
+
+
+@cache('step')
+def time():
+    """
+    TIME
+    ----
+    (time)
+    None
+    The time of the model
+    """
+    return _t
 
 
 @cache('run')

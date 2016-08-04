@@ -1,7 +1,7 @@
 
 """
 Python model test-models/tests/lookups/test_lookups.py
-Translated using PySD version 0.6.3
+Translated using PySD version 0.6.4
 """
 from __future__ import division
 import numpy as np
@@ -17,10 +17,12 @@ _namespace = {
     'INITIAL TIME': 'initial_time',
     'lookup function table': 'lookup_function_table',
     'TIME STEP': 'time_step',
+    'TIME': 'time',
     'FINAL TIME': 'final_time',
     'rate': 'rate',
     'SAVEPER': 'saveper',
     'lookup function call': 'lookup_function_call',
+    'Time': 'time',
     'accumulation': 'accumulation'}
 
 
@@ -123,7 +125,7 @@ def lookup_function_table(x):
 @cache('step')
 def time():
     """
-    Time
+    TIME
     ----
     (time)
     None
