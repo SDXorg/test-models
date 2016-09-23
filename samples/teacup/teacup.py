@@ -1,7 +1,7 @@
 
 """
-Python model test-models/samples/teacup/teacup.py
-Translated using PySD version 0.6.4
+Python model tests/test-models/samples/teacup/teacup.py
+Translated using PySD version 0.7.1
 """
 from __future__ import division
 import numpy as np
@@ -35,18 +35,7 @@ def teacup_temperature():
     Degrees
 
     """
-    return _state['teacup_temperature']
-
-
-def _init_teacup_temperature():
-    """
-    Implicit
-    --------
-    (_init_teacup_temperature)
-    See docs for teacup_temperature
-    Provides initial conditions for teacup_temperature function
-    """
-    return 180
+    return integ_teacup_temperature()
 
 
 @cache('run')
@@ -59,6 +48,9 @@ def final_time():
     The final time for the simulation.
     """
     return 30
+
+
+integ_teacup_temperature = functions.Integ(lambda: -heat_loss_to_room(), lambda: 180)
 
 
 @cache('run')
@@ -146,19 +138,7 @@ def time_step():
     return 0.125
 
 
-@cache('step')
-def _dteacup_temperature_dt():
-    """
-    Implicit
-    --------
-    (_dteacup_temperature_dt)
-    See docs for teacup_temperature
-    Provides derivative for teacup_temperature function
-    """
-    return -heat_loss_to_room()
-
-
 def time():
     return _t
 functions.time = time
-functions.initial_time = initial_time
+functions._stage = lambda: _stage
