@@ -14,5 +14,5 @@ Contributions
 
 | Component             | Author          | Contact                    | Date    | Software Version          |
 |:--------------------- |:--------------- |:-------------------------- |:------- |:------------------------- |
-| builtin_max.stmx      | James Houghton    | james.p.houghton@gmail.com      | 10/7/16 | Vensim for Mac 6.4b     |
+| test_arguments.mdl    | James Houghton    | james.p.houghton@gmail.com      | 10/7/16 | Vensim for Mac 6.4b     |
 | output.tab            | James Houghton    | james.p.houghton@gmail.com      | 10/7/16 | Vensim for Mac 6.4b    |
