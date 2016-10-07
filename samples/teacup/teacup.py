@@ -1,7 +1,7 @@
 
 """
-Python model tests/test-models/samples/teacup/teacup.py
-Translated using PySD version 0.7.1
+Python model test-models/samples/teacup/teacup.py
+Translated using PySD version 0.7.2
 """
 from __future__ import division
 import numpy as np
@@ -14,16 +14,28 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'INITIAL TIME': 'initial_time',
-    'Characteristic Time': 'characteristic_time',
-    'Heat Loss to Room': 'heat_loss_to_room',
-    'TIME': 'time',
-    'SAVEPER': 'saveper',
-    'FINAL TIME': 'final_time',
-    'Room Temperature': 'room_temperature',
-    'Teacup Temperature': 'teacup_temperature',
     'Time': 'time',
-    'TIME STEP': 'time_step'}
+    'Teacup Temperature': 'teacup_temperature',
+    'Heat Loss to Room': 'heat_loss_to_room',
+    'Room Temperature': 'room_temperature',
+    'SAVEPER': 'saveper',
+    'Characteristic Time': 'characteristic_time',
+    'INITIAL TIME': 'initial_time',
+    'FINAL TIME': 'final_time',
+    'TIME STEP': 'time_step',
+    'TIME': 'time'}
+
+
+@cache('step')
+def saveper():
+    """
+    SAVEPER
+    -------
+    (saveper)
+    Minute [0,?]
+    The frequency with which output is stored.
+    """
+    return time_step()
 
 
 @cache('step')
@@ -39,21 +51,6 @@ def teacup_temperature():
 
 
 @cache('run')
-def final_time():
-    """
-    FINAL TIME
-    ----------
-    (final_time)
-    Minute
-    The final time for the simulation.
-    """
-    return 30
-
-
-integ_teacup_temperature = functions.Integ(lambda: -heat_loss_to_room(), lambda: 180)
-
-
-@cache('run')
 def room_temperature():
     """
     Room Temperature
@@ -63,6 +60,18 @@ def room_temperature():
 
     """
     return 70
+
+
+@cache('run')
+def initial_time():
+    """
+    INITIAL TIME
+    ------------
+    (initial_time)
+    Minute
+    The initial time for the simulation.
+    """
+    return 0
 
 
 @cache('step')
@@ -79,51 +88,15 @@ def heat_loss_to_room():
 
 
 @cache('run')
-def characteristic_time():
+def final_time():
     """
-    Characteristic Time
-    -------------------
-    (characteristic_time)
-    Minutes
-
-    """
-    return 10
-
-
-@cache('step')
-def saveper():
-    """
-    SAVEPER
-    -------
-    (saveper)
-    Minute [0,?]
-    The frequency with which output is stored.
-    """
-    return time_step()
-
-
-@cache('run')
-def initial_time():
-    """
-    INITIAL TIME
-    ------------
-    (initial_time)
+    FINAL TIME
+    ----------
+    (final_time)
     Minute
-    The initial time for the simulation.
+    The final time for the simulation.
     """
-    return 0
-
-
-@cache('step')
-def time():
-    """
-    TIME
-    ----
-    (time)
-    None
-    The time of the model
-    """
-    return _t
+    return 30
 
 
 @cache('run')
@@ -138,7 +111,16 @@ def time_step():
     return 0.125
 
 
-def time():
-    return _t
-functions.time = time
-functions._stage = lambda: _stage
+@cache('run')
+def characteristic_time():
+    """
+    Characteristic Time
+    -------------------
+    (characteristic_time)
+    Minutes
+
+    """
+    return 10
+
+
+integ_teacup_temperature = functions.Integ(lambda: -heat_loss_to_room(), lambda: 180)

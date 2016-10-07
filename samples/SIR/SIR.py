@@ -1,7 +1,7 @@
 
 """
 Python model test-models/samples/SIR/SIR.py
-Translated using PySD version 0.6.4
+Translated using PySD version 0.7.2
 """
 from __future__ import division
 import numpy as np
@@ -14,20 +14,20 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'Total Population': 'total_population',
-    'Recovering': 'recovering',
-    'Susceptible': 'susceptible',
-    'TIME STEP': 'time_step',
-    'TIME': 'time',
-    'SAVEPER': 'saveper',
     'Infectious': 'infectious',
-    'Contact Infectivity': 'contact_infectivity',
-    'FINAL TIME': 'final_time',
+    'SAVEPER': 'saveper',
+    'Total Population': 'total_population',
     'INITIAL TIME': 'initial_time',
+    'Recovering': 'recovering',
+    'FINAL TIME': 'final_time',
+    'Recovered': 'recovered',
     'Time': 'time',
+    'TIME': 'time',
+    'Susceptible': 'susceptible',
     'Duration': 'duration',
     'Succumbing': 'succumbing',
-    'Recovered': 'recovered'}
+    'TIME STEP': 'time_step',
+    'Contact Infectivity': 'contact_infectivity'}
 
 
 @cache('run')
@@ -56,49 +56,40 @@ def final_time():
 
 
 @cache('step')
-def recovering():
+def saveper():
     """
-    Recovering
-    ----------
-    (recovering)
-    Persons/Day
-
+    SAVEPER
+    -------
+    (saveper)
+    Day [0,?]
+    The frequency with which output is stored.
     """
-    return infectious() / duration()
+    return time_step()
 
 
 @cache('step')
-def susceptible():
+def recovered():
     """
-    Susceptible
-    -----------
-    (susceptible)
+    Recovered
+    ---------
+    (recovered)
     Persons
-    The population that has not yet been infected.
+    These people have recovered from the disease. Yay! Nobody dies in this
+                model.
     """
-    return _state['susceptible']
+    return integ_recovered()
 
 
-def _init_recovered():
+@cache('run')
+def time_step():
     """
-    Implicit
-    --------
-    (_init_recovered)
-    See docs for recovered
-    Provides initial conditions for recovered function
+    TIME STEP
+    ---------
+    (time_step)
+    Day [0,?]
+    The time step for the simulation.
     """
-    return 0
-
-
-def _init_infectious():
-    """
-    Implicit
-    --------
-    (_init_infectious)
-    See docs for infectious
-    Provides initial conditions for infectious function
-    """
-    return 5
+    return 0.03125
 
 
 @cache('run')
@@ -114,90 +105,6 @@ def contact_infectivity():
     return 0.3
 
 
-@cache('step')
-def infectious():
-    """
-    Infectious
-    ----------
-    (infectious)
-    Persons
-    The population with the disease, manifesting symptoms, and able to
-                transmit it to other people.
-    """
-    return _state['infectious']
-
-
-@cache('step')
-def _drecovered_dt():
-    """
-    Implicit
-    --------
-    (_drecovered_dt)
-    See docs for recovered
-    Provides derivative for recovered function
-    """
-    return recovering()
-
-
-@cache('step')
-def _dinfectious_dt():
-    """
-    Implicit
-    --------
-    (_dinfectious_dt)
-    See docs for infectious
-    Provides derivative for infectious function
-    """
-    return succumbing() - recovering()
-
-
-@cache('step')
-def saveper():
-    """
-    SAVEPER
-    -------
-    (saveper)
-    Day [0,?]
-    The frequency with which output is stored.
-    """
-    return time_step()
-
-
-@cache('run')
-def initial_time():
-    """
-    INITIAL TIME
-    ------------
-    (initial_time)
-    Day
-    The initial time for the simulation.
-    """
-    return 0
-
-
-def _init_susceptible():
-    """
-    Implicit
-    --------
-    (_init_susceptible)
-    See docs for susceptible
-    Provides initial conditions for susceptible function
-    """
-    return total_population()
-
-
-@cache('step')
-def time():
-    """
-    TIME
-    ----
-    (time)
-    None
-    The time of the model
-    """
-    return _t
-
-
 @cache('run')
 def duration():
     """
@@ -210,28 +117,16 @@ def duration():
     return 5
 
 
-@cache('run')
-def time_step():
-    """
-    TIME STEP
-    ---------
-    (time_step)
-    Day [0,?]
-    The time step for the simulation.
-    """
-    return 0.03125
-
-
 @cache('step')
-def _dsusceptible_dt():
+def recovering():
     """
-    Implicit
-    --------
-    (_dsusceptible_dt)
-    See docs for susceptible
-    Provides derivative for susceptible function
+    Recovering
+    ----------
+    (recovering)
+    Persons/Day
+
     """
-    return -succumbing()
+    return infectious() / duration()
 
 
 @cache('step')
@@ -246,20 +141,47 @@ def succumbing():
     return susceptible() * infectious() / total_population() * contact_infectivity()
 
 
+@cache('run')
+def initial_time():
+    """
+    INITIAL TIME
+    ------------
+    (initial_time)
+    Day
+    The initial time for the simulation.
+    """
+    return 0
+
+
 @cache('step')
-def recovered():
+def infectious():
     """
-    Recovered
-    ---------
-    (recovered)
+    Infectious
+    ----------
+    (infectious)
     Persons
-    These people have recovered from the disease. Yay! Nobody dies in this
-                model.
+    The population with the disease, manifesting symptoms, and able to
+                transmit it to other people.
     """
-    return _state['recovered']
+    return integ_infectious()
 
 
-def time():
-    return _t
-functions.time = time
-functions.initial_time = initial_time
+integ_susceptible = functions.Integ(lambda: -succumbing(), lambda: total_population())
+
+
+@cache('step')
+def susceptible():
+    """
+    Susceptible
+    -----------
+    (susceptible)
+    Persons
+    The population that has not yet been infected.
+    """
+    return integ_susceptible()
+
+
+integ_infectious = functions.Integ(lambda: succumbing() - recovering(), lambda: 5)
+
+
+integ_recovered = functions.Integ(lambda: recovering(), lambda: 0)

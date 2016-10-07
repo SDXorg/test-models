@@ -1,7 +1,7 @@
 
 """
 Python model test-models/tests/lookups/test_lookups.py
-Translated using PySD version 0.6.4
+Translated using PySD version 0.7.2
 """
 from __future__ import division
 import numpy as np
@@ -14,16 +14,28 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
+    'Time': 'time',
     'INITIAL TIME': 'initial_time',
     'lookup function table': 'lookup_function_table',
-    'TIME STEP': 'time_step',
     'TIME': 'time',
-    'FINAL TIME': 'final_time',
-    'rate': 'rate',
     'SAVEPER': 'saveper',
+    'accumulation': 'accumulation',
     'lookup function call': 'lookup_function_call',
-    'Time': 'time',
-    'accumulation': 'accumulation'}
+    'FINAL TIME': 'final_time',
+    'TIME STEP': 'time_step',
+    'rate': 'rate'}
+
+
+@cache('step')
+def saveper():
+    """
+    SAVEPER
+    -------
+    (saveper)
+    Minute [0,?]
+    The frequency with which output is stored.
+    """
+    return time_step()
 
 
 @cache('run')
@@ -38,63 +50,7 @@ def final_time():
     return 45
 
 
-@cache('step')
-def _daccumulation_dt():
-    """
-    Implicit
-    --------
-    (_daccumulation_dt)
-    See docs for accumulation
-    Provides derivative for accumulation function
-    """
-    return rate()
-
-
-def _init_accumulation():
-    """
-    Implicit
-    --------
-    (_init_accumulation)
-    See docs for accumulation
-    Provides initial conditions for accumulation function
-    """
-    return 0
-
-
-@cache('step')
-def lookup_function_call():
-    """
-    lookup function call
-    --------------------
-    (lookup_function_call)
-
-
-    """
-    return lookup_function_table(time())
-
-
-@cache('step')
-def rate():
-    """
-    rate
-    ----
-    (rate)
-
-
-    """
-    return lookup_function_call()
-
-
-@cache('step')
-def saveper():
-    """
-    SAVEPER
-    -------
-    (saveper)
-    Minute [0,?]
-    The frequency with which output is stored.
-    """
-    return time_step()
+integ_accumulation = functions.Integ(lambda: rate(), lambda: 0)
 
 
 @cache('run')
@@ -123,15 +79,27 @@ def lookup_function_table(x):
 
 
 @cache('step')
-def time():
+def accumulation():
     """
-    TIME
-    ----
-    (time)
-    None
-    The time of the model
+    accumulation
+    ------------
+    (accumulation)
+
+
     """
-    return _t
+    return integ_accumulation()
+
+
+@cache('step')
+def lookup_function_call():
+    """
+    lookup function call
+    --------------------
+    (lookup_function_call)
+
+
+    """
+    return lookup_function_table(time())
 
 
 @cache('run')
@@ -147,18 +115,12 @@ def time_step():
 
 
 @cache('step')
-def accumulation():
+def rate():
     """
-    accumulation
-    ------------
-    (accumulation)
+    rate
+    ----
+    (rate)
 
 
     """
-    return _state['accumulation']
-
-
-def time():
-    return _t
-functions.time = time
-functions.initial_time = initial_time
+    return lookup_function_call()

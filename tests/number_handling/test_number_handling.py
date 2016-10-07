@@ -1,7 +1,7 @@
 
 """
 Python model test-models/tests/number_handling/test_number_handling.py
-Translated using PySD version 0.6.4
+Translated using PySD version 0.7.2
 """
 from __future__ import division
 import numpy as np
@@ -14,17 +14,41 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
+    'Time': 'time',
     'INITIAL TIME': 'initial_time',
-    'equality': 'equality',
-    'quotient target': 'quotient_target',
-    'TIME STEP': 'time_step',
+    'TIME': 'time',
+    'SAVEPER': 'saveper',
     'denominator': 'denominator',
     'numerator': 'numerator',
-    'TIME': 'time',
+    'TIME STEP': 'time_step',
     'FINAL TIME': 'final_time',
-    'SAVEPER': 'saveper',
-    'Time': 'time',
-    'quotient': 'quotient'}
+    'quotient target': 'quotient_target',
+    'quotient': 'quotient',
+    'equality': 'equality'}
+
+
+@cache('step')
+def saveper():
+    """
+    SAVEPER
+    -------
+    (saveper)
+    Month [0,?]
+    The frequency with which output is stored.
+    """
+    return time_step()
+
+
+@cache('run')
+def final_time():
+    """
+    FINAL TIME
+    ----------
+    (final_time)
+    Month
+    The final time for the simulation.
+    """
+    return 1
 
 
 @cache('step')
@@ -40,15 +64,15 @@ def equality():
 
 
 @cache('run')
-def final_time():
+def initial_time():
     """
-    FINAL TIME
-    ----------
-    (final_time)
+    INITIAL TIME
+    ------------
+    (initial_time)
     Month
-    The final time for the simulation.
+    The initial time for the simulation.
     """
-    return 1
+    return 0
 
 
 @cache('run')
@@ -75,42 +99,6 @@ def numerator():
     return 3
 
 
-@cache('step')
-def saveper():
-    """
-    SAVEPER
-    -------
-    (saveper)
-    Month [0,?]
-    The frequency with which output is stored.
-    """
-    return time_step()
-
-
-@cache('run')
-def initial_time():
-    """
-    INITIAL TIME
-    ------------
-    (initial_time)
-    Month
-    The initial time for the simulation.
-    """
-    return 0
-
-
-@cache('step')
-def time():
-    """
-    TIME
-    ----
-    (time)
-    None
-    The time of the model
-    """
-    return _t
-
-
 @cache('run')
 def time_step():
     """
@@ -121,18 +109,6 @@ def time_step():
     The time step for the simulation.
     """
     return 1
-
-
-@cache('run')
-def quotient_target():
-    """
-    quotient target
-    ---------------
-    (quotient_target)
-
-
-    """
-    return 0.75
 
 
 @cache('step')
@@ -147,7 +123,13 @@ def quotient():
     return numerator() / denominator()
 
 
-def time():
-    return _t
-functions.time = time
-functions.initial_time = initial_time
+@cache('run')
+def quotient_target():
+    """
+    quotient target
+    ---------------
+    (quotient_target)
+
+
+    """
+    return 0.75
