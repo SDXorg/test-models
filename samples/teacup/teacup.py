@@ -13,29 +13,29 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'Heat Loss to Room': 'heat_loss_to_room',
-    'TIME STEP': 'time_step',
-    'FINAL TIME': 'final_time',
-    'SAVEPER': 'saveper',
     'Teacup Temperature': 'teacup_temperature',
-    'Characteristic Time': 'characteristic_time',
     'Time': 'time',
-    'TIME': 'time',
     'INITIAL TIME': 'initial_time',
-    'Room Temperature': 'room_temperature'
+    'FINAL TIME': 'final_time',
+    'Room Temperature': 'room_temperature',
+    'Characteristic Time': 'characteristic_time',
+    'SAVEPER': 'saveper',
+    'TIME': 'time',
+    'Heat Loss to Room': 'heat_loss_to_room',
+    'TIME STEP': 'time_step'
 }
 
 
-@cache('run')
-def characteristic_time():
+@cache('step')
+def teacup_temperature():
     """
-    Characteristic Time
-    -------------------
-    (characteristic_time)
-    Minutes
+    Teacup Temperature
+    ------------------
+    (teacup_temperature)
+    Degrees
 
     """
-    return 10
+    return integ_teacup_temperature()
 
 
 @cache('step')
@@ -48,6 +48,22 @@ def saveper():
     The frequency with which output is stored.
     """
     return time_step()
+
+
+@cache('step')
+def heat_loss_to_room():
+    """
+    Heat Loss to Room
+    -----------------
+    (heat_loss_to_room)
+    Degrees/Minute
+    This is the rate at which heat flows from the cup into the room. We can 
+        ignore it at this point.
+    """
+    return (teacup_temperature() - room_temperature()) / characteristic_time()
+
+
+integ_teacup_temperature = functions.Integ(lambda: -heat_loss_to_room(), lambda: 180)
 
 
 @cache('run')
@@ -74,22 +90,6 @@ def initial_time():
     return 0
 
 
-integ_teacup_temperature = functions.Integ(lambda: -heat_loss_to_room(), lambda: 180)
-
-
-@cache('step')
-def heat_loss_to_room():
-    """
-    Heat Loss to Room
-    -----------------
-    (heat_loss_to_room)
-    Degrees/Minute
-    This is the rate at which heat flows from the cup into the room. We can 
-        ignore it at this point.
-    """
-    return (teacup_temperature() - room_temperature()) / characteristic_time()
-
-
 @cache('run')
 def final_time():
     """
@@ -102,16 +102,16 @@ def final_time():
     return 30
 
 
-@cache('step')
-def teacup_temperature():
+@cache('run')
+def characteristic_time():
     """
-    Teacup Temperature
-    ------------------
-    (teacup_temperature)
-    Degrees
+    Characteristic Time
+    -------------------
+    (characteristic_time)
+    Minutes
 
     """
-    return integ_teacup_temperature()
+    return 10
 
 
 @cache('run')

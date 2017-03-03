@@ -1,17 +1,17 @@
 {UTF-8}
-smoot=
+mod=
 	5
 	~	
 	~		|
 
-using a smooth function=
-	SMOOTH(100 , 2 )
+using a modulo function=
+	MODULO(10, 3 )
 	~	
 	~	Check that this doesn't get parsed as smoot
 	|
 
-using the smoot variable=
-	smoot
+using the mod variable=
+	mod
 	~	
 	~		|
 
@@ -81,10 +81,10 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 1,10,2,8,1,0,0,0,0,64,0,-1--1--1,,1|(580,328)|
 10,11,Time,628,240,21,8,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128
 1,12,11,2,0,0,0,0,0,64,0,-1--1--1,,1|(608,265)|
-10,13,smoot,450,433,17,8,8,3,0,0,0,0,0,0
-10,14,using the smoot variable,553,425,41,14,8,3,0,0,0,0,0,0
-1,15,13,14,0,0,0,0,0,128,0,-1--1--1,,1|(482,430)|
-10,16,using a smooth function,592,476,40,14,8,3,0,0,0,0,0,0
+10,13,mod,450,433,13,8,8,3,0,0,0,0,0,0
+10,14,using the mod variable,553,425,57,8,8,3,0,0,0,0,0,0
+1,15,13,14,0,0,0,0,0,128,0,-1--1--1,,1|(472,431)|
+10,16,using a modulo function,592,476,40,14,8,3,0,0,0,0,0,0
 ///---\\\
 :L<%^E!@
 1:Current.vdf
@@ -104,7 +104,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:using a smooth function
+5:using a modulo function
 35:Date
 36:YYYY-MM-DD
 37:2000

@@ -13,58 +13,36 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'Duration': 'duration',
-    'Contact Infectivity': 'contact_infectivity',
-    'TIME STEP': 'time_step',
-    'Recovered': 'recovered',
     'Time': 'time',
-    'Total Population': 'total_population',
+    'Recovered': 'recovered',
+    'Duration': 'duration',
     'FINAL TIME': 'final_time',
-    'Recovering': 'recovering',
-    'SAVEPER': 'saveper',
-    'Succumbing': 'succumbing',
     'Infectious': 'infectious',
+    'Contact Infectivity': 'contact_infectivity',
+    'SAVEPER': 'saveper',
     'TIME': 'time',
     'Susceptible': 'susceptible',
-    'INITIAL TIME': 'initial_time'
+    'INITIAL TIME': 'initial_time',
+    'Recovering': 'recovering',
+    'Succumbing': 'succumbing',
+    'Total Population': 'total_population',
+    'TIME STEP': 'time_step'
 }
+
+integ_recovered = functions.Integ(lambda: recovering(), lambda: 0)
 
 
 @cache('run')
-def final_time():
+def contact_infectivity():
     """
-    FINAL TIME
-    ----------
-    (final_time)
-    Day
-    The final time for the simulation.
+    Contact Infectivity
+    -------------------
+    (contact_infectivity)
+    Persons/Persons/Day
+    A joint parameter listing both how many people you contact, and how likely 
+        you are to give them the disease.
     """
-    return 100
-
-
-@cache('step')
-def recovering():
-    """
-    Recovering
-    ----------
-    (recovering)
-    Persons/Day
-
-    """
-    return infectious() / duration()
-
-
-@cache('step')
-def recovered():
-    """
-    Recovered
-    ---------
-    (recovered)
-    Persons
-    These people have recovered from the disease. Yay! Nobody dies in this 
-        model.
-    """
-    return integ_recovered()
+    return 0.3
 
 
 @cache('run')
@@ -77,6 +55,18 @@ def initial_time():
     The initial time for the simulation.
     """
     return 0
+
+
+@cache('step')
+def susceptible():
+    """
+    Susceptible
+    -----------
+    (susceptible)
+    Persons
+    The population that has not yet been infected.
+    """
+    return integ_susceptible()
 
 
 @cache('run')
@@ -92,34 +82,44 @@ def total_population():
     return 1000
 
 
+integ_susceptible = functions.Integ(lambda: -succumbing(), lambda: total_population())
+
+
 @cache('run')
-def time_step():
+def final_time():
     """
-    TIME STEP
-    ---------
-    (time_step)
-    Day [0,?]
-    The time step for the simulation.
+    FINAL TIME
+    ----------
+    (final_time)
+    Day
+    The final time for the simulation.
     """
-    return 0.03125
+    return 100
 
 
-integ_infectious = functions.Integ(lambda: succumbing() - recovering(), lambda: 5)
+@cache('run')
+def duration():
+    """
+    Duration
+    --------
+    (duration)
+    Days
+    How long are you infectious for?
+    """
+    return 5
 
 
 @cache('step')
-def susceptible():
+def recovered():
     """
-    Susceptible
-    -----------
-    (susceptible)
+    Recovered
+    ---------
+    (recovered)
     Persons
-    The population that has not yet been infected.
+    These people have recovered from the disease. Yay! Nobody dies in this 
+        model.
     """
-    return integ_susceptible()
-
-
-integ_recovered = functions.Integ(lambda: recovering(), lambda: 0)
+    return integ_recovered()
 
 
 @cache('step')
@@ -146,7 +146,31 @@ def succumbing():
     return susceptible() * infectious() / total_population() * contact_infectivity()
 
 
-integ_susceptible = functions.Integ(lambda: -succumbing(), lambda: total_population())
+@cache('run')
+def time_step():
+    """
+    TIME STEP
+    ---------
+    (time_step)
+    Day [0,?]
+    The time step for the simulation.
+    """
+    return 0.03125
+
+
+integ_infectious = functions.Integ(lambda: succumbing() - recovering(), lambda: 5)
+
+
+@cache('step')
+def recovering():
+    """
+    Recovering
+    ----------
+    (recovering)
+    Persons/Day
+
+    """
+    return infectious() / duration()
 
 
 @cache('step')
@@ -160,28 +184,3 @@ def infectious():
         transmit it to other people.
     """
     return integ_infectious()
-
-
-@cache('run')
-def contact_infectivity():
-    """
-    Contact Infectivity
-    -------------------
-    (contact_infectivity)
-    Persons/Persons/Day
-    A joint parameter listing both how many people you contact, and how likely 
-        you are to give them the disease.
-    """
-    return 0.3
-
-
-@cache('run')
-def duration():
-    """
-    Duration
-    --------
-    (duration)
-    Days
-    How long are you infectious for?
-    """
-    return 5
