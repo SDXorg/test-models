@@ -13,17 +13,41 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'Time': 'time',
-    'INITIAL TIME': 'initial_time',
-    'rate': 'rate',
     'FINAL TIME': 'final_time',
-    'lookup function call': 'lookup_function_call',
-    'lookup function table': 'lookup_function_table',
-    'SAVEPER': 'saveper',
     'accumulation': 'accumulation',
+    'lookup function table': 'lookup_function_table',
+    'rate': 'rate',
+    'lookup function call': 'lookup_function_call',
+    'Time': 'time',
     'TIME': 'time',
+    'INITIAL TIME': 'initial_time',
+    'SAVEPER': 'saveper',
     'TIME STEP': 'time_step'
 }
+
+
+@cache('run')
+def final_time():
+    """
+    FINAL TIME
+    ----------
+    (final_time)
+    Minute
+    The final time for the simulation.
+    """
+    return 45
+
+
+@cache('step')
+def accumulation():
+    """
+    accumulation
+    ------------
+    (accumulation)
+
+
+    """
+    return integ_accumulation()
 
 
 @cache('step')
@@ -36,18 +60,6 @@ def saveper():
     The frequency with which output is stored.
     """
     return time_step()
-
-
-@cache('run')
-def initial_time():
-    """
-    INITIAL TIME
-    ------------
-    (initial_time)
-    Minute
-    The initial time for the simulation.
-    """
-    return 0
 
 
 @cache('step')
@@ -74,18 +86,6 @@ def lookup_function_table(x):
                             [0, 0, 1, 1, 0, 0, -1, -1, 0, 0])
 
 
-@cache('run')
-def time_step():
-    """
-    TIME STEP
-    ---------
-    (time_step)
-    Minute [0,?]
-    The time step for the simulation.
-    """
-    return 0.25
-
-
 integ_accumulation = functions.Integ(lambda: rate(), lambda: 0)
 
 
@@ -102,24 +102,24 @@ def lookup_function_call():
 
 
 @cache('run')
-def final_time():
+def initial_time():
     """
-    FINAL TIME
-    ----------
-    (final_time)
-    Minute
-    The final time for the simulation.
-    """
-    return 45
-
-
-@cache('step')
-def accumulation():
-    """
-    accumulation
+    INITIAL TIME
     ------------
-    (accumulation)
-
-
+    (initial_time)
+    Minute
+    The initial time for the simulation.
     """
-    return integ_accumulation()
+    return 0
+
+
+@cache('run')
+def time_step():
+    """
+    TIME STEP
+    ---------
+    (time_step)
+    Minute [0,?]
+    The time step for the simulation.
+    """
+    return 0.25

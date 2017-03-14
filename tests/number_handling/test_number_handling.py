@@ -13,18 +13,42 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'Time': 'time',
-    'numerator': 'numerator',
-    'INITIAL TIME': 'initial_time',
-    'FINAL TIME': 'final_time',
-    'quotient target': 'quotient_target',
     'denominator': 'denominator',
+    'quotient': 'quotient',
+    'INITIAL TIME': 'initial_time',
+    'quotient target': 'quotient_target',
     'equality': 'equality',
-    'SAVEPER': 'saveper',
+    'Time': 'time',
     'TIME': 'time',
     'TIME STEP': 'time_step',
-    'quotient': 'quotient'
+    'numerator': 'numerator',
+    'FINAL TIME': 'final_time',
+    'SAVEPER': 'saveper'
 }
+
+
+@cache('run')
+def denominator():
+    """
+    denominator
+    -----------
+    (denominator)
+
+
+    """
+    return 4
+
+
+@cache('step')
+def quotient():
+    """
+    quotient
+    --------
+    (quotient)
+
+
+    """
+    return numerator() / denominator()
 
 
 @cache('step')
@@ -37,6 +61,42 @@ def saveper():
     The frequency with which output is stored.
     """
     return time_step()
+
+
+@cache('run')
+def quotient_target():
+    """
+    quotient target
+    ---------------
+    (quotient_target)
+
+
+    """
+    return 0.75
+
+
+@cache('run')
+def final_time():
+    """
+    FINAL TIME
+    ----------
+    (final_time)
+    Month
+    The final time for the simulation.
+    """
+    return 1
+
+
+@cache('step')
+def equality():
+    """
+    equality
+    --------
+    (equality)
+
+
+    """
+    return functions.if_then_else(quotient() == quotient_target(), 1, 0)
 
 
 @cache('run')
@@ -64,30 +124,6 @@ def initial_time():
 
 
 @cache('run')
-def quotient_target():
-    """
-    quotient target
-    ---------------
-    (quotient_target)
-
-
-    """
-    return 0.75
-
-
-@cache('run')
-def final_time():
-    """
-    FINAL TIME
-    ----------
-    (final_time)
-    Month
-    The final time for the simulation.
-    """
-    return 1
-
-
-@cache('run')
 def time_step():
     """
     TIME STEP
@@ -97,39 +133,3 @@ def time_step():
     The time step for the simulation.
     """
     return 1
-
-
-@cache('run')
-def denominator():
-    """
-    denominator
-    -----------
-    (denominator)
-
-
-    """
-    return 4
-
-
-@cache('step')
-def equality():
-    """
-    equality
-    --------
-    (equality)
-
-
-    """
-    return functions.if_then_else(quotient() == quotient_target(), 1, 0)
-
-
-@cache('step')
-def quotient():
-    """
-    quotient
-    --------
-    (quotient)
-
-
-    """
-    return numerator() / denominator()

@@ -13,23 +13,34 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'Time': 'time',
-    'Recovered': 'recovered',
     'Duration': 'duration',
-    'FINAL TIME': 'final_time',
-    'Infectious': 'infectious',
-    'Contact Infectivity': 'contact_infectivity',
-    'SAVEPER': 'saveper',
+    'Succumbing': 'succumbing',
+    'Time': 'time',
     'TIME': 'time',
     'Susceptible': 'susceptible',
     'INITIAL TIME': 'initial_time',
-    'Recovering': 'recovering',
-    'Succumbing': 'succumbing',
+    'SAVEPER': 'saveper',
+    'Contact Infectivity': 'contact_infectivity',
+    'FINAL TIME': 'final_time',
+    'TIME STEP': 'time_step',
     'Total Population': 'total_population',
-    'TIME STEP': 'time_step'
+    'Recovering': 'recovering',
+    'Infectious': 'infectious',
+    'Recovered': 'recovered'
 }
 
-integ_recovered = functions.Integ(lambda: recovering(), lambda: 0)
+
+@cache('step')
+def infectious():
+    """
+    Infectious
+    ----------
+    (infectious)
+    Persons
+    The population with the disease, manifesting symptoms, and able to 
+        transmit it to other people.
+    """
+    return integ_infectious()
 
 
 @cache('run')
@@ -45,68 +56,19 @@ def contact_infectivity():
     return 0.3
 
 
-@cache('run')
-def initial_time():
-    """
-    INITIAL TIME
-    ------------
-    (initial_time)
-    Day
-    The initial time for the simulation.
-    """
-    return 0
+integ_recovered = functions.Integ(lambda: recovering(), lambda: 0)
 
 
 @cache('step')
-def susceptible():
+def recovering():
     """
-    Susceptible
-    -----------
-    (susceptible)
-    Persons
-    The population that has not yet been infected.
-    """
-    return integ_susceptible()
-
-
-@cache('run')
-def total_population():
-    """
-    Total Population
-    ----------------
-    (total_population)
-    Persons
-    This is just a simplification to make it easer to track how many folks 
-        there are without having to sum up all the stocks.
-    """
-    return 1000
-
-
-integ_susceptible = functions.Integ(lambda: -succumbing(), lambda: total_population())
-
-
-@cache('run')
-def final_time():
-    """
-    FINAL TIME
+    Recovering
     ----------
-    (final_time)
-    Day
-    The final time for the simulation.
-    """
-    return 100
+    (recovering)
+    Persons/Day
 
-
-@cache('run')
-def duration():
     """
-    Duration
-    --------
-    (duration)
-    Days
-    How long are you infectious for?
-    """
-    return 5
+    return infectious() / duration()
 
 
 @cache('step')
@@ -122,6 +84,45 @@ def recovered():
     return integ_recovered()
 
 
+@cache('run')
+def initial_time():
+    """
+    INITIAL TIME
+    ------------
+    (initial_time)
+    Day
+    The initial time for the simulation.
+    """
+    return 0
+
+
+integ_infectious = functions.Integ(lambda: succumbing() - recovering(), lambda: 5)
+
+
+@cache('step')
+def susceptible():
+    """
+    Susceptible
+    -----------
+    (susceptible)
+    Persons
+    The population that has not yet been infected.
+    """
+    return integ_susceptible()
+
+
+@cache('run')
+def duration():
+    """
+    Duration
+    --------
+    (duration)
+    Days
+    How long are you infectious for?
+    """
+    return 5
+
+
 @cache('step')
 def saveper():
     """
@@ -132,6 +133,21 @@ def saveper():
     The frequency with which output is stored.
     """
     return time_step()
+
+
+@cache('run')
+def final_time():
+    """
+    FINAL TIME
+    ----------
+    (final_time)
+    Day
+    The final time for the simulation.
+    """
+    return 100
+
+
+integ_susceptible = functions.Integ(lambda: -succumbing(), lambda: total_population())
 
 
 @cache('step')
@@ -158,29 +174,14 @@ def time_step():
     return 0.03125
 
 
-integ_infectious = functions.Integ(lambda: succumbing() - recovering(), lambda: 5)
-
-
-@cache('step')
-def recovering():
+@cache('run')
+def total_population():
     """
-    Recovering
-    ----------
-    (recovering)
-    Persons/Day
-
-    """
-    return infectious() / duration()
-
-
-@cache('step')
-def infectious():
-    """
-    Infectious
-    ----------
-    (infectious)
+    Total Population
+    ----------------
+    (total_population)
     Persons
-    The population with the disease, manifesting symptoms, and able to 
-        transmit it to other people.
+    This is just a simplification to make it easer to track how many folks 
+        there are without having to sum up all the stocks.
     """
-    return integ_infectious()
+    return 1000
