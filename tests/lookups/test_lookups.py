@@ -1,6 +1,6 @@
 """
 Python model test-models/tests/lookups/test_lookups.py
-Translated using PySD version 0.7.5
+Translated using PySD version 0.7.6
 """
 from __future__ import division
 import numpy as np
@@ -13,72 +13,60 @@ from pysd import functions
 _subscript_dict = {}
 
 _namespace = {
-    'FINAL TIME': 'final_time',
+    'TIME': 'time',
+    'Time': 'time',
+    'lookup function call': 'lookup_function_call',
+    'rate': 'rate',
     'accumulation': 'accumulation',
     'lookup function table': 'lookup_function_table',
-    'rate': 'rate',
-    'lookup function call': 'lookup_function_call',
-    'Time': 'time',
-    'TIME': 'time',
+    'FINAL TIME': 'final_time',
     'INITIAL TIME': 'initial_time',
     'SAVEPER': 'saveper',
     'TIME STEP': 'time_step'
 }
 
 
-@cache('run')
-def final_time():
-    """
-    FINAL TIME
-    ----------
-    (final_time)
-    Minute
-    The final time for the simulation.
-    """
-    return 45
-
-
 @cache('step')
-def accumulation():
+def lookup_function_call():
     """
-    accumulation
-    ------------
-    (accumulation)
+    lookup function call
+
+
 
 
     """
-    return integ_accumulation()
-
-
-@cache('step')
-def saveper():
-    """
-    SAVEPER
-    -------
-    (saveper)
-    Minute [0,?]
-    The frequency with which output is stored.
-    """
-    return time_step()
+    return lookup_function_table(time())
 
 
 @cache('step')
 def rate():
     """
     rate
-    ----
-    (rate)
+
+
 
 
     """
     return lookup_function_call()
 
 
+@cache('step')
+def accumulation():
+    """
+    accumulation
+
+
+
+
+    """
+    return integ_accumulation()
+
+
 def lookup_function_table(x):
     """
     lookup function table
-    ---------------------
-    (lookup_function_table)
+
+
 
 
     """
@@ -86,40 +74,52 @@ def lookup_function_table(x):
                             [0, 0, 1, 1, 0, 0, -1, -1, 0, 0])
 
 
-integ_accumulation = functions.Integ(lambda: rate(), lambda: 0)
-
-
-@cache('step')
-def lookup_function_call():
+@cache('run')
+def final_time():
     """
-    lookup function call
-    --------------------
-    (lookup_function_call)
+    FINAL TIME
 
+    Minute
 
+    The final time for the simulation.
     """
-    return lookup_function_table(time())
+    return 45
 
 
 @cache('run')
 def initial_time():
     """
     INITIAL TIME
-    ------------
-    (initial_time)
+
     Minute
+
     The initial time for the simulation.
     """
     return 0
+
+
+@cache('step')
+def saveper():
+    """
+    SAVEPER
+
+    Minute [0,?]
+
+    The frequency with which output is stored.
+    """
+    return time_step()
 
 
 @cache('run')
 def time_step():
     """
     TIME STEP
-    ---------
-    (time_step)
+
     Minute [0,?]
+
     The time step for the simulation.
     """
     return 0.25
+
+
+integ_accumulation = functions.Integ(lambda: rate(), lambda: 0)
