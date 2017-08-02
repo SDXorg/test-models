@@ -2,56 +2,26 @@
 <xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
 	<header>
 		<smile version="1.0" namespace="std, isee"/>
-		<name>teacup-modern</name>
-		<uuid>cfc4ea6e-9e04-4362-ab8f-ab10f8242797</uuid>
+		<name>multipoint-connection</name>
+		<uuid>f74a2580-0b46-4f82-b2f8-67f95e943110</uuid>
 		<vendor>isee systems, inc.</vendor>
 		<product version="1.4" isee:build_number="1125" isee:saved_by_v1="true" lang="en">Stella Architect</product>
 	</header>
-	<sim_specs isee:simulation_delay="0.1" method="Euler" time_units="Time" isee:pause_after_rates="false" isee:instantaneous_flows="false">
-		<start>0</start>
-		<stop>30</stop>
-		<dt>0.125</dt>
+	<sim_specs isee:simulation_delay="0.1" method="Euler" time_units="months" isee:pause_after_rates="false" isee:instantaneous_flows="true">
+		<start>1</start>
+		<stop>13</stop>
+		<dt reciprocal="true">4</dt>
 	</sim_specs>
 	<isee:prefs show_module_prefix="true" layer="model" saved_runs="5" keep="false" rifp="false"/>
 	<isee:multiplayer_settings include_chat="true" allow_observers="false" advance_time_increment="1" observer_start_page="home_page" enabled="false"/>
-	<model_units>
-		<unit name="Degrees">
-			<eqn/>
-			<alias>deg</alias>
-			<alias>degree</alias>
-		</unit>
-		<unit name="Minutes">
-			<eqn/>
-			<alias>min</alias>
-			<alias>minute</alias>
-		</unit>
-	</model_units>
+	<model_units/>
 	<model>
 		<variables>
-			<stock name="teacup temperature">
-				<eqn>180</eqn>
-				<outflow>heat_loss_to_room</outflow>
-				<non_negative/>
-				<units>degrees</units>
-			</stock>
-			<flow name="heat loss to room">
-				<eqn>(teacup_temperature-room_temperature)/characteristic_time</eqn>
-				<non_negative/>
-				<units>deg/time</units>
-			</flow>
-			<aux name="characteristic time">
-				<eqn>10</eqn>
-				<units>minutes</units>
-			</aux>
-			<aux name="room temperature">
-				<eqn>70</eqn>
-				<units>degrees</units>
-			</aux>
+			<aux name="Converter 1"/>
+			<aux name="Converter 2"/>
 			<isee:dependencies>
-				<var name="heat_loss_to_room">
-					<in>room_temperature</in>
-					<in>characteristic_time</in>
-					<in>teacup_temperature</in>
+				<var name="Converter_2">
+					<in>Converter_1</in>
 				</var>
 			</isee:dependencies>
 		</variables>
@@ -59,7 +29,7 @@
 			<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
 				<text_box color="black" background="white" text_align="left" vertical_text_align="top" font_size="12pt"/>
 				<numeric_display color="blue" background="white" font_size="9pt" isee:transparent="false"/>
-				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false">
+				<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="right" isee:transparent="false" isee:hide_border="false">
 					<isee:series_styles>
 						<isee:series_style color="blue" thickness="1"/>
 						<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
@@ -92,23 +62,23 @@
 				<isee:spatial_map color="black" background="white"/>
 				<isee:animation_object color="black" background="white"/>
 			</style>
-			<view isee:show_pages="false" page_width="756" page_height="584" zoom="200" isee:popup_graphs_are_comparative="true" type="stock_flow">
-				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="9pt" padding="2" border_color="black" border_width="thin" border_style="none">
-					<stock color="blue" background="white" font_color="blue" label_side="top">
+			<view isee:show_pages="false" page_width="756" page_height="584" isee:popup_graphs_are_comparative="true" type="stock_flow">
+				<style color="black" background="white" font_style="normal" font_weight="normal" text_decoration="none" text_align="center" vertical_text_align="center" font_color="black" font_family="Arial" font_size="10pt" padding="2" border_color="black" border_width="thin" border_style="none">
+					<stock color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
 						<shape type="rectangle" width="45" height="35"/>
 					</stock>
-					<flow color="blue" background="white" font_color="blue" label_side="bottom"/>
-					<module color="blue" background="white" font_color="blue" label_side="top">
+					<flow color="blue" background="white" font_color="blue" font_size="9pt" label_side="bottom"/>
+					<module color="blue" background="white" font_color="blue" font_size="9pt" label_side="top">
 						<shape type="rectangle" width="55" height="45"/>
 					</module>
-					<aux color="blue" background="white" font_color="blue" label_side="bottom">
+					<aux color="blue" background="white" font_color="blue" font_size="9pt" label_side="bottom">
 						<shape type="circle" radius="18"/>
 					</aux>
-					<group color="red" background="white" font_color="red"/>
+					<group color="red" background="white" font_color="red" font_size="9pt"/>
 					<connector color="#FF007F" background="white" font_color="#FF007F" isee:thickness="1"/>
 					<text_box color="black" background="white"/>
 					<numeric_display color="black" background="white" isee:transparent="false"/>
-					<graph color="black" background="white" font_size="12pt" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="bottom" isee:transparent="false" isee:hide_border="false">
+					<graph color="black" background="white" axis_color="#666666" grid_color="#C8C8C8" isee:graph_area_color="white" legend_position="right" isee:transparent="false" isee:hide_border="false">
 						<isee:series_styles>
 							<isee:series_style color="blue" thickness="1"/>
 							<isee:series_style color="red" thickness="1" pen_style="dot_dashed"/>
@@ -127,29 +97,23 @@
 					</graph>
 					<table color="black" background="white" orientation="vertical" wrap_text="false" isee:auto_fit="true" isee:use_alternate_row_colors="false" isee:unlimited_table_length="false" blank_column_width="80" column_width="160" isee:report_month_names="false" interval="1" report_balances="beginning" report_flows="instantaneous"/>
 				</style>
-				<connector uid="1" angle="139.399">
-					<from>room_temperature</from>
-					<to>heat_loss_to_room</to>
-				</connector>
-				<connector uid="2" angle="220.601">
-					<from>characteristic_time</from>
-					<to>heat_loss_to_room</to>
-				</connector>
-				<connector uid="3" angle="37.6942">
-					<from>teacup_temperature</from>
-					<to>heat_loss_to_room</to>
-				</connector>
-				<stock x="132" y="97" name="teacup temperature"/>
-				<flow x="231.25" y="92" name="heat loss to room">
+				<aux x="163" y="224" name="Converter 1"/>
+				<aux x="406" y="99" name="Converter 2"/>
+				<connector uid="1" font_size="9pt" angle="276.34">
 					<pts>
-						<pt x="154.5" y="92"/>
-						<pt x="332" y="92"/>
+						<pt x="163.994" y="232.945"/>
+						<pt x="190" y="444"/>
+						<pt x="378" y="414"/>
+						<pt x="372" y="213"/>
+						<pt x="184" y="138"/>
+						<pt x="250" y="31"/>
+						<pt x="398.261" y="94.4055"/>
 					</pts>
-				</flow>
-				<aux x="285" y="43" name="characteristic time"/>
-				<aux x="283" y="139" name="room temperature"/>
+					<from>Converter_1</from>
+					<to>Converter_2</to>
+				</connector>
 			</view>
-			<view isee:show_pages="false" background="white" page_width="788" page_height="528" home_view="true" type="interface">
+			<view isee:show_pages="false" background="white" page_width="800" page_height="600" home_view="true" type="interface">
 				<style/>
 			</view>
 			<isee:templates/>
