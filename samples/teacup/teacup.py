@@ -1,6 +1,6 @@
 """
 Python model test-models/samples/teacup/teacup.py
-Translated using PySD version 0.7.6
+Translated using PySD version 0.7.9
 """
 from __future__ import division
 import numpy as np
@@ -22,8 +22,7 @@ _namespace = {
     'FINAL TIME': 'final_time',
     'INITIAL TIME': 'initial_time',
     'SAVEPER': 'saveper',
-    'TIME STEP': 'time_step'
-}
+    'TIME STEP': 'time_step'}
 
 
 @cache('run')

@@ -1,6 +1,6 @@
 """
 Python model test-models/tests/lookups/test_lookups.py
-Translated using PySD version 0.7.6
+Translated using PySD version 0.7.9
 """
 from __future__ import division
 import numpy as np
@@ -15,6 +15,7 @@ _subscript_dict = {}
 _namespace = {
     'TIME': 'time',
     'Time': 'time',
+    'Lookup Linebreak Before Comma': 'lookup_linebreak_before_comma',
     'lookup function call': 'lookup_function_call',
     'rate': 'rate',
     'accumulation': 'accumulation',
@@ -22,8 +23,19 @@ _namespace = {
     'FINAL TIME': 'final_time',
     'INITIAL TIME': 'initial_time',
     'SAVEPER': 'saveper',
-    'TIME STEP': 'time_step'
-}
+    'TIME STEP': 'time_step'}
+
+
+def lookup_linebreak_before_comma(x):
+    """
+    Lookup Linebreak Before Comma
+
+
+
+    This lookup has a line break before the comma.
+    """
+    return functions.lookup(x, [0, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4], [
+        1, 1, 0.98, 0.9, 0.75, 0.45, 0.25, 0.17, 0.14, 0.12, 0.11, 0.1, 0.1])
 
 
 @cache('step')
@@ -70,8 +82,8 @@ def lookup_function_table(x):
 
 
     """
-    return functions.lookup(x, [0, 5, 10, 15, 20, 25, 30, 35, 40, 45],
-                            [0, 0, 1, 1, 0, 0, -1, -1, 0, 0])
+    return functions.lookup(x, [0, 5, 10, 15, 20, 25, 30, 35, 40, 45], [
+        0, 0, 1, 1, 0, 0, -1, -1, 0, 0])
 
 
 @cache('run')
