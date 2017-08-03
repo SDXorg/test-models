@@ -7,7 +7,7 @@
     </header>
     <sim_specs isee:simulation_delay="0" method="Euler" time_units="Months">
         <start>0</start>
-        <stop>4</stop>
+        <stop>10</stop>
         <dt>1</dt>
     </sim_specs>
     <dimensions/>
@@ -25,18 +25,20 @@
             </aux>
             <aux name="FINAL TIME">
                 <doc>	The final time for the simulation.</doc>
-                <eqn>4</eqn>
+                <eqn>10</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="test">
-                <eqn>( IF associativity = 4 THEN 1 ELSE 0 )</eqn>
+            <aux name="Value A">
+                <doc>	This is sortof a silly way to test active initial, as you'd never use it this way in an actual model. It is, however, very simple.</doc>
+                <eqn>Time</eqn>
             </aux>
-            <aux name="output">
-                <eqn>Time^2</eqn>
-            </aux>
-            <aux name="associativity">
-                <eqn>-2^2</eqn>
-            </aux>
+            <stock name="Stock A">
+                <eqn>Value_A</eqn>
+                <inflow>Flow_A</inflow>
+            </stock>
+            <flow name="Flow A">
+                <eqn>1</eqn>
+            </flow>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
@@ -45,25 +47,26 @@
         </variables>
         <views>
             <view>
-                <aux name="output" x="218" y="101"/>
-                <aux name="associativity" x="105" y="158"/>
-                <aux name="test" x="220" y="159"/>
-                <connector uid="4" angle="-0.49821161261364239">
-                    <from>associativity</from>
-                    <to>test</to>
-                </connector>
-                <connector uid="6" angle="-0.48554583000813412">
+                <aux name="Value_A" x="311" y="150"/>
+                <connector uid="3" angle="-85.426078740099229">
                     <from>Time</from>
-                    <to>output</to>
+                    <to>Value_A</to>
                 </connector>
-                <connector uid="27" angle="90">
+                <stock name="Stock_A" x="290" y="217"/>
+                <flow name="Flow_A" x="214" y="217">
+                    <pts>
+                        <pt x="168" y="217"/>
+                        <pt x="290" y="217"/>
+                    </pts>
+                </flow>
+                <connector uid="32" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="212" y="237"/>
-                <aux name="FINAL_TIME" x="212" y="237"/>
-                <aux name="INITIAL_TIME" x="212" y="237"/>
-                <aux name="TIME_STEP" x="212" y="237"/>
+                <aux name="SAVEPER" x="100" y="168"/>
+                <aux name="FINAL_TIME" x="100" y="168"/>
+                <aux name="INITIAL_TIME" x="100" y="168"/>
+                <aux name="TIME_STEP" x="100" y="168"/>
             </view>
         </views>
     </model>

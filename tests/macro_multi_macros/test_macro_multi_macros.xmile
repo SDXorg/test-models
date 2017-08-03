@@ -28,58 +28,54 @@
                 <eqn>1</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="equality">
-                <eqn>( IF quotient = quotient_target THEN 1 ELSE 0 )</eqn>
+            <aux name="macro parameter">
+                <eqn>1.1</eqn>
             </aux>
-            <aux name="quotient target">
-                <eqn>0.75</eqn>
+            <aux name="macro input">
+                <eqn>5</eqn>
             </aux>
-            <aux name="quotient">
-                <eqn>numerator/denominator</eqn>
-            </aux>
-            <aux name="numerator">
-                <eqn>3</eqn>
+            <aux name="second macro output">
+                <eqn>SECOND MACRO(macro_input, macro_parameter)</eqn>
             </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="denominator">
-                <eqn>4</eqn>
+            <aux name="macro output">
+                <eqn>EXPRESSION MACRO(macro_input, macro_parameter)</eqn>
             </aux>
         </variables>
         <views>
             <view>
-                <aux name="numerator" x="100" y="135"/>
-                <aux name="denominator" x="101" y="209"/>
-                <aux name="quotient" x="180" y="176"/>
-                <connector uid="4" angle="-27.135139622076903">
-                    <from>numerator</from>
-                    <to>quotient</to>
+                <aux name="macro_input" x="155" y="158"/>
+                <aux name="macro_output" x="283" y="156"/>
+                <connector uid="3" angle="0.89517371021107528">
+                    <from>macro_input</from>
+                    <to>macro_output</to>
                 </connector>
-                <connector uid="5" angle="22.671343621980878">
-                    <from>denominator</from>
-                    <to>quotient</to>
+                <aux name="macro_parameter" x="251" y="100"/>
+                <connector uid="5" angle="-60.255118703057832">
+                    <from>macro_parameter</from>
+                    <to>macro_output</to>
                 </connector>
-                <aux name="quotient_target" x="182" y="268"/>
-                <aux name="equality" x="297" y="224"/>
-                <connector uid="9" angle="-22.306205054907664">
-                    <from>quotient</from>
-                    <to>equality</to>
+                <aux name="second_macro_output" x="119" y="102"/>
+                <connector uid="7" angle="122.73522627210754">
+                    <from>macro_input</from>
+                    <to>second_macro_output</to>
                 </connector>
-                <connector uid="10" angle="20.937285274274682">
-                    <from>quotient_target</from>
-                    <to>equality</to>
+                <connector uid="8" angle="180.86805144974554">
+                    <from>macro_parameter</from>
+                    <to>second_macro_output</to>
                 </connector>
-                <connector uid="31" angle="90">
+                <connector uid="29" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="130" y="229"/>
-                <aux name="FINAL_TIME" x="130" y="229"/>
-                <aux name="INITIAL_TIME" x="130" y="229"/>
-                <aux name="TIME_STEP" x="130" y="229"/>
+                <aux name="SAVEPER" x="100" y="225"/>
+                <aux name="FINAL_TIME" x="100" y="225"/>
+                <aux name="INITIAL_TIME" x="100" y="225"/>
+                <aux name="TIME_STEP" x="100" y="225"/>
             </view>
         </views>
     </model>

@@ -7,7 +7,7 @@
     </header>
     <sim_specs isee:simulation_delay="0" method="Euler" time_units="Months">
         <start>0</start>
-        <stop>4</stop>
+        <stop>1</stop>
         <dt>1</dt>
     </sim_specs>
     <dimensions/>
@@ -25,45 +25,53 @@
             </aux>
             <aux name="FINAL TIME">
                 <doc>	The final time for the simulation.</doc>
-                <eqn>4</eqn>
+                <eqn>1</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="test">
-                <eqn>( IF associativity = 4 THEN 1 ELSE 0 )</eqn>
+            <aux name="Var2">
+                <eqn>7</eqn>
             </aux>
-            <aux name="output">
-                <eqn>Time^2</eqn>
+            <aux name="Equation Parenthesis Test">
+                <eqn>Var1*(Var2+Var3)</eqn>
             </aux>
-            <aux name="associativity">
-                <eqn>-2^2</eqn>
+            <aux name="Var1">
+                <eqn>6</eqn>
             </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
                 <units>Month</units>
             </aux>
+            <aux name="Var3">
+                <eqn>17</eqn>
+            </aux>
         </variables>
         <views>
             <view>
-                <aux name="output" x="218" y="101"/>
-                <aux name="associativity" x="105" y="158"/>
-                <aux name="test" x="220" y="159"/>
-                <connector uid="4" angle="-0.49821161261364239">
-                    <from>associativity</from>
-                    <to>test</to>
+                <aux name="Equation_Parenthesis_Test" x="261" y="169"/>
+                <aux name="Var1" x="193" y="100"/>
+                <aux name="Var2" x="261" y="100"/>
+                <aux name="Var3" x="329" y="100"/>
+                <connector uid="5" angle="-45.418209941497139">
+                    <from>Var1</from>
+                    <to>Equation_Parenthesis_Test</to>
                 </connector>
-                <connector uid="6" angle="-0.48554583000813412">
-                    <from>Time</from>
-                    <to>output</to>
+                <connector uid="6" angle="270">
+                    <from>Var2</from>
+                    <to>Equation_Parenthesis_Test</to>
                 </connector>
-                <connector uid="27" angle="90">
+                <connector uid="7" angle="225.41820994149714">
+                    <from>Var3</from>
+                    <to>Equation_Parenthesis_Test</to>
+                </connector>
+                <connector uid="28" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="212" y="237"/>
-                <aux name="FINAL_TIME" x="212" y="237"/>
-                <aux name="INITIAL_TIME" x="212" y="237"/>
-                <aux name="TIME_STEP" x="212" y="237"/>
+                <aux name="SAVEPER" x="100" y="169"/>
+                <aux name="FINAL_TIME" x="100" y="169"/>
+                <aux name="INITIAL_TIME" x="100" y="169"/>
+                <aux name="TIME_STEP" x="100" y="169"/>
             </view>
         </views>
     </model>

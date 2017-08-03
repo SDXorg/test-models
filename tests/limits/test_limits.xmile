@@ -7,7 +7,7 @@
     </header>
     <sim_specs isee:simulation_delay="0" method="Euler" time_units="Months">
         <start>0</start>
-        <stop>4</stop>
+        <stop>50</stop>
         <dt>1</dt>
     </sim_specs>
     <dimensions/>
@@ -25,18 +25,20 @@
             </aux>
             <aux name="FINAL TIME">
                 <doc>	The final time for the simulation.</doc>
-                <eqn>4</eqn>
+                <eqn>50</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="test">
-                <eqn>( IF associativity = 4 THEN 1 ELSE 0 )</eqn>
-            </aux>
-            <aux name="output">
-                <eqn>Time^2</eqn>
-            </aux>
-            <aux name="associativity">
-                <eqn>-2^2</eqn>
-            </aux>
+            <stock name="Limited Stock">
+                <doc>	The value of the stock is limited to between 0 and 100.</doc>
+                <eqn>1</eqn>
+                <inflow>Limited_Flow</inflow>
+                <units>Widgets</units>
+            </stock>
+            <flow name="Limited Flow">
+                <doc>	The flow is limited to between negative 10 and positive 10, and has increments of 1</doc>
+                <eqn>1</eqn>
+                <units>Widgets/Month</units>
+            </flow>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
@@ -45,25 +47,21 @@
         </variables>
         <views>
             <view>
-                <aux name="output" x="218" y="101"/>
-                <aux name="associativity" x="105" y="158"/>
-                <aux name="test" x="220" y="159"/>
-                <connector uid="4" angle="-0.49821161261364239">
-                    <from>associativity</from>
-                    <to>test</to>
-                </connector>
-                <connector uid="6" angle="-0.48554583000813412">
-                    <from>Time</from>
-                    <to>output</to>
-                </connector>
-                <connector uid="27" angle="90">
+                <stock name="Limited_Stock" x="526" y="150"/>
+                <flow name="Limited_Flow" x="422" y="148">
+                    <pts>
+                        <pt x="349" y="148"/>
+                        <pt x="526" y="150"/>
+                    </pts>
+                </flow>
+                <connector uid="29" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="212" y="237"/>
-                <aux name="FINAL_TIME" x="212" y="237"/>
-                <aux name="INITIAL_TIME" x="212" y="237"/>
-                <aux name="TIME_STEP" x="212" y="237"/>
+                <aux name="SAVEPER" x="100" y="100"/>
+                <aux name="FINAL_TIME" x="100" y="100"/>
+                <aux name="INITIAL_TIME" x="100" y="100"/>
+                <aux name="TIME_STEP" x="100" y="100"/>
             </view>
         </views>
     </model>

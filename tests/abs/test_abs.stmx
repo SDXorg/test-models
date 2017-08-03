@@ -7,7 +7,7 @@
     </header>
     <sim_specs isee:simulation_delay="0" method="Euler" time_units="Months">
         <start>0</start>
-        <stop>4</stop>
+        <stop>20</stop>
         <dt>1</dt>
     </sim_specs>
     <dimensions/>
@@ -25,18 +25,19 @@
             </aux>
             <aux name="FINAL TIME">
                 <doc>	The final time for the simulation.</doc>
-                <eqn>4</eqn>
+                <eqn>20</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="test">
-                <eqn>( IF associativity = 4 THEN 1 ELSE 0 )</eqn>
+            <aux name="test abs">
+                <eqn>ABS(StockA)</eqn>
             </aux>
-            <aux name="output">
-                <eqn>Time^2</eqn>
-            </aux>
-            <aux name="associativity">
-                <eqn>-2^2</eqn>
-            </aux>
+            <stock name="StockA">
+                <eqn>-10</eqn>
+                <inflow>FlowA</inflow>
+            </stock>
+            <flow name="FlowA">
+                <eqn>1</eqn>
+            </flow>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
@@ -45,25 +46,26 @@
         </variables>
         <views>
             <view>
-                <aux name="output" x="218" y="101"/>
-                <aux name="associativity" x="105" y="158"/>
-                <aux name="test" x="220" y="159"/>
-                <connector uid="4" angle="-0.49821161261364239">
-                    <from>associativity</from>
-                    <to>test</to>
+                <stock name="StockA" x="335" y="103"/>
+                <flow name="FlowA" x="236" y="100">
+                    <pts>
+                        <pt x="168" y="100"/>
+                        <pt x="335" y="103"/>
+                    </pts>
+                </flow>
+                <aux name="test_abs" x="339" y="196"/>
+                <connector uid="9" angle="-87.537183324083259">
+                    <from>StockA</from>
+                    <to>test_abs</to>
                 </connector>
-                <connector uid="6" angle="-0.48554583000813412">
-                    <from>Time</from>
-                    <to>output</to>
-                </connector>
-                <connector uid="27" angle="90">
+                <connector uid="30" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="212" y="237"/>
-                <aux name="FINAL_TIME" x="212" y="237"/>
-                <aux name="INITIAL_TIME" x="212" y="237"/>
-                <aux name="TIME_STEP" x="212" y="237"/>
+                <aux name="SAVEPER" x="100" y="150"/>
+                <aux name="FINAL_TIME" x="100" y="150"/>
+                <aux name="INITIAL_TIME" x="100" y="150"/>
+                <aux name="TIME_STEP" x="100" y="150"/>
             </view>
         </views>
     </model>

@@ -7,7 +7,7 @@
     </header>
     <sim_specs isee:simulation_delay="0" method="Euler" time_units="Months">
         <start>0</start>
-        <stop>4</stop>
+        <stop>1</stop>
         <dt>1</dt>
     </sim_specs>
     <dimensions/>
@@ -25,45 +25,45 @@
             </aux>
             <aux name="FINAL TIME">
                 <doc>	The final time for the simulation.</doc>
-                <eqn>4</eqn>
+                <eqn>1</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="test">
-                <eqn>( IF associativity = 4 THEN 1 ELSE 0 )</eqn>
+            <aux name="macro parameter">
+                <eqn>1.1</eqn>
             </aux>
-            <aux name="output">
-                <eqn>Time^2</eqn>
-            </aux>
-            <aux name="associativity">
-                <eqn>-2^2</eqn>
+            <aux name="macro input">
+                <eqn>5</eqn>
             </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
                 <units>Month</units>
             </aux>
+            <aux name="macro output">
+                <eqn>EXPRESSION MACRO(macro_input, macro_parameter)</eqn>
+            </aux>
         </variables>
         <views>
             <view>
-                <aux name="output" x="218" y="101"/>
-                <aux name="associativity" x="105" y="158"/>
-                <aux name="test" x="220" y="159"/>
-                <connector uid="4" angle="-0.49821161261364239">
-                    <from>associativity</from>
-                    <to>test</to>
+                <aux name="macro_input" x="155" y="158"/>
+                <aux name="macro_output" x="283" y="156"/>
+                <connector uid="3" angle="0.89517371021107528">
+                    <from>macro_input</from>
+                    <to>macro_output</to>
                 </connector>
-                <connector uid="6" angle="-0.48554583000813412">
-                    <from>Time</from>
-                    <to>output</to>
+                <aux name="macro_parameter" x="251" y="100"/>
+                <connector uid="5" angle="-60.255118703057832">
+                    <from>macro_parameter</from>
+                    <to>macro_output</to>
                 </connector>
-                <connector uid="27" angle="90">
+                <connector uid="26" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="212" y="237"/>
-                <aux name="FINAL_TIME" x="212" y="237"/>
-                <aux name="INITIAL_TIME" x="212" y="237"/>
-                <aux name="TIME_STEP" x="212" y="237"/>
+                <aux name="SAVEPER" x="100" y="193"/>
+                <aux name="FINAL_TIME" x="100" y="193"/>
+                <aux name="INITIAL_TIME" x="100" y="193"/>
+                <aux name="TIME_STEP" x="100" y="193"/>
             </view>
         </views>
     </model>

@@ -7,7 +7,7 @@
     </header>
     <sim_specs isee:simulation_delay="0" method="Euler" time_units="Months">
         <start>0</start>
-        <stop>4</stop>
+        <stop>1</stop>
         <dt>1</dt>
     </sim_specs>
     <dimensions/>
@@ -25,17 +25,20 @@
             </aux>
             <aux name="FINAL TIME">
                 <doc>	The final time for the simulation.</doc>
-                <eqn>4</eqn>
+                <eqn>1</eqn>
                 <units>Month</units>
             </aux>
-            <aux name="test">
-                <eqn>( IF associativity = 4 THEN 1 ELSE 0 )</eqn>
+            <aux name="Upstream2">
+                <eqn>3</eqn>
             </aux>
-            <aux name="output">
-                <eqn>Time^2</eqn>
+            <aux name="Upstream1">
+                <eqn>4</eqn>
             </aux>
-            <aux name="associativity">
-                <eqn>-2^2</eqn>
+            <aux name="Downstream">
+                <doc>	Manually entered user
+		line break in a comment
+		with trailing newline</doc>
+                <eqn>Upstream1+Upstream2</eqn>
             </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
@@ -45,25 +48,25 @@
         </variables>
         <views>
             <view>
-                <aux name="output" x="218" y="101"/>
-                <aux name="associativity" x="105" y="158"/>
-                <aux name="test" x="220" y="159"/>
-                <connector uid="4" angle="-0.49821161261364239">
-                    <from>associativity</from>
-                    <to>test</to>
+                <aux name="Upstream1" x="340" y="214"/>
+                <aux name="Downstream" x="487" y="214"/>
+                <aux name="Upstream2" x="340" y="163"/>
+                <connector uid="4" angle="-19.133643205905503">
+                    <from>Upstream2</from>
+                    <to>Downstream</to>
                 </connector>
-                <connector uid="6" angle="-0.48554583000813412">
-                    <from>Time</from>
-                    <to>output</to>
+                <connector uid="5" angle="-0">
+                    <from>Upstream1</from>
+                    <to>Downstream</to>
                 </connector>
-                <connector uid="27" angle="90">
+                <connector uid="26" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="212" y="237"/>
-                <aux name="FINAL_TIME" x="212" y="237"/>
-                <aux name="INITIAL_TIME" x="212" y="237"/>
-                <aux name="TIME_STEP" x="212" y="237"/>
+                <aux name="SAVEPER" x="100" y="100"/>
+                <aux name="FINAL_TIME" x="100" y="100"/>
+                <aux name="INITIAL_TIME" x="100" y="100"/>
+                <aux name="TIME_STEP" x="100" y="100"/>
             </view>
         </views>
     </model>
