@@ -1,10 +1,6 @@
 """
 Python model test-models/samples/teacup/teacup.py
-<<<<<<< HEAD
 Translated using PySD version 0.7.9
-=======
-Translated using PySD version 0.7.7
->>>>>>> origin/master
 """
 from __future__ import division
 import numpy as np

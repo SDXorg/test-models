@@ -16,7 +16,7 @@ Each model folder contains:
 
 - a single model concept, with its canonical output (named `output.csv` or `output.tab`) containing (at least) 
 the stock values over the standard timeseries in the model files
-- Model files that produce said output (.mdl, .xmile, stella, pysd, etc)
+- Model files that produce said output (.mdl, .xmile, .stmx(stella), pysd, etc)
 - A text file entitled `README.md` containing:
  - The purpose of the test model (what functionality it executes)
  - The version of software that the canonical output was originally prepared by
@@ -39,7 +39,7 @@ To request that a specific test be added, create an issue on the
 #### Expanding existing cases
 Many of these cases have model files for some modeling formats but not others. To add a model file
 in another format, check that your model output replicates the 'canonical example' to reasonable 
-fidelity, preferably using identical varaibale names, and add an entry to the contributions table
+fidelity, preferably using identical variabale names, and add an entry to the contributions table
 in the directory's `README.md` file.
 
 #### Adding new cases
@@ -83,9 +83,10 @@ expected by tools that interact with this repository.
 5. At the top of the dialog, in the text-box next to the `Export To` button,
    change the name of the export file from `Current` (or whatever your run
    name was) to `output`
-6. Under `Export As` choose `CSV`
+6. Under `Export As` choose `tab`
 7. Under `Time Running` choose `down`
 8. Click `OK at the bottom left to perform the export
+9. Open the resulting `output.tab` in excel or whatever, and make sure that the values of constant terms are propagated down the column for each timestep.
 
 ## Tool testing
 
@@ -129,12 +130,3 @@ models rather than xmile, you can change the model-file suffix:
     # test Stella v10 XMILE-variant model files
     $ ./regression-test.py --ext stmx ~/path/to/tool .
 
-# List of Tests to add
-1. Models with no stocks
-4. Subscripted lookups
-5. Test 'pi' and other keywords
-6. Initial conditions that call functions don't interfere with the cache
-7. Check that vensim's SAVEPER and TIMESTEP are handled properly
-8. Subscripted delays
-9. Function calls with variously capitalized names (`Max(..)`, `MAX(..)`, and `max(..)` should all work. Its ok if `mAx(..)` does not...)
-10. Line breaks in equations, other places

@@ -1,18 +1,18 @@
 {UTF-8}
-this is a french variable with é à è=
-	3*this is a german variable with ö ä ü
-	~	dmnl
-	~	This variable also has funny german characters ö ä ü in its comment box
-	|
-
-this is a german variable with ö ä ü=
-	2
-	~	dmnl
+Outflow=
+	1
+	~	
 	~		|
 
-this is a spanish variable with ñ ç=
-	2*this is a german variable with ö ä ü
-	~	D
+Stock= INTEG (
+	-Outflow,
+		10)
+	~	 [0,?]
+	~		|
+
+Variable=
+	Stock
+	~	 [?,3]
 	~		|
 
 ********************************************************
@@ -21,7 +21,7 @@ this is a spanish variable with ñ ç=
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 1
+FINAL TIME  = 20
 	~	Month
 	~	The final time for the simulation.
 	|
@@ -32,7 +32,7 @@ INITIAL TIME  = 0
 	|
 
 SAVEPER  = 
-        TIME STEP
+        TIME STEP 
 	~	Month [0,?]
 	~	The frequency with which output is stored.
 	|
@@ -45,14 +45,19 @@ TIME STEP  = 1
 \\\---/// Sketch information - do not modify anything except names
 V300  Do not put anything below this section - it will be ignored
 *View 1
-$192-192-192,0,Arial|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
-10,1,this is a german variable with ö ä ü,435,222,66,18,8,3,0,0,0,0,0,0
-10,2,this is a french variable with é à è,599,179,66,18,8,3,0,0,0,0,0,0
-10,3,this is a spanish variable with ñ ç,592,286,59,18,8,3,0,0,0,0,0,0
-1,4,1,3,1,0,43,0,0,64,0,-1--1--1,,1|(488,255)|
-1,5,1,2,0,0,43,0,0,64,0,-1--1--1,,1|(510,202)|
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
+10,1,Stock,437,269,40,20,3,3,0,0,0,0,0,0
+12,2,48,604,267,10,8,0,3,0,0,-1,0,0,0
+1,4,6,2,4,0,0,22,0,0,0,-1--1--1,,1|(567,267)|
+1,5,6,1,100,0,0,22,0,0,0,-1--1--1,,1|(503,267)|
+11,6,0,535,267,6,8,34,3,0,0,1,0,0,0
+10,7,Outflow,535,283,22,8,40,3,0,0,-1,0,0,0
+10,8,Variable,432,354,22,8,8,3,0,0,0,0,0,0
+1,9,1,8,0,0,0,0,0,128,0,-1--1--1,,1|(434,310)|
 ///---\\\
 :L<%^E!@
+1:Current.vdf
+1:/Applications/Current.vdf
 9:Current
 22:$,Dollar,Dollars,$s
 22:Day,Days
@@ -67,7 +72,7 @@ $192-192-192,0,Arial|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
 27:2,
 34:0,
 4:Time
-5:this is a spanish variable with ñ ç
+5:Stock
 35:Date
 36:YYYY-MM-DD
 37:2000
@@ -75,7 +80,7 @@ $192-192-192,0,Arial|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
 39:1
 40:2
 41:0
-42:1
+42:0
 24:0
-25:1
-26:1
+25:100
+26:100
