@@ -22,6 +22,8 @@ Variable=
 	~		|
 ```
 
+A number of other types of boundary combinations are also included, in order to test things like parameter space exploration algorithms.
+
 ![Vensim screenshot](vensim_screenshot.png)
 
 

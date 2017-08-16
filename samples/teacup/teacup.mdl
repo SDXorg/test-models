@@ -1,26 +1,34 @@
 {UTF-8}
 Characteristic Time=
 	10
-	~	Minutes
-	~		|
+	~	Minutes [0,?]
+	~	How long will it take the teacup to cool 1/e of the way to equilibrium?
+	|
 
 Heat Loss to Room=
 	(Teacup Temperature - Room Temperature) / Characteristic Time
-	~	Degrees/Minute
+	~	Degrees Fahrenheit/Minute
 	~	This is the rate at which heat flows from the cup into the room. We can \
 		ignore it at this point.
 	|
 
 Room Temperature=
 	70
-	~	
-	~		|
+	~	Degrees Fahrenheit [-459.67,?]
+	~	Put in a check to ensure the room temperature is not driven below absolute \
+		zero.
+	|
 
 Teacup Temperature= INTEG (
 	-Heat Loss to Room,
 		180)
-	~	Degrees
-	~		|
+	~	Degrees Fahrenheit [32,212]
+	~	The model is only valid for the liquid phase of tea. While the tea could \
+		theoretically freeze or boil off, we would want an error to be thrown in \
+		these cases so that the modeler can identify the issue and decide whether \
+		to expand the model.
+		Of course, this refers to standard sea-level conditions...
+	|
 
 ********************************************************
 	.Control
@@ -39,7 +47,7 @@ INITIAL TIME  = 0
 	|
 
 SAVEPER  = 
-        TIME STEP 
+        TIME STEP
 	~	Minute [0,?]
 	~	The frequency with which output is stored.
 	|
@@ -81,7 +89,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:Teacup Temperature
+5:Heat Loss to Room
 35:Date
 36:YYYY-MM-DD
 37:2000

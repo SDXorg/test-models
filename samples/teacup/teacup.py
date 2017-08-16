@@ -1,6 +1,6 @@
 """
 Python model test-models/samples/teacup/teacup.py
-Translated using PySD version 0.7.9
+Translated using PySD version 0.7.10
 """
 from __future__ import division
 import numpy as np
@@ -30,9 +30,9 @@ def characteristic_time():
     """
     Characteristic Time
 
-    Minutes
+    Minutes [0,?]
 
-
+    How long will it take the teacup to cool 1/e of the way to equilibrium?
     """
     return 10
 
@@ -42,7 +42,7 @@ def heat_loss_to_room():
     """
     Heat Loss to Room
 
-    Degrees/Minute
+    Degrees Fahrenheit/Minute
 
     This is the rate at which heat flows from the cup into the room. We can 
         ignore it at this point.
@@ -55,9 +55,10 @@ def room_temperature():
     """
     Room Temperature
 
+    Degrees Fahrenheit [-459.67,?]
 
-
-
+    Put in a check to ensure the room temperature is not driven below absolute 
+        zero.
     """
     return 70
 
@@ -67,9 +68,12 @@ def teacup_temperature():
     """
     Teacup Temperature
 
-    Degrees
+    Degrees Fahrenheit [32,212]
 
-
+    The model is only valid for the liquid phase of tea. While the tea could 
+        theoretically freeze or boil off, we would want an error to be thrown in 
+        these cases so that the modeler can identify the issue and decide whether 
+        to expand the model.        Of course, this refers to standard sea-level conditions...
     """
     return integ_teacup_temperature()
 
