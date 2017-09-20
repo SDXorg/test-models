@@ -16,10 +16,6 @@
             <elem name="Entry 2"/>
             <elem name="Entry 3"/>
         </dim>
-        <dim name="Subrange of Dim1">
-            <elem name="Entry 1"/>
-            <elem name="Entry 2"/>
-        </dim>
     </dimensions>
     <model>
         <variables>
@@ -59,7 +55,7 @@
             </stock>
             <aux name="Subrange Vals">
                 <dimensions>
-                    <dim name="Subrange of Dim1"/>
+                    <dim name="Dim1"/>
                 </dimensions>
                 <eqn>Stock_A[Subrange_of_Dim1]</eqn>
             </aux>

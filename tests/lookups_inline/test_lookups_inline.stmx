@@ -29,7 +29,12 @@
                 <units>Month</units>
             </aux>
             <aux name="Variable with Inline Lookup">
-                <eqn>WITH_LOOKUP(0)</eqn>
+                <eqn>Time</eqn>
+                <gf>
+                    <yscale min="-1" max="1"/>
+                    <xpts>0,8.75764,19.7556,33.6049,49.0835,63.3401,81.6701,92.057,100</xpts>
+                    <ypts>-1,-0.630332,-0.0710901,0.232227,-0.118483,-0.2891,0.184834,0.744076,1</ypts>
+                </gf>
             </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
@@ -40,6 +45,10 @@
         <views>
             <view>
                 <aux name="Variable_with_Inline_Lookup" x="376" y="158"/>
+                <connector uid="3" angle="220.4622274920934">
+                    <from>Time</from>
+                    <to>Variable_with_Inline_Lookup</to>
+                </connector>
                 <connector uid="24" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>

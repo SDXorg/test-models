@@ -11,7 +11,7 @@
         <dt>1</dt>
     </sim_specs>
     <dimensions>
-        <dim name="Dim1">
+        <dim name="One Dimensional Subscript">
             <elem name="Entry 1"/>
             <elem name="Entry 2"/>
             <elem name="Entry 3"/>
@@ -24,11 +24,31 @@
                 <eqn>100</eqn>
                 <units>Month</units>
             </aux>
+            <aux name="INITIAL TIME">
+                <doc>	The initial time for the simulation.</doc>
+                <eqn>0</eqn>
+                <units>Month</units>
+            </aux>
+            <stock name="Stock A">
+                <dimensions>
+                    <dim name="One Dimensional Subscript"/>
+                </dimensions>
+                <eqn>0</eqn>
+                <inflow>Inflow_A</inflow>
+            </stock>
             <aux name="Rate A">
                 <dimensions>
-                    <dim name="Dim1"/>
+                    <dim name="One Dimensional Subscript"/>
                 </dimensions>
-                <eqn> ??? </eqn>
+                <element subscript="Entry 1">
+                    <eqn>0.01</eqn>
+                </element>
+                <element subscript="Entry 2">
+                    <eqn>0.2</eqn>
+                </element>
+                <element subscript="Entry 3">
+                    <eqn>0.3</eqn>
+                </element>
             </aux>
             <aux name="TIME STEP">
                 <doc>	The time step for the simulation.</doc>
@@ -37,28 +57,10 @@
             </aux>
             <flow name="Inflow A">
                 <dimensions>
-                    <dim name="Dim1"/>
+                    <dim name="One Dimensional Subscript"/>
                 </dimensions>
-                <eqn>Rate_A[Dim1]</eqn>
+                <eqn>Rate_A[One_Dimensional_Subscript]</eqn>
             </flow>
-            <stock name="Stock A">
-                <dimensions>
-                    <dim name="Dim1"/>
-                </dimensions>
-                <eqn>0</eqn>
-                <inflow>Inflow_A</inflow>
-            </stock>
-            <aux name="Subrange Vals">
-                <dimensions>
-                    <dim name="Dim1"/>
-                </dimensions>
-                <eqn>Stock_A[Subrange_of_Dim1]</eqn>
-            </aux>
-            <aux name="INITIAL TIME">
-                <doc>	The initial time for the simulation.</doc>
-                <eqn>0</eqn>
-                <units>Month</units>
-            </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
@@ -67,31 +69,26 @@
         </variables>
         <views>
             <view>
-                <stock name="Stock_A" x="320" y="100"/>
-                <flow name="Inflow_A" x="223" y="101">
+                <stock name="Stock_A" x="320" y="122"/>
+                <flow name="Inflow_A" x="223" y="123">
                     <pts>
-                        <pt x="157" y="101"/>
-                        <pt x="320" y="100"/>
+                        <pt x="157" y="123"/>
+                        <pt x="320" y="122"/>
                     </pts>
                 </flow>
-                <aux name="Rate_A" x="218" y="186"/>
+                <aux name="Rate_A" x="218" y="208"/>
                 <connector uid="8" angle="85.855376258895788">
                     <from>Rate_A</from>
                     <to>Inflow_A</to>
                 </connector>
-                <aux name="Subrange_Vals" x="343" y="183"/>
-                <connector uid="10" angle="-74.511498557090391">
-                    <from>Stock_A</from>
-                    <to>Subrange_Vals</to>
-                </connector>
-                <connector uid="26" angle="90">
+                <connector uid="25" angle="90">
                     <from>TIME_STEP</from>
                     <to>SAVEPER</to>
                 </connector>
-                <aux name="SAVEPER" x="100" y="110"/>
-                <aux name="INITIAL_TIME" x="100" y="110"/>
-                <aux name="TIME_STEP" x="100" y="110"/>
-                <aux name="FINAL_TIME" x="100" y="110"/>
+                <aux name="SAVEPER" x="100" y="100"/>
+                <aux name="TIME_STEP" x="100" y="100"/>
+                <aux name="INITIAL_TIME" x="100" y="100"/>
+                <aux name="FINAL_TIME" x="100" y="100"/>
             </view>
         </views>
     </model>

@@ -32,9 +32,6 @@
                 <eqn>0</eqn>
                 <inflow>rate</inflow>
             </stock>
-            <flow name="rate">
-                <eqn>lookup_function_call</eqn>
-            </flow>
             <aux name="lookup function table">
                 <eqn>0</eqn>
                 <gf>
@@ -55,6 +52,9 @@
                     <ypts>1,1,0.98,0.9,0.75,0.45,0.25,0.17,0.14,0.12,0.11,0.1,0.1</ypts>
                 </gf>
             </aux>
+            <flow name="rate">
+                <eqn>lookup_function_call</eqn>
+            </flow>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
                 <eqn>TIME_STEP</eqn>
