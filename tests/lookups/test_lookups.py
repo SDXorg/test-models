@@ -1,10 +1,6 @@
 """
 Python model test-models/tests/lookups/test_lookups.py
-<<<<<<< HEAD
-Translated using PySD version 0.7.9
-=======
-Translated using PySD version 0.7.7
->>>>>>> origin/master
+Translated using PySD version 0.7.10
 """
 from __future__ import division
 import numpy as np
@@ -28,7 +24,6 @@ _namespace = {
     'INITIAL TIME': 'initial_time',
     'SAVEPER': 'saveper',
     'TIME STEP': 'time_step'}
-<<<<<<< HEAD
 
 
 def lookup_linebreak_before_comma(x):
@@ -41,8 +36,6 @@ def lookup_linebreak_before_comma(x):
     """
     return functions.lookup(x, [0, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4], [
         1, 1, 0.98, 0.9, 0.75, 0.45, 0.25, 0.17, 0.14, 0.12, 0.11, 0.1, 0.1])
-=======
->>>>>>> origin/master
 
 
 @cache('step')
