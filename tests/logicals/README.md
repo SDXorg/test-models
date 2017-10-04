@@ -18,6 +18,7 @@ Contributions
 | test_logicals.stmx             | Bobby Powers    | bobbypowers@gmail.com      | 8/29/15 | Stella 10.0.6 for Win   |
 | output.csv                     | Bobby Powers    | bobbypowers@gmail.com      | 8/29/15 | Stella 10.0.6 for Win   |
 | test_logicals.xmile            | Bobby Powers    | bobbypowers@gmail.com      | 8/29/15 | xmileconv v0.1.0        |
+| test_logicals.xmile            | Alexey Mulyukin | alexprey@yandex.ru			| 4/10/17 | Fix definition          |
 
 TODO
 ----
