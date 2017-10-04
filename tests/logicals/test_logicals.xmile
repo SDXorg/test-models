@@ -30,7 +30,7 @@
             </aux>
             <aux name="NOT output">
                 <doc>	Test the :NOT: operator. Should yield 1.</doc>
-                <eqn>( IF false_input not  THEN 1 ELSE 0 )</eqn>
+                <eqn>( IF not false_input THEN 1 ELSE 0 )</eqn>
             </aux>
             <aux name="false input">
                 <eqn>0</eqn>
