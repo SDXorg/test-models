@@ -1,4 +1,4 @@
-Test Smooth Functions
+Test Trend Functions
 ===========
 
 This model tests basic trend functionality
