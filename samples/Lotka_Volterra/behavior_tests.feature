@@ -2,7 +2,7 @@
 Feature: Extreme Conditions Tests
   # Enter feature description here
 
-  Scenario: The Hare Population Is Obliterated
+  Scenario: Hare Oblivion
     Given the model 'Lotka_Volterra.mdl'
     When Prey is set to 0
     Then Prey Births is immediately equal to 0
@@ -10,7 +10,7 @@ Feature: Extreme Conditions Tests
     When the model is run
     Then Predators is equal to 0 at time 12
 
-  Scenario: Foxes Loose their Appetite
+  Scenario: Foxes Loose Appetite
     # Prey should still have some mortality, even if they
     # aren't being eaten.
     Given the model 'Lotka_Volterra.mdl'

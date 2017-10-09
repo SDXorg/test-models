@@ -1,14 +1,14 @@
 """
 Python model test-models/samples/teacup/teacup.py
-Translated using PySD version 0.7.12
+Translated using PySD version 0.7.10
 """
 from __future__ import division
 import numpy as np
 from pysd import utils
 import xarray as xr
 
-from pysd.py_backend.functions import cache
-from pysd.py_backend import functions
+from pysd.functions import cache
+from pysd import functions
 
 _subscript_dict = {}
 
@@ -32,8 +32,6 @@ def characteristic_time():
 
     Minutes [0,?]
 
-    constant
-
     How long will it take the teacup to cool 1/e of the way to equilibrium?
     """
     return 10
@@ -45,8 +43,6 @@ def heat_loss_to_room():
     Heat Loss to Room
 
     Degrees Fahrenheit/Minute
-
-    component
 
     This is the rate at which heat flows from the cup into the room. We can 
         ignore it at this point.
@@ -61,8 +57,6 @@ def room_temperature():
 
     Degrees Fahrenheit [-459.67,?]
 
-    constant
-
     Put in a check to ensure the room temperature is not driven below absolute 
         zero.
     """
@@ -75,8 +69,6 @@ def teacup_temperature():
     Teacup Temperature
 
     Degrees Fahrenheit [32,212]
-
-    component
 
     The model is only valid for the liquid phase of tea. While the tea could 
         theoretically freeze or boil off, we would want an error to be thrown in 
@@ -93,8 +85,6 @@ def final_time():
 
     Minute
 
-    constant
-
     The final time for the simulation.
     """
     return 30
@@ -106,8 +96,6 @@ def initial_time():
     INITIAL TIME
 
     Minute
-
-    constant
 
     The initial time for the simulation.
     """
@@ -121,8 +109,6 @@ def saveper():
 
     Minute [0,?]
 
-    component
-
     The frequency with which output is stored.
     """
     return time_step()
@@ -134,8 +120,6 @@ def time_step():
     TIME STEP
 
     Minute [0,?]
-
-    constant
 
     The time step for the simulation.
     """

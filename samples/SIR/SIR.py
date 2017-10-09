@@ -1,14 +1,14 @@
 """
 Python model test-models/samples/SIR/SIR.py
-Translated using PySD version 0.7.12
+Translated using PySD version 0.7.10
 """
 from __future__ import division
 import numpy as np
 from pysd import utils
 import xarray as xr
 
-from pysd.py_backend.functions import cache
-from pysd.py_backend import functions
+from pysd.functions import cache
+from pysd import functions
 
 _subscript_dict = {}
 
@@ -36,8 +36,6 @@ def contact_infectivity():
 
     Persons/Persons/Day
 
-    constant
-
     A joint parameter listing both how many people you contact, and how likely 
         you are to give them the disease.
     """
@@ -51,8 +49,6 @@ def duration():
 
     Days
 
-    constant
-
     How long are you infectious for?
     """
     return 5
@@ -64,8 +60,6 @@ def infectious():
     Infectious
 
     Persons
-
-    component
 
     The population with the disease, manifesting symptoms, and able to 
         transmit it to other people.
@@ -80,8 +74,6 @@ def recovered():
 
     Persons
 
-    component
-
     These people have recovered from the disease. Yay! Nobody dies in this 
         model.
     """
@@ -95,8 +87,6 @@ def recovering():
 
     Persons/Day
 
-    component
-
 
     """
     return infectious() / duration()
@@ -108,8 +98,6 @@ def succumbing():
     Succumbing
 
     Persons/Day
-
-    component
 
 
     """
@@ -123,8 +111,6 @@ def susceptible():
 
     Persons
 
-    component
-
     The population that has not yet been infected.
     """
     return integ_susceptible()
@@ -136,8 +122,6 @@ def total_population():
     Total Population
 
     Persons
-
-    constant
 
     This is just a simplification to make it easer to track how many folks 
         there are without having to sum up all the stocks.
@@ -152,8 +136,6 @@ def final_time():
 
     Day
 
-    constant
-
     The final time for the simulation.
     """
     return 100
@@ -165,8 +147,6 @@ def initial_time():
     INITIAL TIME
 
     Day
-
-    constant
 
     The initial time for the simulation.
     """
@@ -180,8 +160,6 @@ def saveper():
 
     Day [0,?]
 
-    component
-
     The frequency with which output is stored.
     """
     return time_step()
@@ -193,8 +171,6 @@ def time_step():
     TIME STEP
 
     Day [0,?]
-
-    constant
 
     The time step for the simulation.
     """

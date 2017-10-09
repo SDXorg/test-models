@@ -1,14 +1,14 @@
 """
 Python model test-models/tests/lookups/test_lookups.py
-Translated using PySD version 0.7.12
+Translated using PySD version 0.7.10
 """
 from __future__ import division
 import numpy as np
 from pysd import utils
 import xarray as xr
 
-from pysd.py_backend.functions import cache
-from pysd.py_backend import functions
+from pysd.functions import cache
+from pysd import functions
 
 _subscript_dict = {}
 
@@ -32,8 +32,6 @@ def lookup_linebreak_before_comma(x):
 
 
 
-    lookup
-
     This lookup has a line break before the comma.
     """
     return functions.lookup(x, [0, 1.25, 1.5, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.25, 3.5, 3.75, 4], [
@@ -47,8 +45,6 @@ def lookup_function_call():
 
 
 
-    component
-
 
     """
     return lookup_function_table(time())
@@ -60,8 +56,6 @@ def rate():
     rate
 
 
-
-    component
 
 
     """
@@ -75,8 +69,6 @@ def accumulation():
 
 
 
-    component
-
 
     """
     return integ_accumulation()
@@ -87,8 +79,6 @@ def lookup_function_table(x):
     lookup function table
 
 
-
-    lookup
 
 
     """
@@ -103,8 +93,6 @@ def final_time():
 
     Minute
 
-    constant
-
     The final time for the simulation.
     """
     return 45
@@ -116,8 +104,6 @@ def initial_time():
     INITIAL TIME
 
     Minute
-
-    constant
 
     The initial time for the simulation.
     """
@@ -131,8 +117,6 @@ def saveper():
 
     Minute [0,?]
 
-    component
-
     The frequency with which output is stored.
     """
     return time_step()
@@ -144,8 +128,6 @@ def time_step():
     TIME STEP
 
     Minute [0,?]
-
-    constant
 
     The time step for the simulation.
     """
