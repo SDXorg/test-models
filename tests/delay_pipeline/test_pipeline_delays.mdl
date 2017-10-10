@@ -5,7 +5,7 @@ Output Second Order Delay=
 	~		|
 
 Output Second Order Delay with Modified Delay Time= 
-	DELAY N(Input, 1 , Input , 2 )
+	DELAY N(Input, 1 , Initial Value , 2 )
 	~	
 	~		|
 
@@ -174,7 +174,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:Output Second Order Delay
+5:Output Second Order Delay with Modified Delay Time
 35:Date
 36:YYYY-MM-DD
 37:2000
