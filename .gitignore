@@ -8,3 +8,11 @@
 *.1mdl
 editor.aud
 samples/pendulum/Untitled.cin
+
+samples/teacup/teacup.py
+
+samples/SIR/SIR.py
+
+tests/lookups/test_lookups.py
+
+tests/number_handling/test_number_handling.py
