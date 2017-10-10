@@ -3,6 +3,8 @@ Test Pipeline Delay
 
 This model tests pipeline delays. These have some funny interactions with the timestep, as they need to move everything from one bucket to the next each timestep.
 
+For example, if the delay time is not an integer multiple of the step size, then vensim changes it, forcing it to be so!
+
 ![Vensim screenshot](vensim_screenshot.png)
 
 

@@ -1,4 +1,25 @@
 {UTF-8}
+Output Second Order Delay=
+	DELAY N(Input, Fractional Delay Time , Initial Value , 2 )
+	~	
+	~		|
+
+Output Second Order Delay with Modified Delay Time= 
+	DELAY N(Input, 1 , Input , 2 )
+	~	
+	~		|
+
+Output Third order Delay=
+	DELAY N(Input, Fractional Delay Time, Initial Value, 3)
+	~	
+	~	See if the order is rounded to 3 or 2
+	|
+
+Output Third order Delay with Modified Delay Time= 
+	DELAY N(Input, 1.5 , Initial Value , 3 )
+	~	
+	~		|
+
 Changing Delay Time=
 	4 + STEP(2, 15)
 	~	
@@ -82,7 +103,8 @@ SAVEPER  =
 	~	The frequency with which output is stored.
 	|
 
-TIME STEP  = 1
+TIME STEP=
+	0.5
 	~	Month [0,?]
 	~	The time step for the simulation.
 	|
@@ -118,6 +140,22 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 1,25,22,21,0,0,0,0,0,128,0,-1--1--1,,1|(311,256)|
 1,26,1,21,0,0,0,0,0,128,0,-1--1--1,,1|(386,350)|
 1,27,1,13,0,0,0,0,0,128,0,-1--1--1,,1|(503,355)|
+10,28,Output Third order Delay,697,305,34,14,8,3,0,0,0,0,0,0
+1,29,2,28,0,0,0,0,0,128,0,-1--1--1,,1|(606,356)|
+1,30,1,28,0,0,0,0,0,128,1,-1--1--1,,1|(562,354)|
+1,31,17,28,0,0,0,0,0,64,0,-1--1--1,,1|(627,274)|
+10,32,Output Second Order Delay,784,302,39,14,8,3,0,0,0,0,0,0
+1,33,1,32,0,0,0,0,0,128,1,-1--1--1,,1|(607,352)|
+1,34,2,32,0,0,0,0,0,128,0,-1--1--1,,1|(644,355)|
+1,35,17,32,0,0,0,0,0,128,0,-1--1--1,,1|(674,275)|
+10,36,Output Third order Delay with Modified Delay Time,904,306,68,14,8,3,0,0,0,0,0,0
+10,37,Output Second Order Delay with Modified Delay Time,1049,302,55,21,8,3,0,0,0,0,0,0
+1,38,2,36,0,0,0,0,0,128,0,-1--1--1,,1|(693,357)|
+1,39,1,36,0,0,0,0,0,128,0,-1--1--1,,1|(654,355)|
+1,40,17,36,0,0,0,0,0,128,0,-1--1--1,,1|(728,277)|
+1,41,17,37,0,0,0,0,0,128,0,-1--1--1,,1|(810,277)|
+1,42,2,37,0,0,0,0,0,128,0,-1--1--1,,1|(767,353)|
+1,43,1,37,0,0,0,0,0,128,0,-1--1--1,,1|(733,351)|
 ///---\\\
 :L<%^E!@
 1:Current.vdf
@@ -136,7 +174,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:Fractional Multiple
+5:Output Second Order Delay
 35:Date
 36:YYYY-MM-DD
 37:2000
