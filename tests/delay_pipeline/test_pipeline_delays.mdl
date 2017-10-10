@@ -1,13 +1,53 @@
 {UTF-8}
-Output Pipeline Delay=
-	DELAY FIXED(Input, Delay Time, Initial Value)
+Changing Delay Time=
+	4 + STEP(2, 15)
 	~	
 	~		|
 
-Delay Time=
-	4 + STEP(2, 15)
+Fractional Delay Time=
+	Fractional Multiple * TIME STEP
+	~	
+	~	See what happens when the delay time is not a simple multiple of the time \
+		step.
+	|
+
+Fractional Multiple=
+	2.5
+	~	
+	~	This should be small so that the differences between rounding up to 3 and \
+		down to 2 are obvious. Should be on the boundary so that to test the \
+		rounding behavior too...
+	|
+
+Output Fractional Pipeline Delay=
+	DELAY FIXED(Input, Fractional Delay Time, Initial Value)
+	~	
+	~	When the delay time is not easily handled as an integer of the step size - \
+		what then?
+	|
+
+Integer Multiple=
+	5
+	~	
+	~		|
+
+Integer Delay Time=
+	TIME STEP * Integer Multiple
 	~	
 	~	Test that delay time can vary
+	|
+
+Output Changing Delay Time=
+	DELAY FIXED(Input, Changing Delay Time, Initial Value)
+	~	
+	~	Test that delay time can vary
+	|
+
+Output Integer Pipeline Delay=
+	DELAY FIXED(Input, Integer Delay Time, Initial Value)
+	~	
+	~	Test delays with a delay time that is an integer multiple of the step \
+		size, so that the bins for the pipeline are clear.
 	|
 
 Initial Value=
@@ -51,14 +91,33 @@ TIME STEP  = 1
 V300  Do not put anything below this section - it will be ignored
 *View 1
 $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,100,0
-10,1,Initial Value,390,339,32,8,8,3,0,0,0,0,0,0
-10,2,Input,357,258,15,8,8,3,0,0,0,0,0,0
-10,3,Delay Time,444,258,30,8,8,3,0,0,0,0,0,0
-10,4,Output Pipeline Delay,407,300,56,8,8,3,0,0,0,0,0,0
-1,5,3,4,0,0,0,0,0,64,0,-1--1--1,,1|(430,273)|
-1,6,1,4,0,0,0,0,0,64,1,-1--1--1,,1|(395,325)|
-1,7,2,4,0,0,0,0,0,64,0,-1--1--1,,1|(376,274)|
-1,8,1,4,0,0,0,0,0,64,0,-1--1--1,,1|(395,325)|
+10,1,Initial Value,455,396,32,8,8,3,0,0,0,0,0,0
+10,2,Input,540,395,15,8,8,3,0,0,0,0,0,0
+10,3,Integer Delay Time,444,258,49,8,8,3,0,0,0,0,0,0
+10,4,Output Integer Pipeline Delay,405,293,39,14,8,3,0,0,0,0,0,0
+1,5,3,4,0,0,0,0,0,64,0,-1--1--1,,1|(433,268)|
+1,6,1,4,0,0,0,0,0,64,1,-1--1--1,,1|(434,354)|
+1,7,2,4,0,0,0,0,0,64,0,-1--1--1,,1|(482,351)|
+1,8,1,4,0,0,0,0,0,64,0,-1--1--1,,1|(434,354)|
+10,9,TIME STEP,530,212,39,8,8,2,0,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128
+10,10,Integer Multiple,410,203,41,8,8,3,0,0,0,0,0,0
+1,11,9,3,0,0,0,0,0,128,0,-1--1--1,,1|(493,231)|
+1,12,10,3,0,0,0,0,0,128,0,-1--1--1,,1|(422,224)|
+10,13,Output Fractional Pipeline Delay,571,301,46,14,8,3,0,0,0,0,0,0
+1,14,2,13,0,0,0,0,0,128,0,-1--1--1,,1|(551,357)|
+1,15,1,13,0,0,0,0,0,128,1,-1--1--1,,1|(503,355)|
+10,16,Fractional Multiple,644,212,49,8,8,3,0,0,0,0,0,0
+10,17,Fractional Delay Time,584,255,56,8,8,3,0,0,0,0,0,0
+1,18,9,17,0,0,0,0,0,128,0,-1--1--1,,1|(551,229)|
+1,19,16,17,0,0,0,0,0,128,0,-1--1--1,,1|(619,229)|
+1,20,17,13,0,0,0,0,0,128,0,-1--1--1,,1|(580,268)|
+10,21,Output Changing Delay Time,298,291,45,14,8,3,0,0,0,0,0,0
+10,22,Changing Delay Time,316,242,55,8,8,3,0,0,0,0,0,0
+1,23,1,21,0,0,0,0,0,128,1,-1--1--1,,1|(386,350)|
+1,24,2,21,0,0,0,0,0,128,0,-1--1--1,,1|(433,349)|
+1,25,22,21,0,0,0,0,0,128,0,-1--1--1,,1|(311,256)|
+1,26,1,21,0,0,0,0,0,128,0,-1--1--1,,1|(386,350)|
+1,27,1,13,0,0,0,0,0,128,0,-1--1--1,,1|(503,355)|
 ///---\\\
 :L<%^E!@
 1:Current.vdf
@@ -77,7 +136,7 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:Output Pipeline Delay
+5:Fractional Multiple
 35:Date
 36:YYYY-MM-DD
 37:2000

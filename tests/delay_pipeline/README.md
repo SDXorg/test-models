@@ -1,7 +1,7 @@
 Test Pipeline Delay
 ===========
 
-This model tests pipeline delays.
+This model tests pipeline delays. These have some funny interactions with the timestep, as they need to move everything from one bucket to the next each timestep.
 
 ![Vensim screenshot](vensim_screenshot.png)
 
