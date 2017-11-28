@@ -9,10 +9,10 @@ import re
 import subprocess
 import sys
 
-OUTPUT_FILE = 'output.csv'
+OUTPUT_FILES = ['output.csv', 'output.tab']
 
 # these columns are either Vendor specific or otherwise not important.
-IGNORABLE_COLS = ('saveper', 'initial_time', 'final_time', 'time_step')
+IGNORABLE_COLS = ('saveper', 'initial_time', 'final_time', 'time_step', 'time', 'months', 'final time', 'intial time', 'time step')
 
 # from rainbow
 def make_reporter(verbosity, quiet, filelike):
@@ -192,17 +192,36 @@ def run_test(cmd, limit, model_suffix, model_dir):
         model_path = os.path.join(model_dir, m)
 
         log(DEBUG, '  RTEST %s', model_path)
-        err, mdata, cmd_stderr = run_cmd('%s %s' % (cmd, model_path))
+        if cmd == 'stella':
+            err, mdata, cmd_stderr = run_cmd('cat %s/output_stella.csv' % (model_dir));
+        else :
+            err, mdata, cmd_stderr = run_cmd('%s %s' % (cmd, model_path))
+        
         if err:
             log(ERROR, '%s failed: %s', cmd, cmd_stderr)
             continue
         elif cmd_stderr:
             # if there was any, always pass stderr through
             log(ERROR, '%s', cmd_stderr)
+        
         sim = read_data(mdata.decode('utf-8'))
-        output_path = os.path.join(model_dir, OUTPUT_FILE)
-        ref = read_data(slurp(output_path))
-        err |= compare(ref, sim, display_limit=limit)
+        
+        count = 0
+        ref = None
+
+        while ref is None and count < len(OUTPUT_FILES) :
+            output_path = os.path.join(model_dir, OUTPUT_FILES[count])
+
+            if os.path.exists(output_path) :
+                ref = read_data(slurp(output_path))
+
+            count += 1
+
+        if ref is None :
+            log(ERROR, 'Could not find an expected result in directory %s', model_dir)
+            err = True
+        else :
+            err |= compare(ref, sim, display_limit=limit)
 
     return err
 
@@ -214,7 +233,7 @@ def main():
     parser.add_argument('-l', '--limit', default=10, type=int,
                         help='number of lines of comparison errors to display per ' +
                         'model, negative to disable')
-    parser.add_argument('CMD', help='command to run that will output model results to stdout')
+    parser.add_argument('CMD', help='command to run that will output model results to stdout, or stella which will compare output.csv to output_stella.csv')
     parser.add_argument('DIR', help='path to test-models directory')
     args = parser.parse_args()
 
