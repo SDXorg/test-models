@@ -131,10 +131,10 @@ def e_name(n):
 def read_data(data):
     ins = data.lower().splitlines()
     ins[0] = e_name(ins[0].strip())
-    if ',' in ins[0]:
-        delimiter = ','
-    else:
+    if '\t' in ins[0]:
         delimiter = '\t'
+    else:
+        delimiter = ','
     return load_csv(ins, delimiter)
 
 def compare(reference, simulated, display_limit=-1):
@@ -196,16 +196,16 @@ def run_test(cmd, limit, model_suffix, model_dir):
             err, mdata, cmd_stderr = run_cmd('cat %s/output_stella.csv' % (model_dir));
         else :
             err, mdata, cmd_stderr = run_cmd('%s %s' % (cmd, model_path))
-        
+
         if err:
             log(ERROR, '%s failed: %s', cmd, cmd_stderr)
             continue
         elif cmd_stderr:
             # if there was any, always pass stderr through
             log(ERROR, '%s', cmd_stderr)
-        
+
         sim = read_data(mdata.decode('utf-8'))
-        
+
         count = 0
         ref = None
 
