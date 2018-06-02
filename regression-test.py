@@ -233,6 +233,7 @@ def main():
     parser.add_argument('-l', '--limit', default=10, type=int,
                         help='number of lines of comparison errors to display per ' +
                         'model, negative to disable')
+    parser.add_argument('-x', '--exclude', help='regex of directories to exclude')
     parser.add_argument('CMD', help='command to run that will output model results to stdout, or stella which will compare output.csv to output_stella.csv')
     parser.add_argument('DIR', help='path to test-models directory')
     args = parser.parse_args()
@@ -241,6 +242,10 @@ def main():
 
     err = False
 
+    exclude_regex = None
+    if args.exclude:
+        exclude_regex = re.compile(args.exclude)
+
     dirs = [args.DIR]
     while dirs:
         d = dirs.pop()
@@ -248,6 +253,9 @@ def main():
             full_path = os.path.join(d, dent)
             if not dent.startswith('.') and os.path.isdir(full_path):
                 dirs.append(full_path)
+        if exclude_regex and exclude_regex.search(d):
+            continue
+
         err |= run_test(args.CMD, args.limit, model_suffix, d)
 
     return err
