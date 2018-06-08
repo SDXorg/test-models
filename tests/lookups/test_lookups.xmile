@@ -41,7 +41,7 @@
                 </gf>
             </aux>
             <aux name="lookup function call">
-                <eqn>LOOKUP(lookup_function_table, Time)</eqn>
+                <eqn>lookup_function_table(Time)</eqn>
             </aux>
             <aux name="Lookup Linebreak Before Comma">
                 <doc>	This lookup has a line break before the comma.</doc>
