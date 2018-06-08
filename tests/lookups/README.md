@@ -28,6 +28,8 @@ Contributions
 | test_lookups_no-indirect.stmx  | Bobby Powers    | bobbypowers@gmail.com      | 8/28/15 | Stella 10.0.6           |
 | output_stella1006.csv          | Bobby Powers    | bobbypowers@gmail.com      | 8/28/15 | Stella 10.0.6           |
 | test_lookups_no-indirect.xmile | Bobby Powers    | bobbypowers@gmail.com      | 8/28/15 | xmileconv v0.1.0        |
+| test_lookups_xpts_sep.xmile    | Alexey Mulyukin | alexprey@yandex.ru         | 6/09/18 | Manual changes          |
+| test_lookups_ypts_sep.xmile    | Alexey Mulyukin | alexprey@yandex.ru         | 6/09/18 | Manual changes          |
 
 
 TODO
