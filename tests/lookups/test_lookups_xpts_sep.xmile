@@ -34,7 +34,7 @@
             </stock>
             <gf name="lookup function table">
                 <yscale min="-1" max="1"/>
-                <xpts>0,5,10,15,20,25,30,35,40,45</xpts>
+                <xpts sep=";">0;5;10;15;20;25;30;35;40;45</xpts>
                 <ypts>0,0,1,1,0,0,-1,-1,0,0</ypts>
             </gf>
             <aux name="lookup function call">
