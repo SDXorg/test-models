@@ -31,13 +31,28 @@ _namespace = {
 
 __pysd_version__ = "0.8.3"
 
+__data = {'scope': None, 'time': lambda: 0}
+
+
+def _init_outer_references(data):
+    for key in data:
+        __data[key] = data[key]
+
+
+def time():
+    return __data['time']()
+
 
 @cache('run')
 def contact_infectivity():
     """
     Contact Infectivity
 
+    0.3
+
     Persons/Persons/Day
+
+    (None, None)
 
     constant
 
@@ -52,7 +67,11 @@ def duration():
     """
     Duration
 
+    5
+
     Days
+
+    (None, None)
 
     constant
 
@@ -66,7 +85,11 @@ def infectious():
     """
     Infectious
 
+    INTEG ( Succumbing-Recovering, 5)
+
     Persons
+
+    (None, None)
 
     component
 
@@ -81,7 +104,11 @@ def recovered():
     """
     Recovered
 
+    INTEG ( Recovering, 0)
+
     Persons
+
+    (None, None)
 
     component
 
@@ -96,7 +123,11 @@ def recovering():
     """
     Recovering
 
+    Infectious/Duration
+
     Persons/Day
+
+    (None, None)
 
     component
 
@@ -110,7 +141,11 @@ def succumbing():
     """
     Succumbing
 
+    Susceptible*Infectious/Total Population * Contact Infectivity
+
     Persons/Day
+
+    (None, None)
 
     component
 
@@ -124,7 +159,11 @@ def susceptible():
     """
     Susceptible
 
+    INTEG ( -Succumbing, Total Population)
+
     Persons
+
+    (None, None)
 
     component
 
@@ -138,7 +177,11 @@ def total_population():
     """
     Total Population
 
+    1000
+
     Persons
+
+    (None, None)
 
     constant
 
@@ -153,7 +196,11 @@ def final_time():
     """
     FINAL TIME
 
+    100
+
     Day
+
+    (None, None)
 
     constant
 
@@ -167,7 +214,11 @@ def initial_time():
     """
     INITIAL TIME
 
+    0
+
     Day
+
+    (None, None)
 
     constant
 
@@ -181,7 +232,11 @@ def saveper():
     """
     SAVEPER
 
-    Day [0,?]
+    TIME STEP
+
+    Day
+
+    (0.0, None)
 
     component
 
@@ -195,7 +250,11 @@ def time_step():
     """
     TIME STEP
 
-    Day [0,?]
+    0.03125
+
+    Day
+
+    (0.0, None)
 
     constant
 
