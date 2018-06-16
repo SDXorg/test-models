@@ -1,4 +1,4 @@
-test_lookups
+test_lookups_without_range
 ============
 
 This model tests lookup table functionality. It calls upon the time
