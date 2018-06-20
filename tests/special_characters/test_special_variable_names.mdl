@@ -1,4 +1,14 @@
 {UTF-8}
+"Flow*with a few^arithmetic + characters"=
+	"variable with \"Quotes\" in 'it' and \ backslashes!!"
+	~	
+	~		|
+
+"variable with \"Quotes\" in 'it' and \ backslashes!!"=
+	4
+	~	
+	~		|
+
 normal flow=
 	import
 	~	
@@ -27,11 +37,6 @@ import=
 
 "Flow with STEP(function call!)"=
 	"Aux with (entirely superfuluous) parenthetical comment"
-	~	
-	~		|
-
-"Flow*with a few^arithmetic + characters"=
-	4
 	~	
 	~		|
 
@@ -107,8 +112,11 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 1,26,4,19,0,0,0,0,0,64,0,-1--1--1,,1|(590,259)|
 10,27,import,271,49,18,8,8,3,0,0,0,0,0,0
 1,28,27,8,0,0,0,0,0,64,0,-1--1--1,,1|(271,75)|
+10,29,"variable with \"Quotes\" in 'it' and \ backslashes!!",593,59,62,14,8,3,0,0,0,0,0,0
+1,30,29,13,0,0,0,0,0,128,0,-1--1--1,,1|(592,85)|
 ///---\\\
 :L<%^E!@
+1:Current.vdf
 9:Current
 22:$,Dollar,Dollars,$s
 22:Hour,Hours
@@ -124,7 +132,24 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 27:2,
 34:0,
 4:Time
-5:"Hyphenated-Stockname"
+5:"variable with \"Quotes\" in 'it' and \ backslashes!!"
 24:0
 25:100
 26:100
+57:1
+54:0
+55:0
+59:0
+56:0
+58:0
+44:65001
+46:0
+45:1
+49:1
+50:0
+51:
+52:
+53:
+43:output
+47:Current
+48:

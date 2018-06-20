@@ -1,4 +1,4 @@
-test_special_variable_names
+Test special variable names
 ===========================
 
 This model tests the use of several special characters and constructions in variable names:
@@ -10,6 +10,8 @@ This model tests the use of several special characters and constructions in vari
 - Commas, lists
 - Parenthetical Comments
 - Hyphenated Names
+- Single and Double Quotation Marks
+- Backslashes
 
 
 ![Vensim screenshot](vensim_screenshot.png)
@@ -20,5 +22,5 @@ Contributions
 
 | Component                         | Author          | Contact                    | Date    | Software Version        |
 |:--------------------------------- |:--------------- |:-------------------------- |:------- |:----------------------- |
-| test_special_variable_names.mdl   | James Houghton  | james.p.houghton@gmail.com | 8/30/15 | Vensim DSS 6.3 for Mac  |
-| output.csv                        | James Houghton  | james.p.houghton@gmail.com | 8/30/15 | Vensim DSS 6.3 for Mac  |
+| `test_special_variable_names.mdl`  | James Houghton  | james.p.houghton@gmail.com | 6/20/18 | Vensim DSS 7.2 for Mac  |
+| `output.tab `                      | James Houghton  | james.p.houghton@gmail.com | 6/20/18 | Vensim DSS 7.2 for Mac  |
