@@ -1,32 +1,23 @@
 {UTF-8}
-lookup call[Dim, Rows]=
-	lookup function[Dim, Rows](Time)
+
+accumulation backward[Dim, Rows]=INTEG(data backward[Dim, Rows],0)
 	~	
 	~		|
 
-rate[Dim, Rows]=
-	lookup call[Dim, Rows]
+accumulation forward[Dim, Rows]=INTEG(data forward[Dim, Rows],0)
 	~	
 	~		|
 
-accumulation[Dim, Rows]=INTEG(rate[Dim, Rows],0)
-	~	
-	~		|
-
-accumulation data[Dim, Rows]=INTEG(data function table[Dim, Rows],0)
-	~	
-	~		|
-
-lookup function[A, Rows]=
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C5') ~~|
-lookup function[B, Rows]=
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C7')
-	~	
-	~		|
-
-data function table[A, Rows]:=
+data backward[A, Rows]:HOLD BACKWARD::=
     GET XLS DATA('?input.xls','Sheet1','4','C5') ~~|
-data function table[B, Rows]:=
+data backward[B, Rows]:HOLD BACKWARD::=
+    GET XLS DATA('?input.xls','Sheet1','4','C7')
+	~	
+	~		|
+
+data forward[A, Rows]:LOOK FORWARD::=
+    GET XLS DATA('?input.xls','Sheet1','4','C5') ~~|
+data forward[B, Rows]:LOOK FORWARD::=
     GET XLS DATA('?input.xls','Sheet1','4','C7')
 	~	
 	~		|
