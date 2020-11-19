@@ -59,7 +59,7 @@ import=
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 100
+FINAL TIME  = 3
 	~	Month
 	~	The final time for the simulation.
 	|

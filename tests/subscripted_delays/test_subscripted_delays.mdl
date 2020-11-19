@@ -100,7 +100,7 @@ delay[Apples]=
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 100
+FINAL TIME  = 10
 	~	Month
 	~	The final time for the simulation.
 	|
@@ -116,7 +116,7 @@ SAVEPER  =
 	~	The frequency with which output is stored.
 	|
 
-TIME STEP  = 0.125
+TIME STEP  = 0.25
 	~	Month [0,?]
 	~	The time step for the simulation.
 	|

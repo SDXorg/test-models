@@ -15,6 +15,8 @@ Contributions
 |:--------------------------------- |:--------------- |:-------------------------- |:-------- |:----------------------- |
 | test_subscript_aggregation.mdl    | James Houghton  | james.p.houghton@gmail.com | 10/20/15 | Vensim DSS 6.3 for Mac  |
 | output.csv                        | James Houghton  | james.p.houghton@gmail.com | 10/20/15 | Vensim DSS 6.3 for Mac  |
+| `test_subscropt_aggregation.mdl` (shorter)  | Eneko Martin    | eneko.martin.martinez@gmail.com | 11/18/20 | Vensim DSS for Windows 7.3.4 single precision (x32)  |
+| `output.tab ` (shorter)                      | Eneko Martin    | eneko.martin.martinez@gmail.com | 11/18/20 | Vensim DSS for Windows 7.3.4 single precision (x32)  |
 
 Todo:
 Make a case where we sum over (say) dimensions 1 and 3, but not 2

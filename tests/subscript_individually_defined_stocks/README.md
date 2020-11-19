@@ -25,4 +25,6 @@ Contributions
 | Component                         | Author          | Contact                    | Date    | Software Version        |
 |:--------------------------------- |:--------------- |:-------------------------- |:------- |:----------------------- |
 | `test_subscript_3d_arrays.mdl`      | James Houghton  | james.p.houghton@gmail.com | 11/4/15 | Vensim DSS 6.3 for Mac  |
+| `test_subscript_3d_arrays.mdl` (shorter)  | Eneko Martin    | eneko.martin.martinez@gmail.com | 11/18/20 | Vensim DSS for Windows 7.3.4 single precision (x32)  |
+| `output.tab ` (shorter)                      | Eneko Martin    | eneko.martin.martinez@gmail.com | 11/18/20 | Vensim DSS for Windows 7.3.4 single precision (x32)  |
 

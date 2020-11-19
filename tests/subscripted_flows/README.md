@@ -18,3 +18,5 @@ Contributions
 |:--------------------------------- |:--------------- |:-------------------------- |:------- |:----------------------- |
 | test_subscript_1d_arrays.mdl      | James Houghton  | james.p.houghton@gmail.com | 9/18/15 | Vensim DSS 6.3 for Mac  |
 | output.csv                        | James Houghton  | james.p.houghton@gmail.com | 9/18/15 | Vensim DSS 6.3 for Mac  |
+| `test_subscript_1d_arrays.mdl` (shorter)  | Eneko Martin    | eneko.martin.martinez@gmail.com | 11/18/20 | Vensim DSS for Windows 7.3.4 single precision (x32)  |
+| `output.tab ` (shorter)                      | Eneko Martin    | eneko.martin.martinez@gmail.com | 11/18/20 | Vensim DSS for Windows 7.3.4 single precision (x32)  |
