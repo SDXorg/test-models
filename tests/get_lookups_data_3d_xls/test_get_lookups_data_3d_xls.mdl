@@ -17,8 +17,8 @@ accumulation data[Dim, Rows]=INTEG(data function table[Dim, Rows],0)
 	~	
 	~		|
 
-lookup function[A, Rows]=
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C5') ~~|
+lookup function[A, Rows](
+    GET XLS LOOKUPS('?input.xls','Sheet1','4','C5')) ~~|
 lookup function[B, Rows]=
     GET XLS LOOKUPS('?input.xls','Sheet1','4','C7')
 	~	
