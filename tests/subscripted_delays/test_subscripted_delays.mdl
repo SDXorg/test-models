@@ -100,7 +100,7 @@ delay[Apples]=
 		Simulation Control Parameters
 	|
 
-FINAL TIME  = 100
+FINAL TIME  = 20
 	~	Month
 	~	The final time for the simulation.
 	|
@@ -116,7 +116,7 @@ SAVEPER  =
 	~	The frequency with which output is stored.
 	|
 
-TIME STEP  = 0.125
+TIME STEP  = 0.25
 	~	Month [0,?]
 	~	The time step for the simulation.
 	|
@@ -221,8 +221,25 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|72,72,1
 41:0
 42:1
 24:0
-25:100
-26:100
+25:20
+26:20
+57:1
+54:0
+55:0
+59:0
+56:0
+58:0
+44:65001
+46:0
+45:1
+49:1
+50:0
+51:
+52:
+53:
+43:output
+47:Current
+48:
 6:Clementine
 6:Grapefruit
 6:Grimes Golden
