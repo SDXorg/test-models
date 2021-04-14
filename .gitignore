@@ -1,10 +1,12 @@
 *.vdf
 *.3vm
 *.2mdl
+*.1mdl
+*.0mdl
 *.pyc
 *~
 *.isdb
 *.py
-*.1mdl
+.~lock.*#
 editor.aud
 samples/pendulum/Untitled.cin
