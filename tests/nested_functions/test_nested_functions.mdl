@@ -1,11 +1,11 @@
 {UTF-8}
 nested if then else=
-	IF THEN ELSE(Time>5, 0, IF THEN ELSE(Time<10, 1, 2))
+	IF THEN ELSE(Time<5, 0, IF THEN ELSE(Time<10, 1, 2))
 	~	
 	~		|
 
 nested integ= INTEG (
-	IF THEN ELSE(MODULO(Time, 3)<1, nested integ, 0),
+	IF THEN ELSE(MODULO(Time, 3)<2, Time, 0),
 		0)
 	~	
 	~		|
