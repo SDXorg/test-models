@@ -1,31 +1,40 @@
 {UTF-8}
-Level_1[DimB]= INTEG (
-	input_level_1[DimB]-output_level_1[DimB],
+Matrix A B[DimA,DimB]=
+	1, 2, 3, 4, 5;
+	6, 7, 8, 9, 10;
+	10, 20, 30, 40, 50;
+	6, 7, 8, 9, 10;
+	1, 2, 3, 4, 5;
+	~	
+	~		|
+
+Level 1[DimB]= INTEG (
+	input level 1[DimB]-output level 1[DimB],
 		122)
 	~	Dmnl
 	~		|
 
-Vector_C[DimA]=
-	Level_1[DimA]
+Vector C[DimA]=
+	Level 1[DimA]
 	~	
 	~		|
 
-output_level_1[DimA]=
-	Vector_B[DimA]*input_level_1[DimA]
+output level 1[DimA]=
+	Vector B[DimA]*input level 1[DimA]
 	~	
 	~		|
 
-input_level_1[DimB]=
-	Vector_A[DimB]*Level_1[DimB]
+input level 1[DimB]=
+	Vector A[DimB]*Level 1[DimB]
 	~	Dmnl
 	~		|
 
-Vector_A[DimB]=
+Vector A[DimB]=
 	0.01,0.2,0.5,0.03,0.7
 	~	
 	~		|
 
-Vector_B[DimB]=
+Vector B[DimB]=
 	0.07,0.1,0.16,0.01,0.7
 	~	
 	~		|
@@ -45,23 +54,23 @@ DimB<->DimA
 		Simulation Control Parameters
 	|
 
-FINAL_TIME  = 10
+FINAL TIME  = 10
 	~	Month
 	~	The final time for the simulation.
 	|
 
-INITIAL_TIME  = 1
+INITIAL TIME  = 1
 	~	Month
 	~	The initial time for the simulation.
 	|
 
 SAVEPER  = 
-        TIME_STEP
+        TIME STEP
 	~	Month [0,?]
 	~	The frequency with which output is stored.
 	|
 
-TIME_STEP  = 1
+TIME STEP  = 1
 	~	Month [0,?]
 	~	The time step for the simulation.
 	|
@@ -84,23 +93,23 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 1,12,13,1,100,0,0,22,0,0,0,-1--1--1,,1|(641,339)|
 11,13,48,685,339,6,8,34,3,0,0,1,0,0,0
 10,14,output level 1,685,358,47,11,40,3,0,0,-1,0,0,0
-10,15,Vector B,685,388,41,11,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|0||128-128-128
-1,17,6,14,0,1,0,0,0,64,0,-1--1--1,,1|(547,360)|
-10,18,Vector C,642,474,33,11,8,3,0,0,0,0,0,0
-1,19,1,18,0,0,0,0,0,128,0,-1--1--1,,1|(599,411)|
-10,20,Vector B,733,198,32,11,8,3,0,0,-1,0,0,0
-1,21,20,14,1,0,0,0,0,128,0,-1--1--1,,1|(737,270)|
+10,15,Vector B,685,388,41,11,8,2,1,3,-1,0,0,0,128-128-128,0-0-0,|12||128-128-128
+1,16,6,14,0,1,0,0,0,64,0,-1--1--1,,1|(547,360)|
+10,17,Vector C,642,474,33,11,8,3,0,0,0,0,0,0
+1,18,1,17,0,0,0,0,0,128,0,-1--1--1,,1|(599,411)|
+10,19,Vector B,733,198,32,11,8,3,0,0,-1,0,0,0
+1,20,19,14,1,0,0,0,0,128,0,-1--1--1,,1|(737,270)|
+10,21,Matrix A B,318,132,37,11,8,3,0,0,0,0,0,0
 ///---\\\
 :L<%^E!@
 1:NEW.vdf
-1:Test_mapping_v1.vdf
 9:NEW
 15:0,0,0,0,0,0
 19:100,0
 27:0,
 34:0,
 4:Time
-5:output_level_1[DimA]
+5:Matrix A B[DimA,DimA]
 35:Date
 36:YYYY-MM-DD
 37:2000
@@ -112,8 +121,21 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 24:1
 25:10
 26:10
+57:1
+54:0
+55:0
+59:0
+56:0
+58:0
+44:65001
+46:0
+45:1
+49:1
+50:0
+51:
+52:
+53:
+43:output
+47:NEW
+48:
 6:da1
-6:da2
-6:da3
-6:da4
-6:da5

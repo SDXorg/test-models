@@ -55,6 +55,80 @@ DimB:
 	~	
 	~		|
 
+MFG SKILLS : MACHINERS, ASSEMBLERS -> PRODUCTS
+        ~       index
+        ~       Skill categories specific to manufacturing.
+        |
+
+PRODUCTS : PARTS, SYSTEMS
+        ~       index
+        ~       Different phases of manufacturing.
+        |
+
+WORK FLOW[PRODUCTS] = WORK FORCE[MFG SKILLS] *
+        PRODUCTIVITY[MFG SKILLS]
+        ~       Part/year
+        ~       Rate of progress in manufacture phases.
+        |
+
+WORK FORCE[MFG SKILLS] =
+        5, 10
+        ~       Part/year
+        ~       Rate of progress.
+        |
+
+PRODUCTIVITY[MFG SKILLS] =
+     0.6, 0.7
+        ~
+        ~       Productivity in manufacture phases.
+        |
+
+AGE : INFANT, CHILD, TEEN, MIDDLE, OLD
+        ~       index
+        ~       Age cohorts of a population
+        |
+
+ALL BUT YOUNGEST : CHILD, TEEN, MIDDLE, OLD
+        ~       index
+        ~       Age cohorts except infant
+        |
+
+PREVIOUS COHORT : INFANT, CHILD, TEEN, MIDDLE
+                -> ALL BUT YOUNGEST
+        ~       index
+        ~       Age cohorts preceding each member of
+                ALL BUT YOUNGEST
+        |
+
+
+POPULATION[INFANT]= INTEG ( births - aging[INFANT],
+                INITIAL POPULATION[INFANT]) ~~|
+POPULATION[ALL BUT YOUNGEST] = INTEG (
+               aging[PREVIOUS COHORT]
+               - aging[ALL BUT YOUNGEST] ,
+            INITIAL POPULATION[ALL BUT YOUNGEST] )
+        ~       People
+        ~       Age cohorts of a population
+        |
+
+births = 200
+        ~       People/year
+        ~          New briths
+        |
+
+aging[AGE] =
+     300, 280, 200, 150, 100
+        ~       People/year
+        ~          Number of people that increase to the next AGE
+        |
+
+INITIAL POPULATION[AGE] =
+        1000, 900, 900, 800, 200
+        ~       People
+        ~          Initial population
+        |
+
+
 ********************************************************
 	.Control
 ********************************************************~
@@ -111,15 +185,13 @@ $192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,1
 1,23,11,20,1,0,0,0,0,128,0,-1--1--1,,1|(866,239)|
 ///---\\\
 :L<%^E!@
-1:Subscript_mapping_simple.vdf
-1:Test_mapping_v1.vdf
 9:Subscript_mapping_simple
 15:0,0,0,0,0,0
 19:100,0
 27:0,
 34:0,
 4:Time
-5:Level_2[DimA,DimC]
+5:Level 2[DimA,DimC]
 35:Date
 36:YYYY-MM-DD
 37:2000
