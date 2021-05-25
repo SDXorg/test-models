@@ -91,6 +91,15 @@ lookup 3d[B, Rows]=
 	~	
 	~		|
 
+lookup 1d time=
+    lookup 1d(Time) ~~|
+
+lookup 2d time[Rows]=
+    lookup 2d[Rows](Time) ~~|
+
+lookup 3d time[Dim,Rows]=
+    lookup 3d[Dim,Rows](Time) ~~|
+
 Rows:
 	Row1, Row2
 	~	
