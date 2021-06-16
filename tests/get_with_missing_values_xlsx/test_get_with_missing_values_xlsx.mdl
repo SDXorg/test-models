@@ -5,12 +5,12 @@ dim:
 	~		|
 
 lookup4=
-	GET XLS LOOKUPS('?input.xlsx', 'Hoja1', '10', 'A9')
+	GET XLS LOOKUPS('input.xlsx', 'Hoja1', '10', 'A9')
 	~	
 	~		|
 
 lookup3=
-	GET XLS LOOKUPS('?input.xlsx', 'Hoja1', '8', 'A9')
+	GET XLS LOOKUPS('input.xlsx', 'Hoja1', '8', 'A9')
 	~	
 	~		|
 
@@ -25,12 +25,12 @@ out lookup3=
 	~		|
 
 data interp4:INTERPOLATE::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '10', 'A9')
+	GET XLS DATA('input.xlsx', 'Hoja1', '10', 'A9')
 	~	
 	~		|
 
 data interp3:INTERPOLATE::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '8', 'A9')
+	GET XLS DATA('input.xlsx', 'Hoja1', '8', 'A9')
 	~	
 	~		|
 
@@ -45,7 +45,7 @@ out data interp3=
 	~		|
 
 data interp2[dim]:=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '1', 'C5')
+	GET XLS DATA('input.xlsx', 'Hoja1', '1', 'C5')
 	~	
 	~		|
 
@@ -55,7 +55,7 @@ out data interp2[dim]=
 	~		|
 
 data interp1:=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '1', 'C5')
+	GET XLS DATA('input.xlsx', 'Hoja1', '1', 'C5')
 	~	
 	~		|
 
@@ -65,12 +65,12 @@ out data interp1=
 	~		|
 
 data lf4:LOOK FORWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '10', 'A9')
+	GET XLS DATA('input.xlsx', 'Hoja1', '10', 'A9')
 	~	
 	~		|
 
 data lf3:LOOK FORWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '8', 'A9')
+	GET XLS DATA('input.xlsx', 'Hoja1', '8', 'A9')
 	~	
 	~		|
 
@@ -85,7 +85,7 @@ out data lf3=
 	~		|
 
 data lf2[dim]:LOOK FORWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '1', 'C5')
+	GET XLS DATA('input.xlsx', 'Hoja1', '1', 'C5')
 	~	
 	~		|
 
@@ -95,7 +95,7 @@ out data lf2[dim]=
 	~		|
 
 data lf1:LOOK FORWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '1', 'C5')
+	GET XLS DATA('input.xlsx', 'Hoja1', '1', 'C5')
 	~	
 	~		|
 
@@ -105,12 +105,12 @@ out data lf1=
 	~		|
 
 data hb4:HOLD BACKWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '10', 'A9')
+	GET XLS DATA('input.xlsx', 'Hoja1', '10', 'A9')
 	~	
 	~		|
 
 data hb3:HOLD BACKWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '8', 'A9')
+	GET XLS DATA('input.xlsx', 'Hoja1', '8', 'A9')
 	~	
 	~		|
 
@@ -125,7 +125,7 @@ out data hb3=
 	~		|
 
 data hb2[dim]:HOLD BACKWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '1', 'C5')
+	GET XLS DATA('input.xlsx', 'Hoja1', '1', 'C5')
 	~	
 	~		|
 
@@ -135,7 +135,7 @@ out data hb2[dim]=
 	~		|
 
 data hb1:HOLD BACKWARD::=
-	GET XLS DATA('?input.xlsx', 'Hoja1', '1', 'C5')
+	GET XLS DATA('input.xlsx', 'Hoja1', '1', 'C5')
 	~	
 	~		|
 

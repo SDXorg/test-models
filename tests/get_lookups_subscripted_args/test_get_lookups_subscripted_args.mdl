@@ -75,19 +75,19 @@ arg rd[B, Row2]=
 	~		|
 
 lookup 1d(
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C5'))
+    GET XLS LOOKUPS('input.xls','Sheet1','4','C5'))
 	~	
 	~		|
 
 lookup 2d[Rows](
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C5'))
+    GET XLS LOOKUPS('input.xls','Sheet1','4','C5'))
 	~	
 	~		|
 
 lookup 3d[A, Rows](
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C5')) ~~|
+    GET XLS LOOKUPS('input.xls','Sheet1','4','C5')) ~~|
 lookup 3d[B, Rows]=
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C7')
+    GET XLS LOOKUPS('input.xls','Sheet1','4','C7')
 	~	
 	~		|
 

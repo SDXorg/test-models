@@ -9,16 +9,16 @@ accumulation forward[Dim, Rows]=INTEG(data forward[Dim, Rows],0)
 	~		|
 
 data backward[A, Rows]:HOLD BACKWARD::=
-    GET XLS DATA('?input.xls','Sheet1','4','C5') ~~|
+    GET XLS DATA('input.xls','Sheet1','4','C5') ~~|
 data backward[B, Rows]:HOLD BACKWARD::=
-    GET XLS DATA('?input.xls','Sheet1','4','C7')
+    GET XLS DATA('input.xls','Sheet1','4','C7')
 	~	
 	~		|
 
 data forward[A, Rows]:LOOK FORWARD::=
-    GET XLS DATA('?input.xls','Sheet1','4','C5') ~~|
+    GET XLS DATA('input.xls','Sheet1','4','C5') ~~|
 data forward[B, Rows]:LOOK FORWARD::=
-    GET XLS DATA('?input.xls','Sheet1','4','C7')
+    GET XLS DATA('input.xls','Sheet1','4','C7')
 	~	
 	~		|
 

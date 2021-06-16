@@ -8,7 +8,7 @@ Three Dimensional Variable[One Dimensional Subscript,Second Dimension Subscript,
 	|
 
 Third Dimension Subscript:
-	GET DIRECT SUBSCRIPT('?input.xls','Sheet1','C3','D3','Depth')
+	GET DIRECT SUBSCRIPT('input.xls','Sheet1','C3','D3','Depth')
 	~	
 	~		|
 
@@ -18,19 +18,19 @@ Second Dimension Subscript:
 	~		|
 
 One Dimensional Subscript:
-	GET DIRECT SUBSCRIPT('?input.xls','Sheet1','B4','B6','Entry')
+	GET DIRECT SUBSCRIPT('input.xls','Sheet1','B4','B6','Entry')
 	~	
 	~		|
 
 Three Dimensional Constant[One Dimensional Subscript,Column1,Third Dimension Subscript\
 		]=
-	GET DIRECT CONSTANTS('?input.xls','Sheet1','C4')
+	GET DIRECT CONSTANTS('input.xls','Sheet1','C4')
 	~
 	~		|
 	
 Three Dimensional Constant[One Dimensional Subscript,Column2,Third Dimension Subscript\
 		]=
-	GET DIRECT CONSTANTS('?input.xls','Sheet1','E4')
+	GET DIRECT CONSTANTS('input.xls','Sheet1','E4')
 	~	
 	~		|
 
