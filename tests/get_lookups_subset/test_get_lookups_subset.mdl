@@ -18,9 +18,9 @@ lookup subset4[Rowsb]=lookup function[A, Rowsb](Time)
 	~		|
 
 lookup function[A, Rows](
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C5')) ~~|
+    GET XLS LOOKUPS('input.xls','Sheet1','4','C5')) ~~|
 lookup function[B, Rows]=
-    GET XLS LOOKUPS('?input.xls','Sheet1','4','C7')
+    GET XLS LOOKUPS('input.xls','Sheet1','4','C7')
 	~	
         ~
 	|

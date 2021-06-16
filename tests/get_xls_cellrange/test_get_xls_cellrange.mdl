@@ -1,16 +1,16 @@
 {UTF-8}
 data1:=
-	GET DIRECT DATA('?inputs.xlsx', 'Global' , 'Time1' , 'value1' )
+	GET DIRECT DATA('inputs.xlsx', 'Global' , 'Time1' , 'value1' )
 	~	
 	~		|
 
 datav:=
-	GET DIRECT DATA('?inputs.xlsx', 'Global' , 'Timev' , 'valuev' )
+	GET DIRECT DATA('inputs.xlsx', 'Global' , 'Timev' , 'valuev' )
 	~	
 	~		|
 
 lookupv=
-	GET DIRECT LOOKUPS('?inputs.xlsx', 'Global' , 'Timev' , 'valuev' )
+	GET DIRECT LOOKUPS('inputs.xlsx', 'Global' , 'Timev' , 'valuev' )
 	~	
 	~		|
 
@@ -20,13 +20,13 @@ finalv[dim]=
 	~		|
 
 valuev[dim]=
-	GET DIRECT CONSTANTS('?inputs.xlsx', 'Global' , 'valuev*' )
+	GET DIRECT CONSTANTS('inputs.xlsx', 'Global' , 'valuev*' )
 	~	
 	~	Vertically defined variable
 	|
 
 data2:=
-	GET DIRECT DATA('?inputs.xlsx', 'Local' , 'Time2' , 'value2' )
+	GET DIRECT DATA('inputs.xlsx', 'Local' , 'Time2' , 'value2' )
 	~	
 	~		|
 
@@ -46,23 +46,23 @@ final2[dim]=
 	~		|
 
 lookup1=
-	GET DIRECT LOOKUPS('?inputs.xlsx', 'Global' , 'Time1' , 'value1' )
+	GET DIRECT LOOKUPS('inputs.xlsx', 'Global' , 'Time1' , 'value1' )
 	~	
 	~		|
 
 lookup2=
-	GET DIRECT LOOKUPS('?inputs.xlsx', 'Local' , 'Time2' , 'value2' )
+	GET DIRECT LOOKUPS('inputs.xlsx', 'Local' , 'Time2' , 'value2' )
 	~	
 	~		|
 
 value1[dim]=
-	GET DIRECT CONSTANTS('?inputs.xlsx', 'Global' , 'value1' )
+	GET DIRECT CONSTANTS('inputs.xlsx', 'Global' , 'value1' )
 	~	
 	~	Globally defined variablr
 	|
 
 value2[dim]=
-	GET DIRECT CONSTANTS('?inputs.xlsx', 'Local' , 'value2' )
+	GET DIRECT CONSTANTS('inputs.xlsx', 'Local' , 'value2' )
 	~	
 	~	Locally defined variable
 	|

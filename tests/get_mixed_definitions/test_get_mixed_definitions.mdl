@@ -10,9 +10,9 @@ Type:
 	~		|
 
 Variable[ext data,Dim]:INTERPOLATE::=
-	GET DIRECT DATA('?input.xlsx', 'Sheet1' , '4' , 'C5' ) ~~|
+	GET DIRECT DATA('input.xlsx', 'Sheet1' , '4' , 'C5' ) ~~|
 Variable[ext const,Dim]=
-	GET DIRECT CONSTANTS('?input.xlsx', 'Sheet1' , 'C8*' ) ~~|
+	GET DIRECT CONSTANTS('input.xlsx', 'Sheet1' , 'C8*' ) ~~|
 Variable[const,Dim]=
 	2, 4
 	~	
