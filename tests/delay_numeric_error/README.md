@@ -10,3 +10,4 @@ Contributions
 |:--------------------------------- |:------------ |:------------------------------- |:-------- |:--------------------------------------------------- |
 | `test_delay_numeric_error.mdl`    | Eneko Martin | eneko.martin.martinez@gmail.com | 12/14/20 | Vensim DSS for Windows 7.3.4 single precision (x32) |
 | `output.tab`                      | Eneko Martin | eneko.martin.martinez@gmail.com | 12/14/20 | Vensim DSS for Windows 7.3.4 single precision (x32) |
+| `output.tab` (updated)            | Eneko Martin | eneko.martin.martinez@gmail.com | 07/13/21 | Vensim DSS for Windows 7.3.4 double precision (x32) |
