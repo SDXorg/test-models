@@ -16,3 +16,5 @@ Contributions
 |:--------------------------------- |:--------------- |:-------------------------- |:------- |:----------------------- |
 | Subscript_mapping_simple.mdl       | María Robles    | maria.robles.delblanco@gmail.com | 12/5/21  | Vensim DSS 8.0.9 for Windows (x64) |
 | output.tab                     | María Robles    | maria.robles.delblanco@gmail.com | 12/5/21  | Vensim DSS 8.0.9 for Windows (x64) |
+| `output.tab `             | Eneko Martin | eneko.martin.martinez@gmail.com | 03/01/22 | Vensim DSS for Windows 7.3.4 double precision (x32)   
+
