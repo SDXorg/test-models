@@ -2,6 +2,7 @@ Test subscripted ramp step
 ==========================
 
 Test model for subscripted arguments in RAMP and STEP functions.
+This test has been updated to avoid the bug described in https://www.ventanasystems.co.uk/forum/viewtopic.php?f=2&t=7941
 
 Contributions
 -------------
