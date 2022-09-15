@@ -1,7 +1,7 @@
 Test subscript element name
 ============================
 
-This model tests the subscript for [issue 216 of PySD](https://github.com/JamesPHoughton/pysd/issues/216). Test the ability of the parse to read a subscript element which first word matches a subscript name.
+This model tests the subscript for [issue 216 of PySD](https://github.com/SDXorg/pysd/issues/216). Test the ability of the parse to read a subscript element which first word matches a subscript name.
 
 
 Contributions

@@ -7,7 +7,7 @@ For example:
 SMOOTH N(DELAY3( Time , MODULO( constant , 3 ) ), constant , 1 , 2 )
 ```
 
-In response to: https://github.com/JamesPHoughton/pysd/issues/104
+In response to: https://github.com/SDXorg/pysd/issues/104
 
 Contributions
 -------------
