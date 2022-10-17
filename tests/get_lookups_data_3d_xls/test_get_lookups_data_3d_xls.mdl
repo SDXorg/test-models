@@ -1,44 +1,44 @@
 {UTF-8}
 lookup call[Dim, Rows]=
 	lookup function[Dim, Rows](Time)
-	~	
+	~
 	~		|
 
 rate[Dim, Rows]=
 	lookup call[Dim, Rows]
-	~	
+	~
 	~		|
 
 accumulation[Dim, Rows]=INTEG(rate[Dim, Rows],0)
-	~	
+	~
 	~		|
 
 accumulation data[Dim, Rows]=INTEG(data function table[Dim, Rows],0)
-	~	
+	~
 	~		|
 
 lookup function[A, Rows](
     GET XLS LOOKUPS('input.xls','Sheet1','4','C5')) ~~|
 lookup function[B, Rows]=
     GET XLS LOOKUPS('input.xls','Sheet1','4','C7')
-	~	
+	~
 	~		|
 
 data function table[A, Rows]:=
-    GET XLS DATA('input.xls','Sheet1','4','C5') ~~|
+    GET XLS DATA('input2.xls','Sheet1','4','C5') ~~|
 data function table[B, Rows]:=
-    GET XLS DATA('input.xls','Sheet1','4','C7')
-	~	
+    GET XLS DATA('input2.xls','Sheet1','4','C7')
+	~
 	~		|
 
 Rows:
 	Row1, Row2
-	~	
+	~
 	~		|
 
 Dim:
 	A, B
-	~	
+	~
 	~		|
 
 ********************************************************
@@ -57,8 +57,8 @@ INITIAL TIME  = 0
 	~	The initial time for the simulation.
 	|
 
-SAVEPER  = 
-        TIME STEP 
+SAVEPER  =
+        TIME STEP
 	~	Minute [0,?]
 	~	The frequency with which output is stored.
 	|
