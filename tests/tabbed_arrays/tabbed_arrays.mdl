@@ -1,0 +1,113 @@
+{UTF-8}
+initial_population_equiv_comma_semicolon_syntax[country_row,blood_type_column]=
+	1,2,3,4;
+	5,6,7,8;
+	9,10,11,12;
+	~	Person
+	~		|
+
+country_row:
+	MEXICO, USA, CANADA
+	~	
+	~		|
+
+blood_type_column:
+	A, B, O, AB
+	~	
+	~		|
+
+initial_population_TABBED_ARRAY[country_row,blood_type_column] = TABBED ARRAY(1	2	3	4
+5	6	7	8
+9	10	11	12)
+	~	Person
+	~		|
+
+********************************************************
+	.Control
+********************************************************~
+		Simulation Control Parameters
+	|
+
+FINAL_TIME  = 4
+	~	Month
+	~	The final time for the simulation.
+	|
+
+INITIAL_TIME  = 0
+	~	Month
+	~	The initial time for the simulation.
+	|
+
+SAVEPER  = 
+        TIME_STEP 
+	~	Month [0,?]
+	~	The frequency with which output is stored.
+	|
+
+TIME_STEP  = 1
+	~	Month [0,?]
+	~	The time step for the simulation.
+	|
+
+\\\---/// Sketch information - do not modify anything except names
+V300  Do not put anything below this section - it will be ignored
+*View 1
+$192-192-192,0,Times New Roman|12||0-0-0|0-0-0|0-0-255|-1--1--1|-1--1--1|96,96,100,0
+10,1,initial population TABBED ARRAY,263,143,66,19,8,3,0,16,-1,0,0,0,0-0-0,0-0-0,||B|0-0-0,0,0,0,0,0,0
+12,2,0,266,64,100,28,8,135,0,18,-1,0,0,0,-1--1--1,0-0-0,||B|128-0-0,0,0,0,0,0,0
+TABBED ARRAY - array of constants, formatted for spreadsheet pasting
+10,3,initial population equiv comma semicolon syntax,533,143,79,19,8,3,0,0,-1,0,0,0,0,0,0,0,0,0
+///---\\\
+:L<%^E!@
+4:Time
+5:initial_population_equiv_comma_semicolon_syntax[country_row,blood_type_column]
+6:A
+6:AB
+6:B
+6:CANADA
+6:MEXICO
+6:O
+6:USA
+9:TABBED ARRAY
+19:100,0
+24:0
+25:10
+26:10
+22:$,Dollar,Dollars,$s
+22:Hour,Hours
+22:Month,Months
+22:Person,People,Persons
+22:Unit,Units
+22:Week,Weeks
+22:Year,Years
+22:Day,Days
+15:0,0,0,0,0,0
+27:2,
+34:0,
+42:0
+72:0
+73:0
+35:Date
+36:YYYY-MM-DD
+37:2000
+38:1
+39:1
+40:2
+41:0
+95:0
+96:0
+97:0
+77:0
+78:0
+102:1
+93:0
+94:0
+92:0
+91:0
+90:0
+87:0
+75:
+43:
+103:8,8,8,3,8
+105:0,0,0,0,0,0,0,0,0,0
+104:Courier|12||0-0-0|0-0-0|-1--1--1|0-0-255|192-192-192|-1--1--1
