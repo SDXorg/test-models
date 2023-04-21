@@ -1,7 +1,7 @@
 Test ELM COUNT
 ==============
 
-Test for Vensim's ELMCOUNT fuction.
+Test for Vensim's ELMCOUNT fuction. Updated by Roger Samsó (rogersamso@gmail.com) on 15/04/2023.
 
 Contributions
 -------------
