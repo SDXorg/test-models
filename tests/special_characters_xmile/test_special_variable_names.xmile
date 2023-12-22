@@ -30,13 +30,13 @@
             </aux>
             <stock name="Stock with \n Newline Character">
                 <eqn>67</eqn>
-                <inflow>Flow_w/_division,_lists,_and_INITIAL(construction_functions)</inflow>
-                <outflow>Flow_with_STEP(function_call!)</outflow>
+                <inflow>"Flow_w/_division,_lists,_and_INITIAL(construction_functions)"</inflow>
+                <outflow>"Flow_with_STEP(function_call!)"</outflow>
             </stock>
             <stock name="Hyphenated-Stockname">
                 <eqn>0</eqn>
                 <inflow>normal_flow</inflow>
-                <outflow>Flow*with_a_few^arithmetic_+_characters</outflow>
+                <outflow>"Flow*with_a_few^arithmetic_+_characters"</outflow>
             </stock>
             <flow name="Flow with STEP(function call!)">
                 <eqn>"Aux_with_(entirely_superfuluous)_parenthetical_comment"</eqn>
@@ -98,11 +98,11 @@
                 </flow>
                 <connector uid="25" angle="90">
                     <from>Aux_with_$peC!@|_characters</from>
-                    <to>Flow_w/_division,_lists,_and_INITIAL(construction_functions)</to>
+                    <to>"Flow_w/_division,_lists,_and_INITIAL(construction_functions)"</to>
                 </connector>
                 <connector uid="26" angle="90">
                     <from>Aux_with_(entirely_superfuluous)_parenthetical_comment</from>
-                    <to>Flow_with_STEP(function_call!)</to>
+                    <to>"Flow_with_STEP(function_call!)"</to>
                 </connector>
                 <aux name="import" x="175" y="100"/>
                 <connector uid="28" angle="270">
