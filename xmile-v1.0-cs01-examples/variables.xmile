@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0">
+
+  <header>
+    <options/>
+    <product version="1.0" lang="en">Acme Constructor</product>
+    <vendor>Acme Software</vendor>
+    <created>2014-05-10</created>
+    <name>Corporate Growth model</name>
+    <caption>
+        This model demonstrates the format of a simple XMILE model with
+        only variable and no model diagram.
+    </caption>
+  </header>
+
+  <sim_specs method="euler" time_units="Months">
+    <start>0</start>
+    <stop>100</stop>
+    <dt>0.125</dt>
+  </sim_specs>
+
+  <model>
+    <variables>
+      <stock name="Sales\nForce">
+        <eqn>10</eqn>
+        <units>people</units>
+        <inflow>net_hires</inflow>
+        <non_negative />
+      </stock>
+      <flow name="net_hires">
+        <eqn>(indicated_sales_force - Sales_Force)/sales_force_adjustment_time</eqn>
+        <units>person/mo</units>
+      </flow>
+      <aux name="sales_force\nadjustment_time">
+        <eqn>20</eqn>
+        <units>months</units>
+      </aux>
+      <aux name="indicated\nsales_force">
+        <eqn>budget/sales_person_salary</eqn>
+        <units>people</units>
+      </aux>
+      <aux name="budget">
+        <eqn>orders_booked * revenue_to_sales</eqn>
+        <units>$/Month</units>
+      </aux>
+      <aux name="revenue\nto_sales">
+        <eqn>10</eqn>
+        <units>$/SKU</units>
+      </aux>
+      <aux name="sales_person\nsalary">
+        <eqn>2000</eqn>
+        <units>$/Person-Month</units>
+      </aux>
+      <aux name="orders\nbooked">
+        <eqn>Sales_Force * sale_effectiveness</eqn>
+        <units>SKU/Month</units>
+      </aux>
+      <aux name="sale\neffectiveness">
+        <eqn>normal_sales_effectiveness * effect_of__delivery_delay_recognized</eqn>
+        <units>SKU/Person-Month</units>
+      </aux>
+      <aux name="normal\nsales_effectiveness">
+        <eqn>350</eqn>
+        <units>SKU/Person-Month</units>
+      </aux>
+      <aux name="effect_of__delivery_delay_recognized">
+        <eqn>Delivery_Delay_Recognized/normal_delivery_delay_recognized</eqn>
+        <gf>
+          <yscale min="0.3" max="1.15" />
+          <xpts>0,0.5,1,1.5,2,2.5,3</xpts>
+          <ypts>1.1499999999999999,1.1000000000000001,1,0.75,0.5,0.34999999999999998,0.29999999999999999</ypts>
+        </gf>
+        <units>Unitless</units>
+      </aux>
+      <aux name="normal_delivery\ndelay_recognized">
+        <eqn>2</eqn>
+        <units>months</units>
+      </aux>
+      <stock name="Delivery\nDelay\nRecognized">
+        <eqn>2</eqn>
+        <inflow>change_in_delivery_delay_recognized</inflow>
+        <non_negative />
+        <units>months</units>
+      </stock>
+      <flow name="change_in\ndelivery_delay\nrecognized">
+        <eqn>(delivery_delay_impending  -  Delivery_Delay_Recognized) / time_for_delivery_delay_recognition</eqn>
+      </flow>
+      <aux name="time_for\ndelivery_delay\nrecognition">
+        <eqn>5</eqn>
+        <units>months</units>
+      </aux>
+      <aux name="delivery\ndelay_impending">
+        <eqn>Backlog / delivery_rate</eqn>
+        <units>months</units>
+      </aux>
+      <stock name="Backlog">
+        <eqn>8000</eqn>
+        <inflow>orders_entered</inflow>
+        <outflow>orders_completed</outflow>
+        <non_negative />
+        <units>SKU</units>
+      </stock>
+      <flow name="orders\nentered">
+        <eqn>orders_booked</eqn>
+        <non_negative />
+        <units>sku/mo</units>
+      </flow>
+      <flow name="orders\ncompleted">
+        <eqn>delivery_rate</eqn>
+        <non_negative />
+        <units>sku/mo</units>
+      </flow>
+      <aux name="effect_of_backlog\non_delivery_rate">
+        <eqn>Backlog / normal_backlog</eqn>
+        <gf>
+          <yscale min="0" max="10" />
+          <xpts>0.90000000000000002,1,1.7,2.2999999999999998,3.5,6.2999999999999998,10,20</xpts>
+          <ypts>0,1,3.5,4.2999999999999998,5,5.5999999999999996,6,6.5</ypts>
+        </gf>
+        <units>Unitless</units>
+      </aux>
+      <aux name="normal\nbacklog">
+        <eqn>8000</eqn>
+        <units>SKU</units>
+      </aux>
+      <aux name="delivery\nrate">
+        <eqn>normal_delivery_rate  *  effect_of_backlog_on_delivery_rate</eqn>
+        <units>SKU/Month</units>
+      </aux>
+      <aux name="normal\ndelivery_rate">
+        <eqn>4000</eqn>
+        <units>SKU/Month</units>
+      </aux>
+    </variables>
+  </model>
+</xmile>

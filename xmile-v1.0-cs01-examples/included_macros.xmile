@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0">
+
+  <header>
+    <options>
+      <uses_macros references_macros="false" option_filters="false"/>
+    </options>
+    <product version="1.0" lang="en">Acme Constructor</product>
+    <vendor>Acme Software</vendor>
+    <name>macros</name>
+    <caption>
+        This file includes sample macros that may be included in other models.
+    </caption>
+  </header>
+
+  <macro name="LOG">
+      <parm>x</parm>
+      <parm>base</parm>
+      <eqn>LN(x)/LN(base)</eqn>
+      <format>
+        <![CDATA[LOG(<value>, <base>)]]>
+      </format>
+      <doc>
+        <![CDATA[Finds the base-<base> logarithm of <value>.]]>
+      </doc>
+  </macro>
+
+  <macro name="DOUBLE">
+      <parm>x</parm>
+      <eqn>x * 2</eqn>
+      <format><![CDATA[DOUBLE(<value>)]]></format>
+      <doc>Double the provided value.</doc>
+  </macro>
+
+</xmile>

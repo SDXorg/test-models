@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0">
+
+  <header>
+    <options/>
+    <product version="1.0" lang="en">Acme Constructor</product>
+    <vendor>Acme Software</vendor>
+    <name>master model</name>
+    <caption>
+        This model demonstrates a simple model with multiple files
+        included providing additional models and macros.
+    </caption>
+    <includes>
+        <include resource="included_macros.xmile"/>
+        <include resource="included_model.xmile"/>
+    </includes>
+  </header>
+
+  <sim_specs method="euler" time_units="Months">
+    <start>0</start>
+    <stop>100</stop>
+    <dt>0.125</dt>
+  </sim_specs>
+
+  <model name="master_model">
+    <variables>
+      <aux name="variable1">
+        <eqn>log(100,10)</eqn>
+      </aux>
+    </variables>
+  </model>
+</xmile>
