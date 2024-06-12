@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
+  <header>
+    <options namespace="std, isee" />
+    <vendor>isee systems</vendor>
+    <product version="10.0.2" lang="en">STELLA</product>
+    <name>lynx-hares.stmx</name>
+    <copyright>(C) 2013 by isee systems, inc.</copyright>
+  </header>
+
+  <behavior>
+    <flow>
+      <non_negative />
+    </flow>
+  </behavior>
+
+  <style color="red" />
+
+  <sim_specs method="RK4" time_units="yr">
+    <start>0</start>
+    <stop>60</stop>
+    <dt>0.125</dt>
+  </sim_specs>
+
+  <model>
+    <variables>
+      <stock name="Hares">
+        <eqn>5E4</eqn>
+        <doc>Initially, there are 50000 hares in the ecosystem.</doc>
+        <inflow>hare_births</inflow>
+        <outflow>hare_deaths</outflow>
+      </stock>
+      <flow name="hare_births">
+        <eqn>Hares*hare_birth_fraction</eqn>
+        <doc>A compounding process is used to depict hare births.  The births flow is defined as the product of Hares and their natality.  This process works just like compounding interest in a savings account.</doc>
+      </flow>
+      <flow name="hare_deaths">
+        <eqn>Lynx*hares_killed_per_lynx</eqn>
+        <doc>In this external resource process, lynx are the resource underwriting the consumption of hares.  Each lynx has a productivity, given by hare kills per lynx.</doc>
+      </flow>
+      <stock name="Lynx">
+        <eqn>1250</eqn>
+        <doc>Initially, there are 1250 lynx.</doc>
+        <inflow>lynx_births</inflow>
+        <outflow>lynx_deaths</outflow>
+        <outflow>one_time_lynx_harvest</outflow>
+      </stock>
+      <flow name="lynx_births">
+        <eqn>Lynx*lynx_birth_fraction</eqn>
+        <doc>A compounding process is used to depict lynx births.  The births flow is defined as the product of lynx and their natality.  This process works just like compounding interest in a savings account.</doc>
+      </flow>
+      <flow name="lynx_deaths">
+        <eqn>Lynx*lynx_death_fraction</eqn>
+        <doc>This is a draining process.  Some fraction of the lynx population will die each year.  The portion that dies, in turn, depends on the density of hares in the ecosystem.</doc>
+      </flow>
+      <flow name="one_time_lynx_harvest">
+        <eqn>PULSE(size_of_1_time_lynx_harvest, 4, 1e3)</eqn>
+        <doc>This test input uses a PULSE function to remove some number of Lynx from the system at time 4.  This harvesting effectively knocks the system out of steady state, thus enabiling its latent dynamics to unfold.</doc>
+      </flow>
+      <aux name="hare_birth\nfraction">
+        <eqn>1.25</eqn>
+        <doc>Each hare in the ecosystem is assumed to produce 1.25 offspring (on average) per year.</doc>
+      </aux>
+      <aux name="hare\ndensity">
+        <eqn>Hares/area</eqn>
+        <doc>This equation calculates the average density of hares in the ecosystem.</doc>
+      </aux>
+      <aux name="area">
+        <eqn>1E3</eqn>
+        <doc>The area of the ecosystem is defined as 1000 hectares.</doc>
+      </aux>
+      <aux name="lynx_birth\nfraction">
+        <eqn>0.25</eqn>
+        <doc>On average, each lynx will generate .25 offspring per year.</doc>
+      </aux>
+      <aux name="size_of_1_time\nlynx_harvest">
+        <eqn>1</eqn>
+      </aux>
+      <aux name="lynx_death_fraction">
+        <eqn>hare_density</eqn>
+        <gf>
+          <xscale min="0" max="100" />
+          <yscale min="0" max="1" />
+          <ypts>.94,.66,.4,.35,.3,.25,.2,.15,.1,.07,.05</ypts>
+        </gf>
+      </aux>
+      <aux name="hares_killed\nper_lynx">
+        <eqn>hare_density</eqn>
+        <doc>The number of hares killed per lynx (per year) increases with the density of hares in the ecosystem.  Note that when density is 0 (there are no hares), kills per lynx per year must be 0.</doc>
+        <gf>
+          <xscale min="0" max="500" />
+          <yscale min="0" max="1000" />
+          <ypts>0,50,100,150,200,250,300,350,400,450,500</ypts>
+        </gf>
+      </aux>
+    </variables>
+
+    <views>
+      <view page_orientation="landscape">
+        <stock name="Hares" color="purple" x="285" y="81" label_side="center" />
+        <flow name="hare_births" color="purple" x="171" y="80" label_side="top">
+          <pts>
+            <pt x="80" y="80" />
+            <pt x="263" y="80" />
+          </pts>
+        </flow>
+        <flow name="hare_deaths" color="purple" x="427" y="79" label_side="top">
+          <pts>
+            <pt x="307" y="79" />
+            <pt x="547" y="79" />
+          </pts>
+        </flow>
+        <stock name="Lynx" x="367" y="268" label_side="center" />
+        <flow name="lynx_births" x="470" y="271" label_side="top">
+          <pts>
+            <pt x="552" y="271" />
+            <pt x="389" y="271" />
+          </pts>
+        </flow>
+        <flow name="lynx_deaths" x="286" y="272" label_side="top">
+          <pts>
+            <pt x="345" y="272" />
+            <pt x="227" y="272" />
+          </pts>
+        </flow>
+        <flow name="one_time_lynx_harvest" x="297" y="339" label_side="bottom" label_angle="348">
+          <pts>
+            <pt x="365" y="285" />
+            <pt x="365" y="339" />
+            <pt x="229" y="339" />
+          </pts>
+        </flow>
+        <aux name="hare_birth\nfraction" color="purple" x="117" y="138" label_side="left" />
+        <aux name="hare\ndensity" color="purple" x="255" y="172" label_side="right" label_angle="59" />
+        <aux name="area" color="black" x="154" y="178" />
+        <aux name="lynx_birth\nfraction" x="525" y="308" />
+        <aux name="size_of_1_time\nlynx_harvest" x="165" y="357" label_side="left" />
+        <aux name="lynx_death_fraction" x="168" y="250" label_side="left" label_angle="150" />
+        <aux name="hares_killed\nper_lynx" x="357" y="181" label_side="bottom" label_angle="323" />
+        <connector uid="0" color="purple" x="120" y="130">
+          <from>hare_birth_fraction</from>
+          <to>hare_births</to>
+        </connector>
+        <connector uid="1" color="purple" x="264" y="92">
+          <from>Hares</from>
+          <to>hare_births</to>
+        </connector>
+        <connector uid="2" color="purple" x="268" y="98">
+          <from>Hares</from>
+          <to>hare_density</to>
+        </connector>
+        <connector uid="3" color="black" x="162" y="173">
+          <from>area</from>
+          <to>hare_density</to>
+        </connector>
+        <connector uid="4" x="263" y="178">
+          <from>hare_density</from>
+          <to>hares_killed_per_lynx</to>
+        </connector>
+        <connector uid="5" x="246" y="174">
+          <from>hare_density</from>
+          <to>lynx_death_fraction</to>
+        </connector>
+        <connector uid="6" x="364" y="177">
+          <from>hares_killed_per_lynx</from>
+          <to>hare_deaths</to>
+        </connector>
+        <connector uid="7" x="170" y="259">
+          <from>lynx_death_fraction</from>
+          <to>lynx_deaths</to>
+        </connector>
+        <connector uid="8" x="349" y="284">
+          <from>Lynx</from>
+          <to>lynx_deaths</to>
+        </connector>
+        <connector uid="9" x="389" y="257">
+          <from>Lynx</from>
+          <to>hare_deaths</to>
+        </connector>
+        <connector uid="10" x="387" y="285">
+          <from>Lynx</from>
+          <to>lynx_births</to>
+        </connector>
+        <connector uid="11" x="519" y="301">
+          <from>lynx_birth_fraction</from>
+          <to>lynx_births</to>
+        </connector>
+        <connector uid="12" x="173" y="358">
+          <from>size_of_1_time_lynx_harvest</from>
+          <to>one_time_lynx_harvest</to>
+        </connector>
+      </view>
+    </views>
+  </model>
+
+  <macro filter="flow" name="non_negative">
+    <parm>flow</parm>
+    <parm>value</parm>
+    <eqn>IF value THEN MAX(flow, 0) ELSE flow</eqn>
+  </macro>
+</xmile>

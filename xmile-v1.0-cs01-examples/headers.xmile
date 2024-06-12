@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0">
+
+  <header>
+    <product version="1.0" lang="en">Acme Constructor</product>
+    <vendor>Acme Software</vendor>
+    <created>2014-05-10</created>
+    <modified>2014-05-01</modified>
+    <name>Sample model</name>
+    <caption>
+        This model demonstrates a model with comprehensive
+        header detail.
+    </caption>
+    <version>1</version>
+    <author>John Q. Doe</author>
+    <affiliation>Modeling Institute</affiliation>
+    <client>BigCo</client>
+    <copyright>modelers, inc 2008</copyright>
+    <contact>
+        <address>123 Main St, City, State, USA</address>
+        <email>email1@modelers.com</email>
+        <email>email1@gmail.com</email>
+        <fax>+1 111-111-1111</fax>
+        <phone>+1 111-111-1111</phone>
+        <website>www.modelers.com</website>
+    </contact>
+    <image resource="image.png"/>
+    <options namespace="std">
+      <uses_conveyor arrest="true" leak="true" />
+      <uses_queue overflow="true"/>
+      <uses_arrays invalid_index_value="0" max_dimensions="3"/>
+      <uses_submodels/>
+      <uses_macros references_macros="true" option_filters="true"/>
+      <uses_event_posters messages="true"/>
+      <has_model_view />
+      <uses_outputs numeric_display="true" lamp="true" gauge="true" />
+      <uses_inputs numeric_input="true" list="true" graphical_input="true"/>    
+      <uses_annotation/>
+    </options>
+  </header>
+
+  <model>
+    <variables>
+    </variables>
+  </model>
+</xmile>
