@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0" xmlns:isee="http://iseesystems.com/XMILE">
+  <header>
+    <options namespace="std, isee" />
+    <name>Practitioners</name>
+    <uuid>f3921add-36a7-4fa9-a651-4b3dfaee6d64</uuid>
+    <vendor>isee systems, inc.</vendor>
+    <product version="10.1.0" lang="en">STELLA</product>
+  </header>
+  <sim_specs method="Euler" time_units="Year">
+    <start>0</start>
+    <stop>12</stop>
+    <dt>0.25</dt>
+  </sim_specs>
+  <model_units>
+    <units name="People">
+      <alias>person,persons</alias>
+    </units>
+    <units name="Years">
+      <alias>yr,year</alias>
+    </units>
+    <units name="Per Year">
+      <eqn>1/Years</eqn>
+    </units>
+  </model_units>
+  <model>
+    <variables>
+      <stock name="Practitioners">
+        <eqn>100</eqn>
+        <inflow>adopting</inflow>
+        <non_negative />
+        <units>Person</units>
+      </stock>
+      <flow name="adopting">
+        <eqn>Practitioners  * adoption_rate</eqn>
+        <non_negative />
+        <units>Person/Year</units>
+      </flow>
+      <aux name="adoption_rate">
+        <eqn>0.03</eqn>
+        <units>Per Year</units>
+      </aux>
+    </variables>
+    <views>
+      <style color="#FFAAFF" background="white" font_style="normal" font_weight="normal" text_decoration="normal" text_align="center" vertical_text_align="center" text_background="white" font_color="blue" font_family="Arial" font_size="9pt" padding="2" border_color="black" border_width="1" border_style="none">
+        <stock font_color="#FFAAFF" label_side="top" label_angle="0" />
+        <flow font_color="#FFAAFF" label_side="bottom" label_angle="0" />
+        <module font_color="#FFAAFF" label_side="top" label_angle="0" />
+        <aux font_color="#FFAAFF" label_side="bottom" label_angle="0" />
+        <group font_color="#FFAAFF" />
+        <connector color="#55AA00" font_color="#55AA00" />
+      </style>
+      <view show_pages="false" page_width="768" page_height="1001" zoom="220">
+        <connector uid="1" color="#55007F" font_color="#55007F" x="79.75" y="124" angle="153.435">
+          <from>adoption_rate</from>
+          <to>adopting</to>
+        </connector>
+        <connector uid="2" x="146" y="51" angle="149.421">
+          <from>Practitioners</from>
+          <to>adopting</to>
+        </connector>
+        <stock name="Practitioners" color="lime" background="yellow" font_color="#0055FF" font_family="Britannic Bold" x="168" y="64" />
+        <flow name="adopting" x="87.75" y="64">
+          <pts>
+            <pt x="30" y="64" />
+            <pt x="145.5" y="64" />
+          </pts>
+        </flow>
+        <aux name="adoption_rate" x="87.75" y="128" />
+      </view>
+    </views>
+  </model>
+</xmile>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+
+	XML Interchange Language for System Dynamics (XMILE) Version 1.0
+	OASIS Committee Specification 01
+	29 October 2014
+	Copyright (c) OASIS Open 2014. All rights reserved.
+	Source: http://docs.oasis-open.org/xmile/xmile/v1.0/cs01/examples/
+-->
+<xmile version="1.0" xmlns="http://docs.oasis-open.org/xmile/ns/XMILE/v1.0">
+
+  <header>
+    <product version="1.0" lang="en">Acme Constructor</product>
+    <vendor>Acme Software</vendor>
+    <name>Sample model</name>
+    <caption>
+        This model shows how to specify event posters.
+    </caption>
+    <options namespace="std" />
+  </header>
+
+<!-- note - full event poster interactivity not yet in schema.  remove comments below when included. -->
+
+  <model>
+    <variables>
+      <stock name="Population">
+        <eqn>100</eqn>
+        <inflow>being_born</inflow>
+        <event_poster min="1000" max="10000">
+          <threshold value="2000" direction="increasing" repeat="each" interval="5">
+<!-- 
+            <event sim_action="message">
+              <text_box>Your population is increasing</text_box>
+            </event>
+ -->
+           </threshold>
+          <threshold value="8000" direction="increasing">
+<!-- 
+             <event sim_action="message">
+              <text_box>Your population is high!</text_box>
+              <sound>bicycle_bell.wav</sound>
+              <link target="view" view_type="interface" x="0" y="0"/>
+              <video>c:/Movies/uh-oh.mov</video>            
+            </event>
+            <event sim_action="stop" />
+-->
+          </threshold>
+        </event_poster>    
+      </stock>
+      <flow name="being_born">
+        <eqn>birth_rate*Population</eqn>
+      </flow>
+      <aux name="birth_rate">
+        <eqn>0.05</eqn>
+      </aux>
+    </variables>
+  </model>
+</xmile>
