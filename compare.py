@@ -110,6 +110,8 @@ def load_csv(f, delimiter=','):
     for i in range(len(header)):
         result.append([header[i]])
     for row in reader:
+        # empty cells at the end of a row may be stripped: pad the row
+        row += [''] * (len(header) - len(row))
         for i in range(len(row)):
             result[i].append(row[i])
     series = {}
@@ -125,11 +127,21 @@ def e_name(n):
 def read_data(data):
     ins = data.lower().splitlines()
     ins[0] = e_name(ins[0].strip())
-    if ',' in ins[0]:
-        delimiter = ','
-    else:
+    if '\t' in ins[0]:
         delimiter = '\t'
-    return load_csv(ins, delimiter)
+    else:
+        delimiter = ','
+    return fill_constants(load_csv(ins, delimiter))
+
+def fill_constants(series):
+    '''
+    Vensim exports a constant only in the first row and leaves the rest
+    of its column empty. Repeat the first value down such a column.
+    '''
+    for n, values in series.items():
+        if len(values) > 1 and values[0].strip() and not any(v.strip() for v in values[1:]):
+            series[n] = [values[0]] * len(values)
+    return series
 
 def compare(reference, simulated, display_limit=-1):
     '''
@@ -155,6 +167,9 @@ def compare(reference, simulated, display_limit=-1):
                     displayed += 1
                 err = True
                 break
+            if not series[i].strip():
+                # no reference value at this time (Vensim writes :NA: as empty)
+                continue
             ref = float(series[i])
             sim = float(simulated[n][i])
             around_zero = isclose(ref, 0, abs_tol=1e-06) and isclose(sim, 0, abs_tol=1e-06)

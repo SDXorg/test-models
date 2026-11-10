@@ -86,7 +86,12 @@ expected by tools that interact with this repository.
 6. Under `Export As` choose `tab`
 7. Under `Time Running` choose `down`
 8. Click `OK at the bottom left to perform the export
-9. Open the resulting `output.tab` in excel or whatever, and make sure that the values of constant terms are propagated down the column for each timestep.
+9. Vensim writes a constant only in the first row of `output.tab` and
+   leaves the rest of its column empty. You can keep the file as it is:
+   `compare.py` and `regression-test.py` repeat the first value down such
+   a column. Tools that read `output.tab` themselves should do the same.
+   An empty cell in any other column has no value at that time (Vensim
+   writes `:NA:` as empty); the scripts skip it.
 
 ## Tool testing
 
