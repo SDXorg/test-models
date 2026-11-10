@@ -127,10 +127,10 @@ def e_name(n):
 def read_data(data):
     ins = data.lower().splitlines()
     ins[0] = e_name(ins[0].strip())
-    if ',' in ins[0]:
-        delimiter = ','
-    else:
+    if '\t' in ins[0]:
         delimiter = '\t'
+    else:
+        delimiter = ','
     return fill_constants(load_csv(ins, delimiter))
 
 def fill_constants(series):
