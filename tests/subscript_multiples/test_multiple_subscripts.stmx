@@ -41,7 +41,15 @@
                 <dimensions>
                     <dim name="One Dimensional Subscript"/>
                 </dimensions>
-                <eqn> ??? </eqn>
+                <element subscript="Entry 1">
+                    <eqn>0.01</eqn>
+                </element>
+                <element subscript="Entry 2">
+                    <eqn>0.02</eqn>
+                </element>
+                <element subscript="Entry 3">
+                    <eqn>0.03</eqn>
+                </element>
             </aux>
             <aux name="TIME STEP">
                 <doc>	The time step for the simulation.</doc>
@@ -70,7 +78,18 @@
                 <dimensions>
                     <dim name="Parallel Subscript"/>
                 </dimensions>
-                <eqn> ??? </eqn>
+                <element subscript="Another Element 1">
+                    <eqn>1</eqn>
+                </element>
+                <element subscript="Another Element 2">
+                    <eqn>2</eqn>
+                </element>
+                <element subscript="Another Element 3">
+                    <eqn>3</eqn>
+                </element>
+                <element subscript="Another Element 4">
+                    <eqn>4</eqn>
+                </element>
             </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>

@@ -41,7 +41,15 @@
                 <dimensions>
                     <dim name="Dim1"/>
                 </dimensions>
-                <eqn> ??? </eqn>
+                <element subscript="A">
+                    <eqn>5</eqn>
+                </element>
+                <element subscript="B">
+                    <eqn>5</eqn>
+                </element>
+                <element subscript="C">
+                    <eqn>5</eqn>
+                </element>
             </aux>
             <aux name="Subscripted Variable">
                 <dimensions>
