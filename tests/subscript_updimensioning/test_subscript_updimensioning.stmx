@@ -42,7 +42,15 @@
                 <dimensions>
                     <dim name="Dim1"/>
                 </dimensions>
-                <eqn> ??? </eqn>
+                <element subscript="A">
+                    <eqn>1</eqn>
+                </element>
+                <element subscript="B">
+                    <eqn>2</eqn>
+                </element>
+                <element subscript="C">
+                    <eqn>3</eqn>
+                </element>
             </aux>
             <aux name="Two Dims">
                 <dimensions>

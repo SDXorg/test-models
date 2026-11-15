@@ -43,84 +43,38 @@
                     <dim name="Dim1"/>
                     <dim name="Dim2"/>
                 </dimensions>
-                <element subscript="A, A">
+                <element subscript="A,D">
                     <eqn>subset[A]</eqn>
                 </element>
-                <element subscript="A, B">
-                    <eqn>subset[A]</eqn>
+                <element subscript="A,E">
+                    <eqn>2.1</eqn>
                 </element>
-                <element subscript="A, C">
-                    <eqn>subset[A]</eqn>
-                </element>
-                <element subscript="A, D">
-                    <eqn>subset[A]</eqn>
-                </element>
-                <element subscript="B, A">
+                <element subscript="B,D">
                     <eqn>subset[B]</eqn>
                 </element>
-                <element subscript="B, B">
-                    <eqn>subset[B]</eqn>
+                <element subscript="B,E">
+                    <eqn>2.2</eqn>
                 </element>
-                <element subscript="B, C">
-                    <eqn>subset[B]</eqn>
-                </element>
-                <element subscript="B, D">
-                    <eqn>subset[B]</eqn>
-                </element>
-                <element subscript="C, A">
+                <element subscript="C,D">
                     <eqn>subset[C]</eqn>
                 </element>
-                <element subscript="C, B">
-                    <eqn>subset[C]</eqn>
-                </element>
-                <element subscript="C, C">
-                    <eqn>subset[C]</eqn>
-                </element>
-                <element subscript="C, D">
-                    <eqn>subset[C]</eqn>
-                </element>
-                <element subscript="A, A">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="A, B">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="A, C">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="A, E">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="B, A">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="B, B">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="B, C">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="B, E">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="C, A">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="C, B">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="C, C">
-                    <eqn> ??? </eqn>
-                </element>
-                <element subscript="C, E">
-                    <eqn> ??? </eqn>
+                <element subscript="C,E">
+                    <eqn>2.3</eqn>
                 </element>
             </aux>
             <aux name="subset">
                 <dimensions>
                     <dim name="Dim1"/>
                 </dimensions>
-                <eqn> ??? </eqn>
+                <element subscript="A">
+                    <eqn>1.1</eqn>
+                </element>
+                <element subscript="B">
+                    <eqn>1.2</eqn>
+                </element>
+                <element subscript="C">
+                    <eqn>1.3</eqn>
+                </element>
             </aux>
             <aux name="SAVEPER">
                 <doc>	The frequency with which output is stored.</doc>
